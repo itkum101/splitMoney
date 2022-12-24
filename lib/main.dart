@@ -4,8 +4,9 @@ import 'package:splitmoney/screen/MainScreen.dart';
 
 void main() {
   runApp(MaterialApp(
+    
     initialRoute: '/',
-    routes: {'/': (ctx) => const MyApp()},
+    routes: {'/': (ctx) => MyApp()},
     debugShowCheckedModeBanner: false,
     title: 'SplitMoney',
   ));
