@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:splitmoney/screen/MainScreen.dart';
+import 'package:splitmoney/routes/MainScreen.dart';
 
 void main() {
   runApp(MaterialApp(
-    
     initialRoute: '/',
-    routes: {'/': (ctx) => MyApp()},
+    routes: {
+      '/': (ctx) => const MyApp(),
+    },
     debugShowCheckedModeBanner: false,
     title: 'SplitMoney',
   ));

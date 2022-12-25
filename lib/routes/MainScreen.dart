@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:splitmoney/Widgets/GroupList.dart';
-import 'package:splitmoney/pages/activitypage.dart';
-import 'package:splitmoney/pages/friendspage.dart';
-import 'package:splitmoney/pages/groupspage.dart';
-import 'package:splitmoney/pages/settings.dart';
+import 'package:splitmoney/routes/activitypage.dart';
+import 'package:splitmoney/routes/friendspage.dart';
+import 'package:splitmoney/routes/groupspage.dart';
+import 'package:splitmoney/routes/settings.dart';
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   final List<Widget> page = [
     const GroupsPage(),
-    const FriendsPage(),
+    const FriendsList(),
     const ActivityPage(),
     const SettingsPage()
   ];
@@ -32,7 +32,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          
           backgroundColor: Colors.greenAccent,
           title: const Text("SplitMoney"),
         ),
