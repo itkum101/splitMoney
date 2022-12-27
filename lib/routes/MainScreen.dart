@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/GroupList.dart';
+import 'package:splitmoney/Widgets/GroupTile.dart';
 import 'package:splitmoney/routes/activitypage.dart';
 import 'package:splitmoney/routes/friendspage.dart';
 import 'package:splitmoney/routes/groupspage.dart';
@@ -31,10 +31,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.greenAccent,
-          title: const Text("SplitMoney"),
-        ),
+        
         body: page[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,

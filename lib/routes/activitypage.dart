@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/GroupList.dart';
+import 'package:splitmoney/Widgets/GroupTile.dart';
 
 class ActivityPage extends StatelessWidget {
   const ActivityPage({super.key});
