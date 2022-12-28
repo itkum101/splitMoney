@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/GroupTile.dart';
+import 'package:splitmoney/Widgets/group_tile.dart';
 import 'package:splitmoney/data.dart';
+import 'package:splitmoney/routes/add_a_group.dart';
 
 class GroupsPage extends StatelessWidget {
   const GroupsPage({super.key});
@@ -11,8 +12,8 @@ class GroupsPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         backgroundColor: Colors.green,
-        icon: Icon(Icons.add_rounded),
-        label: Text("Add expense"),
+        icon: const Icon(Icons.add_rounded),
+        label: const Text("Add Expense"),
       ),
       appBar: AppBar(
         elevation: 0,
@@ -31,7 +32,11 @@ class GroupsPage extends StatelessWidget {
           ),
           IconButton(
               splashRadius: 20,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                  return AddGroup();
+                })));
+              },
               icon: Icon(
                 Icons.group_add_sharp,
                 size: 23,
@@ -91,7 +96,7 @@ class GroupsPage extends StatelessWidget {
                     imgname: groups[index].imgPath,
                   );
                 })),
-          )
+          ),
         ],
       ),
     );

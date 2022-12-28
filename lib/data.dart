@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class GroupList {
   final String imgPath;
   final String groupName;
@@ -11,4 +13,41 @@ List<GroupList> groups = [
   GroupList(groupName: "000", imgPath: "lib/assets/tea.png"),
   GroupList(groupName: "111", imgPath: "lib/assets/tea.png"),
   GroupList(groupName: "222", imgPath: "lib/assets/tea.png")
+];
+
+class GroupTypes {
+  final icon;
+  final String type;
+
+  GroupTypes({
+    required this.icon,
+    required this.type,
+  });
+}
+
+List<GroupTypes> grouptype = [
+  GroupTypes(icon: const Icon(Icons.airplanemode_on_outlined), type: "Trip"),
+  GroupTypes(icon: const Icon(Icons.home_outlined), type: "Home"),
+  GroupTypes(icon: const Icon(Icons.favorite_outline_rounded), type: "Couple"),
+  GroupTypes(icon: const Icon(Icons.list_alt_outlined), type: "Others"),
+];
+
+class FriendList {
+  final String friendName;
+  final String friendEmail;
+  FriendList({
+    required this.friendName,
+    required this.friendEmail,
+  });
+}
+
+List<FriendList> friends = [
+  FriendList(friendName: "Mukti Subedi", friendEmail: "muktisubedi@gmail.com"),
+  FriendList(
+      friendName: "Balkrishna Poudel",
+      friendEmail: "balkrishnapoudel@gmail.com"),
+  FriendList(
+      friendName: "Aavash Chhetri", friendEmail: "aavashchhetri@gmail.com"),
+  FriendList(
+      friendName: "Ashim Sapkota", friendEmail: "ashimsapkota@gmail.com"),
 ];

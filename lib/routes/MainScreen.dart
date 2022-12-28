@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/GroupTile.dart';
+import 'package:splitmoney/Widgets/group_tile.dart';
 import 'package:splitmoney/routes/activitypage.dart';
 import 'package:splitmoney/routes/friendspage.dart';
 import 'package:splitmoney/routes/groupspage.dart';
@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         body: page[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
@@ -41,7 +40,7 @@ class _MyAppState extends State<MyApp> {
           unselectedItemColor: Colors.black,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.group),
               label: 'Groups',
             ),
             BottomNavigationBarItem(
