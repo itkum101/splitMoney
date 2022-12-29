@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/group_tile.dart';
 import 'package:splitmoney/routes/activitypage.dart';
 import 'package:splitmoney/routes/friendspage.dart';
 import 'package:splitmoney/routes/groupspage.dart';
-import 'package:splitmoney/routes/settings.dart';
+import 'package:splitmoney/routes/settingspage.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -44,7 +43,7 @@ class _MyAppState extends State<MyApp> {
               label: 'Groups',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.people),
+              icon: Icon(Icons.person),
               label: 'Friends',
             ),
             BottomNavigationBarItem(
