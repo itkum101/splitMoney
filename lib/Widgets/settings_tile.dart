@@ -13,7 +13,7 @@ class SettingsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(6),
+      padding: const EdgeInsets.all(3),
       child: ListTile(
         onTap: onSettingsTap,
         leading: icon,

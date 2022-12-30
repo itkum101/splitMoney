@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GroupList {
-  final String imgPath;
-  final String groupName;
+   String imgPath;
+   String groupName;
   GroupList({
     required this.imgPath,
     required this.groupName,
@@ -123,7 +123,7 @@ List<SettingsList> settingslist = [
     settings: Text(
       "Contact Us",
       style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
     ),
   ),
   SettingsList(
@@ -138,3 +138,6 @@ List<SettingsList> settingslist = [
     ),
   )
 ];
+class Model extends ChangeNotifier{
+  
+}

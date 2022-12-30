@@ -69,8 +69,8 @@ class SettingsPage extends StatelessWidget {
                             "Amrit Sharma",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 15,
-                                color: Colors.grey[700]),
+                                fontSize: 17,
+                                color: Colors.grey[800]),
                           ),
                           const SizedBox(
                             height: 1,
@@ -91,7 +91,7 @@ class SettingsPage extends StatelessWidget {
                       onPressed: () {},
                       icon: Icon(
                         Icons.edit_outlined,
-                        color: Colors.grey[700],
+                        color: Colors.grey[800],
                       ))
                 ]),
           ),

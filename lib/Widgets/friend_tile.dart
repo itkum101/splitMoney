@@ -9,14 +9,14 @@ class FriendTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
+      leading: const CircleAvatar(
         radius: 25,
         backgroundColor: Colors.green,
       ),
       title: Text(
         friendName,
         style: TextStyle(
-            fontWeight: FontWeight.w600, fontSize: 15, color: Colors.grey[700]),
+            fontWeight: FontWeight.w600, fontSize: 15, color: Colors.grey[800]),
       ),
       subtitle: Text(friendEmail),
       trailing: Text(

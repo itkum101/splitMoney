@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   final List<Widget> page = [
-    const GroupsPage(),
+     GroupsPage(onAdd: (){},),
     const FriendsList(),
     const ActivityPage(),
     const SettingsPage()

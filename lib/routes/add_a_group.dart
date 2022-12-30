@@ -1,12 +1,22 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/data.dart';
 
-class AddGroup extends StatelessWidget {
+class AddGroup extends StatefulWidget {
+  const AddGroup({super.key});
+
+  @override
+  State<AddGroup> createState() => _AddGroupState();
+}
+
+class _AddGroupState extends State<AddGroup> {
   final _controller = TextEditingController();
-  AddGroup({super.key});
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +38,7 @@ class AddGroup extends StatelessWidget {
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () {
-                print("save button clicked");
+               
               },
               child: const Text(
                 "Save",

@@ -3,9 +3,15 @@ import 'package:splitmoney/Widgets/group_tile.dart';
 import 'package:splitmoney/data.dart';
 import 'package:splitmoney/routes/add_a_group.dart';
 
-class GroupsPage extends StatelessWidget {
-  const GroupsPage({super.key});
+class GroupsPage extends StatefulWidget {
+  final VoidCallback onAdd;
+  const GroupsPage({super.key, required this.onAdd});
 
+  @override
+  State<GroupsPage> createState() => _GroupsPageState();
+}
+
+class _GroupsPageState extends State<GroupsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +40,7 @@ class GroupsPage extends StatelessWidget {
               splashRadius: 20,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                  return AddGroup();
+                  return const AddGroup();
                 })));
               },
               icon: Icon(
