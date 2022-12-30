@@ -26,45 +26,46 @@ class ActivityTile extends StatelessWidget {
           const SizedBox(
             width: 20,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${"Mukti S."} added ${"Chiya"} in ${"000"} ",
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: color,
-                    fontSize: fontsize),
-              ),
-              const SizedBox(
-                height: 2,
-              ),
-              const Text(
-                "You get back Rs 60.00",
-                style: TextStyle(color: Colors.green, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 2,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "${DateTime.now().month.toString()}-${DateTime.now().day.toString()}, ",
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                  ),
-                  Text(
-                    "${hrformat > 12 ? (hrformat - 12).toString() : hrformat.toString()}:${DateTime.now().minute.toString()} ",
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                  ),
-                  Text(
-                    hrformat > 12 ? "PM" : "AM",
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                  )
-                ],
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${"Mukti S."} added ${"Chiya"} in ${"000"}",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: color,
+                      fontSize: fontsize),
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                const Text(
+                  "You get back Rs 60.00",
+                  style: TextStyle(color: Colors.green, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${DateTime.now().month.toString()}-${DateTime.now().day.toString()}, ",
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                    ),
+                    Text(
+                      "${hrformat > 12 ? (hrformat - 12).toString() : hrformat.toString()}:${DateTime.now().minute.toString()} ",
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                    ),
+                    Text(
+                      hrformat > 12 ? "PM" : "AM",
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ],
       ),

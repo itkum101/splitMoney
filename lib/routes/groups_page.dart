@@ -4,7 +4,6 @@ import 'package:splitmoney/utils/data.dart';
 import 'package:splitmoney/routes/add_a_group.dart';
 
 class GroupsPage extends StatefulWidget {
- 
   const GroupsPage({super.key});
 
   @override
@@ -71,8 +70,8 @@ class _GroupsPageState extends State<GroupsPage> {
                   children: [
                     const Text(
                       "Overall, You are owned",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                     Text(
                       " Rs.316.24",
