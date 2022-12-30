@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitmoney/Widgets/group_type_item.dart';
-import 'package:splitmoney/data.dart';
+import 'package:splitmoney/utils/data.dart';
 
 class AddGroup extends StatefulWidget {
   const AddGroup({super.key});

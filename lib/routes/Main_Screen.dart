@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/routes/activitypage.dart';
-import 'package:splitmoney/routes/friendspage.dart';
-import 'package:splitmoney/routes/groupspage.dart';
-import 'package:splitmoney/routes/settingspage.dart';
+import 'package:splitmoney/routes/activity_page.dart';
+import 'package:splitmoney/routes/friends_page.dart';
+import 'package:splitmoney/routes/groups_page.dart';
+import 'package:splitmoney/routes/settings_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   final List<Widget> page = [
-     GroupsPage(onAdd: (){},),
+    const GroupsPage(),
     const FriendsList(),
     const ActivityPage(),
     const SettingsPage()

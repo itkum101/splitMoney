@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GroupList {
-   String imgPath;
-   String groupName;
+  String imgPath;
+  String groupName;
   GroupList({
     required this.imgPath,
     required this.groupName,
@@ -81,7 +81,7 @@ List<SettingsList> settingslist = [
     settings: Text(
       "Email settings",
       style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
     ),
   ),
   SettingsList(
@@ -92,7 +92,7 @@ List<SettingsList> settingslist = [
     settings: Text(
       "Notification settings",
       style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
     ),
   ),
   SettingsList(
@@ -103,7 +103,7 @@ List<SettingsList> settingslist = [
     settings: Text(
       "Password",
       style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
     ),
   ),
   SettingsList(
@@ -113,7 +113,7 @@ List<SettingsList> settingslist = [
     settings: Text(
       "Rate Us",
       style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
     ),
   ),
   SettingsList(
@@ -134,10 +134,9 @@ List<SettingsList> settingslist = [
     settings: const Text(
       "Log Out",
       style: TextStyle(
-          fontSize: 16, color: Colors.green, fontWeight: FontWeight.w600),
+          fontSize: 16, color: Colors.green, fontWeight: FontWeight.w500),
     ),
   )
 ];
-class Model extends ChangeNotifier{
-  
-}
+
+class Model extends ChangeNotifier {}

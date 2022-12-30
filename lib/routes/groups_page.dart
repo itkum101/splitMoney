@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/friend_tile.dart';
-import 'package:splitmoney/data.dart';
-import 'package:splitmoney/routes/add_a_friend.dart';
+import 'package:splitmoney/Widgets/group_tile.dart';
+import 'package:splitmoney/utils/data.dart';
+import 'package:splitmoney/routes/add_a_group.dart';
 
-class FriendsList extends StatefulWidget {
-  const FriendsList({super.key});
+class GroupsPage extends StatefulWidget {
+ 
+  const GroupsPage({super.key});
 
   @override
-  State<FriendsList> createState() => _FriendsListState();
+  State<GroupsPage> createState() => _GroupsPageState();
 }
 
-class _FriendsListState extends State<FriendsList> {
+class _GroupsPageState extends State<GroupsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +40,11 @@ class _FriendsListState extends State<FriendsList> {
               splashRadius: 20,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                  return const AddFriend();
+                  return const AddGroup();
                 })));
               },
               icon: Icon(
-                Icons.person_add_sharp,
+                Icons.group_add_sharp,
                 size: 23,
                 color: Colors.grey[800],
               )),
@@ -92,18 +93,16 @@ class _FriendsListState extends State<FriendsList> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
           Expanded(
             child: ListView.builder(
-                itemCount: friends.length,
+                itemCount: groups.length,
                 itemBuilder: ((context, index) {
-                  return FriendTile(
-                      friendName: friends[index].friendName,
-                      friendEmail: friends[index].friendEmail);
+                  return GroupTile(
+                    name: groups[index].groupName,
+                    imgname: groups[index].imgPath,
+                  );
                 })),
-          )
+          ),
         ],
       ),
     );

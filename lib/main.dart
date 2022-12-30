@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:splitmoney/routes/MainScreen.dart';
-import 'package:splitmoney/routes/settingspage.dart';
+import 'package:splitmoney/routes/Main_Screen.dart';
+import 'package:splitmoney/routes/settings_page.dart';
 
 void main() {
   runApp(MaterialApp(
