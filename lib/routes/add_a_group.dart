@@ -1,4 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as Path;
 
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/utils/data.dart';
@@ -13,6 +19,30 @@ class AddGroup extends StatefulWidget {
 class _AddGroupState extends State<AddGroup> {
   final _controller = TextEditingController();
   late String groupName = _controller.text;
+  File? _image;
+  Future getImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) {
+        return;
+      } else {
+        // final imageTemporary = File(image.path);
+        final finalImage = await saveFilePermanently(image.path);
+        setState(() {
+          this._image = finalImage;
+        });
+      }
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
+  Future<File> saveFilePermanently(String imagePath) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final name = Path.basename(imagePath);
+    final image = File('${directory.path}/$name');
+    return File(imagePath).copy(image.path);
+  }
 
   @override
   void dispose() {
@@ -26,65 +56,52 @@ class _AddGroupState extends State<AddGroup> {
         builder: ((context) {
           return Container(
             color: Colors.grey[400],
-            height: 150,
+            height: 101,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Column(
+              padding: const EdgeInsets.all(15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Column(
                     children: [
-                      Column(
-                        children: [
-                          Container(
+                      GestureDetector(
+                        onTap: () {
+                          getImage(ImageSource.camera);
+                        },
+                        child: Container(
+                            height: 50,
                             decoration: BoxDecoration(
                                 color: Colors.grey[500],
                                 borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.all(10),
-                            child: IconButton(
-                                iconSize: 30,
-                                onPressed: () {},
-                                icon: const Icon(Icons.camera_alt_rounded)),
-                          ),
-                          Text(
-                            "Camera",
-                            style: TextStyle(
-                                color: Colors.grey[700], fontSize: 18),
-                          )
-                        ],
+                            child: Image.asset("lib/assets/camera.png")),
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[500],
-                                borderRadius: BorderRadius.circular(10)),
-                            padding: const EdgeInsets.all(10),
-                            child: IconButton(
-                                iconSize: 30,
-                                onPressed: () {},
-                                icon: const Icon(Icons.photo_album_rounded)),
-                          ),
-                          Text(
-                            "Gallery",
-                            style: TextStyle(
-                                color: Colors.grey[700], fontSize: 18),
-                          )
-                        ],
-                      ),
+                      Text(
+                        "Camera",
+                        style: TextStyle(color: Colors.grey[700], fontSize: 18),
+                      )
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          getImage(ImageSource.gallery);
+                        },
+                        child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[500],
+                                borderRadius: BorderRadius.circular(10)),
+                            padding: const EdgeInsets.all(10),
+                            child: Image.asset("lib/assets/picture.png")),
+                      ),
+                      Text(
+                        "Gallery",
+                        style: TextStyle(color: Colors.grey[700], fontSize: 18),
+                      )
+                    ],
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Center(
-                      child: Text("Close"),
-                    ),
-                  )
                 ],
               ),
             ),
@@ -140,21 +157,28 @@ class _AddGroupState extends State<AddGroup> {
             child: Row(
               children: [
                 Container(
+                    height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                          splashRadius: 20,
-                          onPressed: () {
-                            showSheet();
-                          },
-                          icon: const Icon(
-                            Icons.add_a_photo_outlined,
-                            size: 25,
-                          )),
-                    )),
+                    child: _image != null
+                        ? Padding(
+                            padding: const EdgeInsets.all(1),
+                            child: Image.file(
+                              _image!,
+                              width: 48,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: showSheet,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Image.asset(
+                                "lib/assets/add_image.png",
+                                width: 35,
+                              ),
+                            ))),
                 const SizedBox(
                   width: 10,
                 ),
