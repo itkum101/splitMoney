@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 class FriendTile extends StatelessWidget {
   final String friendName;
   final String friendEmail;
-  const FriendTile(
-      {super.key, required this.friendName, required this.friendEmail});
+  void Function()? onTap;
+
+   FriendTile(
+      {super.key, required this.friendName, required this.friendEmail, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: const CircleAvatar(
         radius: 25,
         backgroundColor: Colors.green,

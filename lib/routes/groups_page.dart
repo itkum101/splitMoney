@@ -39,7 +39,7 @@ class _GroupsPageState extends State<GroupsPage> {
               splashRadius: 20,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                  return const AddGroup();
+                  return AddGroup();
                 })));
               },
               icon: Icon(
@@ -70,8 +70,8 @@ class _GroupsPageState extends State<GroupsPage> {
                   children: [
                     const Text(
                       "Overall, You are owned",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 17),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                     Text(
                       " Rs.316.24",

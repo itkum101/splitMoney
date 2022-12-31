@@ -100,8 +100,10 @@ class _FriendsListState extends State<FriendsList> {
                 itemCount: friends.length,
                 itemBuilder: ((context, index) {
                   return FriendTile(
-                      friendName: friends[index].friendName,
-                      friendEmail: friends[index].friendEmail);
+                    friendName: friends[index].friendName,
+                    friendEmail: friends[index].friendEmail,
+                    onTap: () {},
+                  );
                 })),
           )
         ],
