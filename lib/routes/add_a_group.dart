@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as Path;
 
 import 'package:splitmoney/Widgets/group_type_item.dart';
+import 'package:splitmoney/Widgets/text_field.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddGroup extends StatefulWidget {
@@ -183,21 +184,17 @@ class _AddGroupState extends State<AddGroup> {
                   width: 10,
                 ),
                 Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    cursorHeight: 23,
-                    cursorColor: Colors.grey[800],
-                    decoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        filled: true,
-                        fillColor: Colors.grey[200],
-                        labelText: "Group Name",
-                        labelStyle: TextStyle(color: Colors.grey[700]),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                  ),
-                )
+                    child: TextBoxSample(
+                      isautoFocus: false,
+                  isFilled: true,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  labelText: "Group Name",
+                  cursorColor: Colors.grey[400],
+                  cursorHeight: 20,
+                ))
               ],
             ),
           ),
