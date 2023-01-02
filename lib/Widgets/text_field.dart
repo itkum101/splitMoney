@@ -30,6 +30,7 @@ class TextBoxSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      
       autofocus: isautoFocus,
         cursorColor: cursorColor,
         cursorHeight: cursorHeight,

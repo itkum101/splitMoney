@@ -8,7 +8,7 @@ void main() {
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
-      '/': (ctx) => const MyApp(),
+      '/': (ctx) => const AddFriend(),
     },
     debugShowCheckedModeBanner: false,
     title: 'SplitMoney',
