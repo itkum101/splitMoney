@@ -41,7 +41,7 @@ class _FriendsListState extends State<FriendsList> {
               splashRadius: 20,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                  return const AddFriend();
+                  return  AddFriend();
                 })));
               },
               icon: Icon(

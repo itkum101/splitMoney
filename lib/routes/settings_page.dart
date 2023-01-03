@@ -34,10 +34,10 @@ class SettingsPage extends StatelessWidget {
                         children: [
                           Stack(
                             children: [
-                              Container(
+                              const SizedBox(
                                 height: 70,
                                 width: 70,
-                                child: const CircleAvatar(
+                                child: CircleAvatar(
                                   backgroundColor: Colors.red,
                                   radius: 30,
                                 ),
@@ -102,6 +102,7 @@ class SettingsPage extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
+                  
                     itemCount: settingslist.length,
                     itemBuilder: ((context, index) {
                       return SettingsTile(
