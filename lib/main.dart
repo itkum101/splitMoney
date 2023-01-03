@@ -7,8 +7,15 @@ import 'package:splitmoney/routes/settings_page.dart';
 import 'package:splitmoney/utils/data.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider<GroupNameProvider>(
-    create: (_) => GroupNameProvider(),
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<GroupNameProvider>(
+        create: (_) => GroupNameProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => FriendNameProvider(),
+      ),
+    ],
     child: MaterialApp(
       initialRoute: '/',
       routes: {

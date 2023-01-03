@@ -67,6 +67,21 @@ List<FriendList> friends = [
       friendName: "Ashim Sapkota", friendEmail: "ashimsapkota@gmail.com"),
 ];
 
+class FriendNameProvider with ChangeNotifier {
+  final List<FriendList> _friendList = friends;
+  List<FriendList> get friendList => _friendList;
+
+  void addToGroupList(FriendList friend) {
+    friendList.add(friend);
+    notifyListeners();
+  }
+
+  void removeFromList(GroupList group) {
+    friendList.remove(group);
+    notifyListeners();
+  }
+}
+
 class SettingsList {
   final icon;
   final Text settings;

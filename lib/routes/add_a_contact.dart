@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_field.dart';
+import 'package:splitmoney/utils/data.dart';
 
 class AddContact extends StatelessWidget {
   final phoneNoController = TextEditingController();
   final nameController = TextEditingController();
-   AddContact({super.key});
+  AddContact({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var myList = context.watch<FriendNameProvider>().friendList;
+
     return Scaffold(
         appBar: AppBar(
           title: const Center(
@@ -28,7 +32,14 @@ class AddContact extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15),
               child: IconButton(
                   splashRadius: 20,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<FriendNameProvider>().addToGroupList(
+                        FriendList(
+                            friendEmail: "random@gmail.com",
+                            friendName: nameController.text));
+
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(Icons.check)),
             )
           ],

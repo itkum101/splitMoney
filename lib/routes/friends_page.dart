@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/friend_tile.dart';
 import 'package:splitmoney/utils/data.dart';
 import 'package:splitmoney/routes/add_a_friend.dart';
@@ -13,6 +14,7 @@ class FriendsList extends StatefulWidget {
 class _FriendsListState extends State<FriendsList> {
   @override
   Widget build(BuildContext context) {
+    var myfriendList = context.watch<FriendNameProvider>().friendList;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
@@ -97,11 +99,11 @@ class _FriendsListState extends State<FriendsList> {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: friends.length,
+                itemCount: myfriendList.length,
                 itemBuilder: ((context, index) {
                   return FriendTile(
-                    friendName: friends[index].friendName,
-                    friendEmail: friends[index].friendEmail,
+                    friendName: myfriendList[index].friendName,
+                    friendEmail: myfriendList[index].friendEmail,
                     onTap: () {},
                   );
                 })),
