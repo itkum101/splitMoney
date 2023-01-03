@@ -16,8 +16,6 @@
 	<string>splitmoney</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>NSContactsUsageDescription</key>  
-	<string>This app requires contacts access to function properly.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
