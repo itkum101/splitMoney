@@ -32,9 +32,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  image_picker: null
-  path_provider: null
+  image_picker: 
+  path_provider: 
   provider: ^6.0.5
+  contacts_service:
+  permission_handler:
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to

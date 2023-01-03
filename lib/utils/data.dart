@@ -1,3 +1,4 @@
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 
 class GroupList {
@@ -170,3 +171,4 @@ List<SettingsList> settingslist = [
 ];
 
 class Model extends ChangeNotifier {}
+List<Contact> contactLists = [];
