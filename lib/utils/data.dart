@@ -1,3 +1,4 @@
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 
 class GroupList {
@@ -16,6 +17,7 @@ List<GroupList> groups = [
 ];
 
 class GroupTypes {
+  // ignore: prefer_typing_uninitialized_variables
   final icon;
   final String type;
 
@@ -53,6 +55,7 @@ List<FriendList> friends = [
 ];
 
 class SettingsList {
+  // ignore: prefer_typing_uninitialized_variables
   final icon;
   final Text settings;
   SettingsList({
@@ -138,5 +141,4 @@ List<SettingsList> settingslist = [
     ),
   )
 ];
-
-class Model extends ChangeNotifier {}
+List<Contact> contactLists = [];

@@ -15,12 +15,14 @@ class SettingsTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(3),
       child: ListTile(
+      
+        
         onTap: onSettingsTap,
         leading: icon,
         iconColor: Colors.grey[800],
         // title: Text(
         //   settings,
-         
+
         title: settings,
       ),
     );

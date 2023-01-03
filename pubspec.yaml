@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   image_picker:
   path_provider:
+  contacts_service:
+  permission_handler:
  
 
 dev_dependencies:
