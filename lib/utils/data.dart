@@ -16,6 +16,21 @@ List<GroupList> groups = [
   GroupList(groupName: "222", imgPath: "lib/assets/tea.png")
 ];
 
+class GroupNameProvider with ChangeNotifier {
+  final List<GroupList> _groupList = groups;
+  List<GroupList> get groupList => _groupList;
+
+  void addToGroupList(GroupList group) {
+    _groupList.add(group);
+    notifyListeners();
+  }
+
+  void removeFromList(GroupList group) {
+    _groupList.remove(group);
+    notifyListeners();
+  }
+}
+
 class GroupTypes {
   // ignore: prefer_typing_uninitialized_variables
   final icon;
@@ -53,6 +68,21 @@ List<FriendList> friends = [
   FriendList(
       friendName: "Ashim Sapkota", friendEmail: "ashimsapkota@gmail.com"),
 ];
+
+class FriendNameProvider with ChangeNotifier {
+  final List<FriendList> _friendList = friends;
+  List<FriendList> get friendList => _friendList;
+
+  void addToGroupList(FriendList friend) {
+    friendList.add(friend);
+    notifyListeners();
+  }
+
+  void removeFromList(GroupList group) {
+    friendList.remove(group);
+    notifyListeners();
+  }
+}
 
 class SettingsList {
   // ignore: prefer_typing_uninitialized_variables

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/group_tile.dart';
 import 'package:splitmoney/utils/data.dart';
 import 'package:splitmoney/routes/add_a_group.dart';
@@ -13,6 +14,7 @@ class GroupsPage extends StatefulWidget {
 class _GroupsPageState extends State<GroupsPage> {
   @override
   Widget build(BuildContext context) {
+    var mygroupList = context.watch<GroupNameProvider>().groupList;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
@@ -94,11 +96,11 @@ class _GroupsPageState extends State<GroupsPage> {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: groups.length,
+                itemCount: mygroupList.length,
                 itemBuilder: ((context, index) {
                   return GroupTile(
-                    name: groups[index].groupName,
-                    imgname: groups[index].imgPath,
+                    name: mygroupList[index].groupName,
+                    imgname: mygroupList[index].imgPath,
                   );
                 })),
           ),

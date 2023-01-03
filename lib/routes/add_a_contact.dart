@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_field.dart';
+import 'package:splitmoney/utils/data.dart';
 
 class AddContact extends StatelessWidget {
   final phoneNoController = TextEditingController();
@@ -8,6 +10,7 @@ class AddContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -15,6 +18,15 @@ class AddContact extends StatelessWidget {
               child: Text(
                 "Add a new contact",
               ),
+
+    var myList = context.watch<FriendNameProvider>().friendList;
+
+    return Scaffold(
+        appBar: AppBar(
+          title: const Center(
+            child: Text(
+              "Add a new contact",
+
             ),
             leading: IconButton(
             
@@ -46,7 +58,7 @@ class AddContact extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Padding(
+
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextBoxSample(
                 controller: nameController,
@@ -60,6 +72,47 @@ class AddContact extends StatelessWidget {
                 cursorColor: Colors.grey[400],
                 cursorHeight: 20,
               ),
+
+              padding: const EdgeInsets.only(right: 15),
+              child: IconButton(
+                  splashRadius: 20,
+                  onPressed: () {
+                    context.read<FriendNameProvider>().addToGroupList(
+                        FriendList(
+                            friendEmail: "random@gmail.com",
+                            friendName: nameController.text));
+
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.check)),
+            )
+          ],
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.grey[700],
+        ),
+        body: Column(children: [
+          Container(
+            height: 1,
+            color: Colors.grey[400],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: TextBoxSample(
+              controller: nameController,
+              isautoFocus: false,
+              isFilled: true,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+              focusedBorder:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+              labelText: "Name",
+              cursorColor: Colors.grey[400],
+              cursorHeight: 20,
+
             ),
             const SizedBox(
               height: 20,
