@@ -1,4 +1,3 @@
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 
 class GroupList {
@@ -32,7 +31,6 @@ class GroupNameProvider with ChangeNotifier {
 }
 
 class GroupTypes {
-  // ignore: prefer_typing_uninitialized_variables
   final icon;
   final String type;
 
@@ -85,7 +83,6 @@ class FriendNameProvider with ChangeNotifier {
 }
 
 class SettingsList {
-  // ignore: prefer_typing_uninitialized_variables
   final icon;
   final Text settings;
   SettingsList({
@@ -171,4 +168,5 @@ List<SettingsList> settingslist = [
     ),
   )
 ];
-List<Contact> contactLists = [];
+
+class Model extends ChangeNotifier {}
