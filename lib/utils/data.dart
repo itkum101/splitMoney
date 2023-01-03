@@ -15,6 +15,21 @@ List<GroupList> groups = [
   GroupList(groupName: "222", imgPath: "lib/assets/tea.png")
 ];
 
+class GroupNameProvider with ChangeNotifier {
+  final List<GroupList> _groupList = groups;
+  List<GroupList> get groupList => _groupList;
+
+  void addToGroupList(GroupList group) {
+    _groupList.add(group);
+    notifyListeners();
+  }
+
+  void removeFromList(GroupList group) {
+    _groupList.remove(group);
+    notifyListeners();
+  }
+}
+
 class GroupTypes {
   final icon;
   final String type;

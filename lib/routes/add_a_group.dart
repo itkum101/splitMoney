@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as Path;
+import 'package:provider/provider.dart';
 
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/Widgets/text_field.dart';
@@ -18,6 +19,8 @@ class AddGroup extends StatefulWidget {
 }
 
 class _AddGroupState extends State<AddGroup> {
+  //LISTEN TO GROPU LIST
+
   final _controller = TextEditingController();
   late String groupName = _controller.text;
   File? _image;
@@ -112,6 +115,8 @@ class _AddGroupState extends State<AddGroup> {
 
   @override
   Widget build(BuildContext context) {
+    var myList = context.watch<GroupNameProvider>().groupList;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -129,7 +134,14 @@ class _AddGroupState extends State<AddGroup> {
               child: Padding(
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.read<GroupNameProvider>().addToGroupList(
+                      GroupList(
+                          groupName: _controller.text,
+                          imgPath: "lib/assets/tea.png"),
+                    );
+                Navigator.pop(context);
+              },
               child: const Text(
                 "Save",
                 style: TextStyle(
@@ -185,7 +197,7 @@ class _AddGroupState extends State<AddGroup> {
                 ),
                 Expanded(
                     child: TextBoxSample(
-                      isautoFocus: false,
+                  isautoFocus: false,
                   isFilled: true,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15)),
@@ -194,6 +206,7 @@ class _AddGroupState extends State<AddGroup> {
                   labelText: "Group Name",
                   cursorColor: Colors.grey[400],
                   cursorHeight: 20,
+                  controller: _controller,
                 ))
               ],
             ),
