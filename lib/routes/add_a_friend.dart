@@ -2,6 +2,7 @@ import 'package:contacts_service/contacts_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 import 'package:splitmoney/Widgets/text_field.dart';
 import 'package:splitmoney/routes/add_a_contact.dart';
@@ -41,6 +42,7 @@ class _AddFriendState extends State<AddFriend> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey[100],
         body: Column(
           children: [
             Padding(
@@ -137,7 +139,20 @@ class _AddFriendState extends State<AddFriend> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 5),
                           child: ListTile(
-                            onTap: (() {}),
+                            onTap: (() {
+                              context.read<FriendNameProvider>().addToGroupList(
+                                  FriendList(
+                                      friendEmail:
+                                          contactLists[index].emails!.isNotEmpty
+                                              ? contactLists[index]
+                                                  .emails![0]
+                                                  .value!
+                                              : "N/A",
+                                      friendName:
+                                          contactLists[index].displayName!));
+
+                              Navigator.pop(context);
+                            }),
                             leading: CircleAvatar(
                                 child: contactLists[index].avatar!.isEmpty
                                     ? const Icon(Icons.person)

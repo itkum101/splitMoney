@@ -12,6 +12,10 @@ class SettingsPageDisplayItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+         Container(
+          height: 1,
+          color: Colors.grey[400],
+        ),
         const SizedBox(
           height: 10,
         ),

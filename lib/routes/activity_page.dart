@@ -18,21 +18,34 @@ class ActivityPage extends StatelessWidget {
               fontWeight: FontWeight.w500),
         ),
       ),
-      body: ListView(
+      body: Column(
         children: [
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
-          ActivityTile(),
+          Container(
+            height: 1,
+            color: Colors.grey[400],
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Expanded(
+            child: ListView(
+              children: [
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+                ActivityTile(),
+              ],
+            ),
+          ),
         ],
       ),
     );
