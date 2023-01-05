@@ -8,7 +8,7 @@ class AddExpense extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text(
           "Add an expense",
@@ -112,54 +112,63 @@ class AddExpense extends StatelessWidget {
             height: 30,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Spacer(),
-              Text(
-                "Paid By: ",
-                style: TextStyle(
-                    color: Colors.grey[700], fontWeight: FontWeight.w500),
+              Row(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // const Spacer(),
+                  Text(
+                    "Paid by  ",
+                    style: TextStyle(
+                        color: Colors.grey[700], fontWeight: FontWeight.w500),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(10),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white)),
+                    onPressed: () {},
+                    child: Text(
+                      "you",
+                      style: TextStyle(
+                          color: Colors.grey[700], fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
               ),
-              ElevatedButton(
-                style: ButtonStyle(
-                    elevation: MaterialStateProperty.all(10),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white)),
-                onPressed: () {},
-                child: Text(
-                  "you",
-                  style: TextStyle(
-                      color: Colors.grey[700], fontWeight: FontWeight.w500),
-                ),
+              // const SizedBox(
+              //   width: 20,
+              // ),
+              const SizedBox(
+                width: 20,
               ),
-              const Spacer()
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+              Row(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // const Spacer(),
+                  Text(
+                    "split ",
+                    style: TextStyle(
+                        color: Colors.grey[700], fontWeight: FontWeight.w500),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(10),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white)),
+                    onPressed: () {},
+                    child: Text(
+                      "equally",
+                      style: TextStyle(
+                          color: Colors.grey[700], fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  const Text(' .'),
+                  // const Spacer()
+                ],
+              ),
               const Spacer(),
-              Text(
-                "Split: ",
-                style: TextStyle(
-                    color: Colors.grey[700], fontWeight: FontWeight.w500),
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                    elevation: MaterialStateProperty.all(10),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white)),
-                onPressed: () {},
-                child: Text(
-                  "Equally",
-                  style: TextStyle(
-                      color: Colors.grey[700], fontWeight: FontWeight.w500),
-                ),
-              ),
-              const Spacer()
             ],
           )
         ],
