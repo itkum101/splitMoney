@@ -71,12 +71,12 @@ class ActivityList {
 
 List<ActivityList> activitiesDone = [
   ActivityList(
-    description: "description[0]",
-    netAmount: 10,
+    description: "FUCCHI KO MA CHIYA KHAYEKO ",
+    netAmount: 150,
   ),
   ActivityList(
-    netAmount: 30,
-    description: "description[1]",
+    netAmount: 410,
+    description: "TEHA PAXI KHANA KHAYEKO",
   ),
 ];
 

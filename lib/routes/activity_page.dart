@@ -32,22 +32,15 @@ class ActivityPage extends StatelessWidget {
             height: 15,
           ),
           Expanded(
-            child: ListView(
-              children: [
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-                ActivityTile(),
-              ],
+            child: ListView.builder(
+              itemCount: myActivityList.length,
+              itemBuilder: (((context, index) {
+                return ActivityTile(
+                  description: myActivityList[index].description,
+                  amount: myActivityList[index].netAmount,
+                  person: myActivityList.length,
+                );
+              })),
             ),
           ),
         ],

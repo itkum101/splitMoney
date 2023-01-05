@@ -5,7 +5,15 @@ class ActivityTile extends StatelessWidget {
   final color = Colors.grey[800];
   final double fontsize = 18;
 
-  ActivityTile({super.key});
+  final String description;
+  final int amount;
+  final int person;
+
+  ActivityTile(
+      {super.key,
+      required this.description,
+      required this.amount,
+      required this.person});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +43,7 @@ class ActivityTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${"Mukti S."} added ${"Chiya"} in ${"000"}",
+                    "${"Mukti S."} added ${amount} for  ${description}",
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: color,
@@ -44,9 +52,9 @@ class ActivityTile extends StatelessWidget {
                   const SizedBox(
                     height: 2,
                   ),
-                  const Text(
-                    "You get back Rs 60.00",
-                    style: TextStyle(color: Colors.green, fontSize: 15),
+                  Text(
+                    "You owe back Rs ${amount / person}",
+                    style: TextStyle(color: Colors.red, fontSize: 15),
                   ),
                   const SizedBox(
                     height: 2,
