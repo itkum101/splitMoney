@@ -51,21 +51,81 @@ List<GroupTypes> grouptype = [
 class FriendList {
   final String friendName;
   final String friendEmail;
+  final int netAmount;
+  final String? phoneNumber;
+
   FriendList({
     required this.friendName,
     required this.friendEmail,
+    this.netAmount = 0,
+    this.phoneNumber,
   });
 }
 
+class ActivityList {
+  final String description;
+  final int netAmount;
+
+  ActivityList({this.description = "", required this.netAmount});
+}
+
+List<ActivityList> activitiesDone = [
+  ActivityList(
+    description: "description[0]",
+    netAmount: 10,
+  ),
+  ActivityList(
+    netAmount: 30,
+    description: "description[1]",
+  ),
+];
+
+class ActivityListProvider with ChangeNotifier {
+  List<ActivityList> _activities = activitiesDone;
+
+  List<ActivityList> get activities => _activities;
+
+  void addToActiviityList(ActivityList activity) {
+    activities.add(activity);
+    notifyListeners();
+  }
+
+  void removeToActivityList(ActivityList activity) {
+    activities.remove(activity);
+    notifyListeners();
+  }
+
+  int returnTotalAmount() {
+    int finalTotalAmount = 0;
+    for (int i = 0; i < activities.length; i++) {
+      finalTotalAmount += activities[i].netAmount;
+    }
+    notifyListeners();
+    return finalTotalAmount;
+  }
+}
+
 List<FriendList> friends = [
-  FriendList(friendName: "Mukti Subedi", friendEmail: "muktisubedi@gmail.com"),
   FriendList(
-      friendName: "Balkrishna Poudel",
-      friendEmail: "balkrishnapoudel@gmail.com"),
+    friendName: "Mukti Subedi",
+    friendEmail: "muktisubedi@gmail.com",
+    netAmount: 0,
+  ),
   FriendList(
-      friendName: "Aavash Chhetri", friendEmail: "aavashchhetri@gmail.com"),
+    friendName: "Balkrishna Poudel",
+    friendEmail: "balkrishnapoudel@gmail.com",
+    netAmount: 0,
+  ),
   FriendList(
-      friendName: "Ashim Sapkota", friendEmail: "ashimsapkota@gmail.com"),
+    friendName: "Aavash Chhetri",
+    friendEmail: "aavashchhetri@gmail.com",
+    netAmount: 0,
+  ),
+  FriendList(
+    friendName: "Ashim Sapkota",
+    friendEmail: "ashimsapkota@gmail.com",
+    netAmount: 0,
+  ),
 ];
 
 class FriendNameProvider with ChangeNotifier {
@@ -171,4 +231,5 @@ List<SettingsList> settingslist = [
 ];
 
 class Model extends ChangeNotifier {}
+
 List<Contact> contactLists = [];

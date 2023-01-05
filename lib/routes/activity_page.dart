@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/activity_tile.dart';
+import 'package:splitmoney/utils/data.dart';
 
 class ActivityPage extends StatelessWidget {
   const ActivityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var myActivityList = context.watch<ActivityListProvider>().activities;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(

@@ -1,12 +1,20 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class FriendTile extends StatelessWidget {
   final String friendName;
   final String friendEmail;
+  final double netAmount;
   void Function()? onTap;
 
-   FriendTile(
-      {super.key, required this.friendName, required this.friendEmail, required this.onTap});
+  FriendTile({
+    super.key,
+    required this.friendName,
+    required this.friendEmail,
+    required this.onTap,
+    this.netAmount = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,7 @@ class FriendTile extends StatelessWidget {
       ),
       subtitle: Text(friendEmail),
       trailing: Text(
-        "Rs. 30",
+        netAmount.toString(),
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15,

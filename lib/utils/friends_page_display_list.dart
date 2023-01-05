@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
 import '../Widgets/friend_tile.dart';
@@ -12,6 +13,8 @@ class FriendsPageDisplayList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var myActivityList = context.watch<ActivityListProvider>().activities;
+    var amounts = context.read<ActivityListProvider>().returnTotalAmount();
     return Column(
       children: [
         Container(
@@ -61,6 +64,7 @@ class FriendsPageDisplayList extends StatelessWidget {
                 return FriendTile(
                   friendName: myfriendList[index].friendName,
                   friendEmail: myfriendList[index].friendEmail,
+                  netAmount: amounts / (myfriendList.length),
                   onTap: () {},
                 );
               })),

@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/utils/data.dart';
 
 class AddExpense extends StatelessWidget {
   static const routeName = '/add_expense';
@@ -7,6 +11,9 @@ class AddExpense extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var activityList = context.watch<ActivityListProvider>().activities;
+    final description = TextEditingController();
+    final amount = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -26,7 +33,19 @@ class AddExpense extends StatelessWidget {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
                 splashRadius: 20,
-                onPressed: () {},
+                onPressed: () {
+                  print("HELLO WORLD");
+                  print(description.text);
+                  print(int.parse(amount.text));
+
+                  context.read<ActivityListProvider>().addToActiviityList(
+                        ActivityList(
+                          description: description.text,
+                          netAmount: int.parse(amount.text),
+                        ),
+                      );
+                  Navigator.pop(context);
+                },
                 icon: const Icon(Icons.check)),
           )
         ],
@@ -59,6 +78,7 @@ class AddExpense extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextBox(
+                    controller: description,
                     isautoFocus: false,
                     isFilled: true,
                     border: OutlineInputBorder(
@@ -93,6 +113,7 @@ class AddExpense extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextBox(
+                    controller: amount,
                     isautoFocus: false,
                     isFilled: true,
                     border: OutlineInputBorder(

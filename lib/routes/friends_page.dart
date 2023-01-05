@@ -17,9 +17,10 @@ class _FriendsPageState extends State<FriendsPage> {
   Widget build(BuildContext context) {
     // Provider
     var myfriendList = context.watch<FriendNameProvider>().friendList;
+    var myActivityList = context.watch<ActivityListProvider>().activities;
 
     return Scaffold(
-       backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[100],
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
           backgroundColor: Colors.green,

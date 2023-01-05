@@ -16,6 +16,9 @@ void main() {
       ChangeNotifierProvider(
         create: (_) => FriendNameProvider(),
       ),
+      ChangeNotifierProvider(
+        create: (_) => ActivityListProvider(),
+      )
     ],
     child: MaterialApp(
       initialRoute: '/',
