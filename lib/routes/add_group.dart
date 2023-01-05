@@ -8,7 +8,7 @@ import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
 
 import 'package:splitmoney/Widgets/group_type_item.dart';
-import 'package:splitmoney/Widgets/text_field.dart';
+import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddGroup extends StatefulWidget {
@@ -118,11 +118,13 @@ class _AddGroupState extends State<AddGroup> {
     var myList = context.watch<GroupNameProvider>().groupList;
 
     return Scaffold(
+       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text(
           "Create a Group",
         ),
         leading: IconButton(
+            splashRadius: 20,
             onPressed: (() {
               Navigator.pop(context);
             }),
@@ -158,6 +160,7 @@ class _AddGroupState extends State<AddGroup> {
       ),
       body: Column(
         children: [
+          
           Container(
             height: 1,
             color: Colors.grey[400],
@@ -170,33 +173,35 @@ class _AddGroupState extends State<AddGroup> {
             child: Row(
               children: [
                 Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: _image != null
-                        ? Padding(
-                            padding: const EdgeInsets.all(1),
-                            child: Image.file(
-                              _image!,
-                              width: 48,
+                  height: 52,
+                  width: 52,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: _image != null
+                      ? Padding(
+                          padding: const EdgeInsets.all(1),
+                          child: Image.file(
+                            _image!,
+                            width: 48,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: showSheet,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Image.asset(
+                              "lib/assets/add_image.png",
+                              width: 35,
                             ),
-                          )
-                        : GestureDetector(
-                            onTap: showSheet,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Image.asset(
-                                "lib/assets/add_image.png",
-                                width: 35,
-                              ),
-                            ))),
+                          ),
+                        ),
+                ),
                 const SizedBox(
                   width: 10,
                 ),
                 Expanded(
-                    child: TextBoxSample(
+                    child: TextBox(
                   isautoFocus: false,
                   isFilled: true,
                   border: OutlineInputBorder(

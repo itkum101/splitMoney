@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
-import 'package:splitmoney/Widgets/text_field.dart';
-import 'package:splitmoney/routes/add_a_contact.dart';
+import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/routes/add_contact.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddFriend extends StatefulWidget {
@@ -60,7 +60,7 @@ class _AddFriendState extends State<AddFriend> {
                     width: 15,
                   ),
                   Expanded(
-                    child: TextBoxSample(
+                    child: TextBox(
                       isautoFocus: true,
                       hintText: "Enter name or phone no.",
                       border: InputBorder.none,

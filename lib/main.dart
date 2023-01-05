@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:splitmoney/routes/Main_Screen.dart';
-import 'package:splitmoney/routes/add_a_friend.dart';
+import 'package:splitmoney/routes/add_friend.dart';
 import 'package:splitmoney/routes/add_expense.dart';
 import 'package:splitmoney/routes/settings_page.dart';
 import 'package:splitmoney/utils/data.dart';

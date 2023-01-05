@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/group_tile.dart';
 import 'package:splitmoney/routes/add_expense.dart';
 import 'package:splitmoney/utils/data.dart';
-import 'package:splitmoney/routes/add_a_group.dart';
+import 'package:splitmoney/routes/add_group.dart';
 import 'package:splitmoney/utils/groups_page_display_list.dart';
 
 class GroupsPage extends StatefulWidget {
@@ -17,6 +17,7 @@ class _GroupsPageState extends State<GroupsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.grey[100],
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.pushNamed(context, AddExpense.routeName);

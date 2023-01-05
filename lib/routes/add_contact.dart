@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/Widgets/text_field.dart';
+import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddContact extends StatelessWidget {
@@ -13,6 +13,7 @@ class AddContact extends StatelessWidget {
     var myList = context.watch<FriendNameProvider>().friendList;
 
     return Scaffold(
+       backgroundColor: Colors.grey[100],
         appBar: AppBar(
           title: const Center(
             child: Text(
@@ -57,7 +58,7 @@ class AddContact extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: TextBoxSample(
+            child: TextBox(
               controller: nameController,
               isautoFocus: false,
               isFilled: true,
@@ -75,7 +76,7 @@ class AddContact extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: TextBoxSample(
+            child: TextBox(
               controller: phoneNoController,
               isautoFocus: false,
               isFilled: true,

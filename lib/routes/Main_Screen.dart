@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   final List<Widget> page = [
     const GroupsPage(),
-    const FriendsList(),
+    const FriendsPage(),
     const ActivityPage(),
     const SettingsPage()
   ];
@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.grey[100],
         body: page[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,

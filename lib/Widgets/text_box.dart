@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TextBoxSample extends StatelessWidget {
-  TextBoxSample(
+class TextBox extends StatelessWidget {
+  TextBox(
       {Key? key,
       this.prefixIcon,
       this.hintText,

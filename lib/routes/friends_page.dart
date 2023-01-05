@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/friend_tile.dart';
 import 'package:splitmoney/utils/data.dart';
-import 'package:splitmoney/routes/add_a_friend.dart';
+import 'package:splitmoney/routes/add_friend.dart';
 import 'package:splitmoney/utils/friends_page_display_list.dart';
 
-class FriendsList extends StatefulWidget {
-  const FriendsList({super.key});
+class FriendsPage extends StatefulWidget {
+  const FriendsPage({super.key});
 
   @override
-  State<FriendsList> createState() => _FriendsListState();
+  State<FriendsPage> createState() => _FriendsPageState();
 }
 
-class _FriendsListState extends State<FriendsList> {
+class _FriendsPageState extends State<FriendsPage> {
   @override
   Widget build(BuildContext context) {
     // Provider
     var myfriendList = context.watch<FriendNameProvider>().friendList;
 
     return Scaffold(
+       backgroundColor: Colors.grey[100],
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
           backgroundColor: Colors.green,
