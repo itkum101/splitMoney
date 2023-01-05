@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/group_tile.dart';
+import 'package:splitmoney/routes/add_expense.dart';
 import 'package:splitmoney/utils/data.dart';
 import 'package:splitmoney/routes/add_a_group.dart';
 import 'package:splitmoney/utils/groups_page_display_list.dart';
@@ -17,7 +18,9 @@ class _GroupsPageState extends State<GroupsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddExpense.routeName);
+        },
         backgroundColor: Colors.green,
         icon: const Icon(Icons.add_rounded),
         label: const Text("Add Expense"),
