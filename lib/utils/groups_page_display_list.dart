@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/provider/group_name_provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
 import '../Widgets/group_tile.dart';

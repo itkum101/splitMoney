@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/provider/activity_list_provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddExpense extends StatelessWidget {

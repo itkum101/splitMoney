@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddContact extends StatefulWidget {

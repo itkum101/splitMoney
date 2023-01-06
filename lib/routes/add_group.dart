@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
 
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/provider/group_name_provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddGroup extends StatefulWidget {
-  AddGroup({super.key});
+  const AddGroup({super.key});
 
   @override
   State<AddGroup> createState() => _AddGroupState();
@@ -115,7 +117,7 @@ class _AddGroupState extends State<AddGroup> {
 
   @override
   Widget build(BuildContext context) {
-    var myList = context.watch<GroupNameProvider>().groupList;
+    // var myList = context.watch<GroupNameProvider>().groupList;
 
     return Scaffold(
       backgroundColor: Colors.grey[100],

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-import 'package:splitmoney/utils/data.dart';
-
+import 'package:splitmoney/provider/activity_list_provider.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
 import '../Widgets/friend_tile.dart';
 
 class FriendsPageDisplayList extends StatefulWidget {
@@ -19,7 +18,8 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     // var myActivityList = context.watch<ActivityListProvider>().activities;
-    var amounts = context.read<ActivityListProvider>().returnTotalAmount();
+    var amounts = Provider.of<ActivityListProvider>(context, listen: false)
+        .returnTotalAmount();
     return Column(
       children: [
         Container(
@@ -62,7 +62,8 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
         const SizedBox(
           height: 10,
         ),
-        Expanded(child: Consumer<FriendNameProvider>(builder: ((context, value, child) {
+        Expanded(child:
+            Consumer<FriendNameProvider>(builder: ((context, value, child) {
           return ListView.builder(
               itemCount: value.friendList.length,
               itemBuilder: ((context, index) {

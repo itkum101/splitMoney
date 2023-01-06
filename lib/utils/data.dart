@@ -1,35 +1,7 @@
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 
-class GroupList {
-  String imgPath;
-  String groupName;
-  GroupList({
-    required this.imgPath,
-    required this.groupName,
-  });
-}
 
-List<GroupList> groups = [
-  GroupList(groupName: "000", imgPath: "lib/assets/tea.png"),
-  GroupList(groupName: "111", imgPath: "lib/assets/tea.png"),
-  GroupList(groupName: "222", imgPath: "lib/assets/tea.png")
-];
-
-class GroupNameProvider with ChangeNotifier {
-  final List<GroupList> _groupList = groups;
-  List<GroupList> get groupList => _groupList;
-
-  void addToGroupList(GroupList group) {
-    _groupList.add(group);
-    notifyListeners();
-  }
-
-  void removeFromList(GroupList group) {
-    _groupList.remove(group);
-    notifyListeners();
-  }
-}
 
 class GroupTypes {
   final icon;
@@ -48,106 +20,6 @@ List<GroupTypes> grouptype = [
   GroupTypes(icon: const Icon(Icons.list_alt_outlined), type: "Others"),
 ];
 
-class FriendList {
-  final String friendName;
-  final String friendEmail;
-  final int netAmount;
-  final Widget? imgChild;
-  final String? phoneNumber;
-
-  FriendList({
-    required this.friendName,
-    required this.friendEmail,
-    required this.imgChild,
-    this.netAmount = 0,
-    this.phoneNumber,
-  });
-}
-
-class ActivityList {
-  final String description;
-  final int netAmount;
-
-  ActivityList({this.description = "", required this.netAmount});
-}
-
-List<ActivityList> activitiesDone = [
-  ActivityList(
-    description: "FUCCHI KO MA CHIYA KHAYEKO ",
-    netAmount: 150,
-  ),
-  ActivityList(
-    netAmount: 410,
-    description: "TEHA PAXI KHANA KHAYEKO",
-  ),
-];
-
-class ActivityListProvider with ChangeNotifier {
-  final List<ActivityList> _activities = activitiesDone;
-
-  List<ActivityList> get activities => _activities;
-
-  void addToActiviityList(ActivityList activity) {
-    activities.add(activity);
-    notifyListeners();
-  }
-
-  void removeToActivityList(ActivityList activity) {
-    activities.remove(activity);
-    notifyListeners();
-  }
-
-  int returnTotalAmount() {
-    int finalTotalAmount = 0;
-    for (int i = 0; i < activities.length; i++) {
-      finalTotalAmount += activities[i].netAmount;
-    }
-    notifyListeners();
-    return finalTotalAmount;
-  }
-}
-
-List<FriendList> friends = [
-  FriendList(
-    friendName: "Mukti Subedi",
-    friendEmail: "muktisubedi@gmail.com",
-    netAmount: 0,
-    imgChild: Icon(Icons.person)
-  ),
-  FriendList(
-    friendName: "Balkrishna Poudel",
-    friendEmail: "balkrishnapoudel@gmail.com",
-    netAmount: 0,
-    imgChild: Icon(Icons.person)
-  ),
-  FriendList(
-    friendName: "Aavash Chhetri",
-    friendEmail: "aavashchhetri@gmail.com",
-    netAmount: 0,
-    imgChild: Icon(Icons.person)
-  ),
-  FriendList(
-    friendName: "Ashim Sapkota",
-    friendEmail: "ashimsapkota@gmail.com",
-    netAmount: 0,
-    imgChild: Icon(Icons.person)
-  ),
-];
-
-class FriendNameProvider with ChangeNotifier {
-  final List<FriendList> _friendList = friends;
-  List<FriendList> get friendList => _friendList;
-
-  void addToFriendList(FriendList friend) {
-    friendList.add(friend);
-    notifyListeners();
-  }
-
-  void removeFromList(FriendList friend) {
-    friendList.remove(friend);
-    notifyListeners();
-  }
-}
 
 class SettingsList {
   final icon;

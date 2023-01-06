@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:splitmoney/provider/activity_list_provider.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
+import 'package:splitmoney/provider/group_name_provider.dart';
 import 'package:splitmoney/routes/Main_Screen.dart';
-import 'package:splitmoney/routes/add_friend.dart';
 import 'package:splitmoney/routes/add_expense.dart';
-import 'package:splitmoney/routes/settings_page.dart';
-import 'package:splitmoney/utils/data.dart';
 
 void main() {
   runApp(MultiProvider(
