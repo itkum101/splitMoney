@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:contacts_service/contacts_service.dart';
-
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
-
 import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/routes/add_contact.dart';
 import 'package:splitmoney/utils/data.dart';
@@ -37,22 +33,22 @@ class _AddFriendState extends State<AddFriend> {
   void fetchContacts() async {
     contactLists = await ContactsService.getContacts();
     setState(() {
+      demoList = contactLists;
       isLoading = false;
     });
   }
 
-  void updateList(String value) {
+  void updateList(String valuex) {
     setState(() {
+      //
+
       demoList = contactLists
-          .where((element) => element.displayName!
+          .where((element) => (element.displayName!
                   .toLowerCase()
-                  .contains(value.toLowerCase())
-              //      || element.phones!.isNotEmpty
-              // ? element.phones![0].value!
-              //     .toLowerCase()
-              //     .contains(value.toLowerCase())
-              // : noMatch
-              )
+                  .contains(valuex.toLowerCase()) ||
+              (element.phones!.isNotEmpty
+                  ? element.phones![0].value!.contains(valuex.toLowerCase())
+                  : noMatch)))
           .toList();
     });
   }

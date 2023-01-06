@@ -9,7 +9,6 @@ class AddContact extends StatefulWidget {
   @override
   State<AddContact> createState() => _AddContactState();
 }
-
 class _AddContactState extends State<AddContact> {
   final phoneNoController = TextEditingController();
 
@@ -45,8 +44,7 @@ class _AddContactState extends State<AddContact> {
                         FriendList(
                             friendEmail: "random@gmail.com",
                             friendName: nameController.text,
-                            imgChild: Icon(Icons.person)));
-
+                            imgChild: const Icon(Icons.person)));
                     Navigator.pop(context);
                     Navigator.pop(context);
                   },
