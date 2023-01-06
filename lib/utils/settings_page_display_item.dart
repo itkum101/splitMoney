@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:splitmoney/Widgets/settings_tile.dart';
 import 'package:splitmoney/utils/data.dart';
 import 'package:splitmoney/utils/settings_page_profile_display.dart';

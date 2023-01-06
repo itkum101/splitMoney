@@ -52,7 +52,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
                     Icons.dashboard_customize_rounded,
                     size: 27,
                     color: Colors.grey[900],
-                  )),
+                  )), 
             ],
           ),
         ),

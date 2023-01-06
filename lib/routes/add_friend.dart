@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:contacts_service/contacts_service.dart';
 
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ class AddFriend extends StatefulWidget {
 
 class _AddFriendState extends State<AddFriend> {
   bool isLoading = true;
+  bool noMatch = false;
   @override
   void initState() {
     super.initState();
@@ -35,6 +38,22 @@ class _AddFriendState extends State<AddFriend> {
     contactLists = await ContactsService.getContacts();
     setState(() {
       isLoading = false;
+    });
+  }
+
+  void updateList(String value) {
+    setState(() {
+      demoList = contactLists
+          .where((element) => element.displayName!
+                  .toLowerCase()
+                  .contains(value.toLowerCase())
+              //      || element.phones!.isNotEmpty
+              // ? element.phones![0].value!
+              //     .toLowerCase()
+              //     .contains(value.toLowerCase())
+              // : noMatch
+              )
+          .toList();
     });
   }
 
@@ -61,6 +80,9 @@ class _AddFriendState extends State<AddFriend> {
                   ),
                   Expanded(
                     child: TextBox(
+                      onchangedFunc: (value) {
+                        updateList(value);
+                      },
                       isautoFocus: true,
                       hintText: "Enter name or phone no.",
                       border: InputBorder.none,
@@ -133,44 +155,51 @@ class _AddFriendState extends State<AddFriend> {
               child: isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
-                      itemCount: contactLists.length,
+                      itemCount: demoList.length,
                       itemBuilder: ((context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 5),
                           child: ListTile(
                             onTap: (() {
-                              context.read<FriendNameProvider>().addToGroupList(
-                                  FriendList(
-                                      friendEmail:
-                                          contactLists[index].emails!.isNotEmpty
-                                              ? contactLists[index]
-                                                  .emails![0]
-                                                  .value!
-                                              : "N/A",
-                                      friendName:
-                                          contactLists[index].displayName!));
+                              context
+                                  .read<FriendNameProvider>()
+                                  .addToGroupList(FriendList(
+                                    friendEmail:
+                                        demoList[index].emails!.isNotEmpty
+                                            ? demoList[index].emails![0].value!
+                                            : "N/A",
+                                    friendName: demoList[index].displayName!,
+                                    imgChild: demoList[index].avatar!.isEmpty
+                                        ? const Icon(Icons.person)
+                                        : ClipOval(
+                                            child: Image.memory(
+                                              demoList[index].avatar!,
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                  ));
 
                               Navigator.pop(context);
                             }),
                             leading: CircleAvatar(
-                                child: contactLists[index].avatar!.isEmpty
+                                child: demoList[index].avatar!.isEmpty
                                     ? const Icon(Icons.person)
                                     : ClipOval(
                                         child: Image.memory(
-                                          contactLists[index].avatar!,
+                                          demoList[index].avatar!,
                                           fit: BoxFit.fill,
                                         ),
                                       )),
                             title: Text(
-                              contactLists[index].displayName!,
+                              demoList[index].displayName!,
                               style: TextStyle(
                                   color: Colors.grey[700],
                                   fontWeight: FontWeight.w500),
                             ),
                             subtitle: Text(
-                              (contactLists[index].phones!.isNotEmpty)
-                                  ? contactLists[index].phones![0].value!
+                              (demoList[index].phones!.isNotEmpty)
+                                  ? demoList[index].phones![0].value!
                                   : "N/A",
                             ),
                           ),

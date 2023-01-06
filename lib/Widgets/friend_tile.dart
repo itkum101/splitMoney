@@ -1,11 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class FriendTile extends StatelessWidget {
   final String friendName;
   final String friendEmail;
   final double netAmount;
+  final Widget? imgChild;
   void Function()? onTap;
 
   FriendTile({
@@ -13,6 +12,7 @@ class FriendTile extends StatelessWidget {
     required this.friendName,
     required this.friendEmail,
     required this.onTap,
+    required this.imgChild,
     this.netAmount = 0,
   });
 
@@ -20,9 +20,9 @@ class FriendTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      leading: const CircleAvatar(
-        radius: 25,
-        backgroundColor: Colors.green,
+      leading: CircleAvatar(
+        radius: 22,
+        child: imgChild,
       ),
       title: Text(
         friendName,

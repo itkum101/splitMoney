@@ -52,11 +52,13 @@ class FriendList {
   final String friendName;
   final String friendEmail;
   final int netAmount;
+  final Widget? imgChild;
   final String? phoneNumber;
 
   FriendList({
     required this.friendName,
     required this.friendEmail,
+    required this.imgChild,
     this.netAmount = 0,
     this.phoneNumber,
   });
@@ -81,7 +83,7 @@ List<ActivityList> activitiesDone = [
 ];
 
 class ActivityListProvider with ChangeNotifier {
-  List<ActivityList> _activities = activitiesDone;
+  final List<ActivityList> _activities = activitiesDone;
 
   List<ActivityList> get activities => _activities;
 
@@ -110,21 +112,25 @@ List<FriendList> friends = [
     friendName: "Mukti Subedi",
     friendEmail: "muktisubedi@gmail.com",
     netAmount: 0,
+    imgChild: Icon(Icons.person)
   ),
   FriendList(
     friendName: "Balkrishna Poudel",
     friendEmail: "balkrishnapoudel@gmail.com",
     netAmount: 0,
+    imgChild: Icon(Icons.person)
   ),
   FriendList(
     friendName: "Aavash Chhetri",
     friendEmail: "aavashchhetri@gmail.com",
     netAmount: 0,
+    imgChild: Icon(Icons.person)
   ),
   FriendList(
     friendName: "Ashim Sapkota",
     friendEmail: "ashimsapkota@gmail.com",
     netAmount: 0,
+    imgChild: Icon(Icons.person)
   ),
 ];
 
@@ -230,6 +236,5 @@ List<SettingsList> settingslist = [
   )
 ];
 
-class Model extends ChangeNotifier {}
-
 List<Contact> contactLists = [];
+List<Contact> demoList = List.from(contactLists);

@@ -1,19 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:provider/provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
 import '../Widgets/friend_tile.dart';
 
-class FriendsPageDisplayList extends StatelessWidget {
+class FriendsPageDisplayList extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final myfriendList;
   const FriendsPageDisplayList({super.key, required this.myfriendList});
 
   @override
+  State<FriendsPageDisplayList> createState() => _FriendsPageDisplayListState();
+}
+
+class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
+  @override
   Widget build(BuildContext context) {
-    var myActivityList = context.watch<ActivityListProvider>().activities;
+    // ignore: unused_local_variable
+    // var myActivityList = context.watch<ActivityListProvider>().activities;
     var amounts = context.read<ActivityListProvider>().returnTotalAmount();
     return Column(
       children: [
@@ -59,12 +64,13 @@ class FriendsPageDisplayList extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
-              itemCount: myfriendList.length,
+              itemCount: widget.myfriendList.length,
               itemBuilder: ((context, index) {
                 return FriendTile(
-                  friendName: myfriendList[index].friendName,
-                  friendEmail: myfriendList[index].friendEmail,
-                  netAmount: amounts / (myfriendList.length),
+                  friendName: widget.myfriendList[index].friendName,
+                  friendEmail: widget.myfriendList[index].friendEmail,
+                  netAmount: amounts / (widget.myfriendList.length),
+                  imgChild: widget.myfriendList[index].imgChild,
                   onTap: () {},
                 );
               })),

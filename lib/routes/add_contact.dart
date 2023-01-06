@@ -3,17 +3,24 @@ import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/utils/data.dart';
 
-class AddContact extends StatelessWidget {
-  final phoneNoController = TextEditingController();
-  final nameController = TextEditingController();
+class AddContact extends StatefulWidget {
   AddContact({super.key});
+
+  @override
+  State<AddContact> createState() => _AddContactState();
+}
+
+class _AddContactState extends State<AddContact> {
+  final phoneNoController = TextEditingController();
+
+  final nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var myList = context.watch<FriendNameProvider>().friendList;
 
     return Scaffold(
-       backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[100],
         appBar: AppBar(
           title: const Center(
             child: Text(
@@ -37,8 +44,10 @@ class AddContact extends StatelessWidget {
                     context.read<FriendNameProvider>().addToGroupList(
                         FriendList(
                             friendEmail: "random@gmail.com",
-                            friendName: nameController.text));
+                            friendName: nameController.text,
+                            imgChild: Icon(Icons.person)));
 
+                    Navigator.pop(context);
                     Navigator.pop(context);
                   },
                   icon: const Icon(Icons.check)),
@@ -93,12 +102,15 @@ class AddContact extends StatelessWidget {
             height: 20,
           ),
           Expanded(
-              child: Text(
-            "Fill up the information and click on the okay button at the top right corner",
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontWeight: FontWeight.w500,
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Text(
+              "Fill up the information and click on the okay button at the top right corner",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ))
         ]));
