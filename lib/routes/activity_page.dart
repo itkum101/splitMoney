@@ -8,7 +8,7 @@ class ActivityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var myActivityList = context.watch<ActivityListProvider>().activities;
+    // var myActivityList = context.watch<ActivityListProvider>().activities;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -31,18 +31,19 @@ class ActivityPage extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: myActivityList.length,
+          Expanded(child:
+              Consumer<ActivityListProvider>(builder: ((context, value, child) {
+            return ListView.builder(
+              itemCount: value.activities.length,
               itemBuilder: (((context, index) {
                 return ActivityTile(
-                  description: myActivityList[index].description,
-                  amount: myActivityList[index].netAmount,
-                  person: myActivityList.length,
+                  description: value.activities[index].description,
+                  amount: value.activities[index].netAmount,
+                  person: value.activities.length,
                 );
               })),
-            ),
-          ),
+            );
+          }))),
         ],
       ),
     );

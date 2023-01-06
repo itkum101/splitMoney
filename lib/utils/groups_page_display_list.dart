@@ -16,7 +16,7 @@ class GroupsPageDisplayList extends StatefulWidget {
 class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
   @override
   Widget build(BuildContext context) {
-    var mygroupList = context.watch<GroupNameProvider>().groupList;
+    // var mygroupList = context.watch<GroupNameProvider>().groupList;
     return Column(
       children: [
         Container(
@@ -57,14 +57,16 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-              itemCount: mygroupList.length,
+          child: Consumer<GroupNameProvider>(builder: ((context, value, child) {
+            return ListView.builder(
+              itemCount: value.groupList.length,
               itemBuilder: ((context, index) {
                 return GroupTile(
-                  name: mygroupList[index].groupName,
-                  imgname: mygroupList[index].imgPath,
+                  name: value.groupList[index].groupName,
+                  imgname: value.groupList[index].imgPath,
                 );
-              })),
+              }));
+          }))
         ),
       ],
     );

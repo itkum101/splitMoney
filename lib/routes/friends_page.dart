@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:splitmoney/Widgets/friend_tile.dart';
-import 'package:splitmoney/utils/data.dart';
+
 import 'package:splitmoney/routes/add_friend.dart';
 import 'package:splitmoney/utils/friends_page_display_list.dart';
 
@@ -16,8 +14,8 @@ class _FriendsPageState extends State<FriendsPage> {
   @override
   Widget build(BuildContext context) {
     // Provider
-    var myfriendList = context.watch<FriendNameProvider>().friendList;
-    var myActivityList = context.watch<ActivityListProvider>().activities;
+    // var myfriendList = context.watch<FriendNameProvider>().friendList;
+    // var myActivityList = context.watch<ActivityListProvider>().activities;
 
     return Scaffold(
         backgroundColor: Colors.grey[100],
@@ -60,8 +58,8 @@ class _FriendsPageState extends State<FriendsPage> {
             ),
           ],
         ),
-        body: FriendsPageDisplayList(
-          myfriendList: myfriendList,
-        ));
+        body: const FriendsPageDisplayList(
+            // myfriendList: myfriendList,
+            ));
   }
 }

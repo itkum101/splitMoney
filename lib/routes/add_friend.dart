@@ -40,7 +40,6 @@ class _AddFriendState extends State<AddFriend> {
 
   void updateList(String valuex) {
     setState(() {
-      //
 
       demoList = contactLists
           .where((element) => (element.displayName!
@@ -52,7 +51,6 @@ class _AddFriendState extends State<AddFriend> {
           .toList();
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -158,23 +156,34 @@ class _AddFriendState extends State<AddFriend> {
                               horizontal: 15, vertical: 5),
                           child: ListTile(
                             onTap: (() {
-                              context
-                                  .read<FriendNameProvider>()
-                                  .addToGroupList(FriendList(
-                                    friendEmail:
-                                        demoList[index].emails!.isNotEmpty
+                              // context
+                              //     .read<FriendNameProvider>()
+                              //     .addToFriendList(FriendList(
+                              //       friendEmail:
+                                        // demoList[index].emails!.isNotEmpty
+                                        //     ? demoList[index].emails![0].value!
+                                        //     : "N/A",
+                              //       friendName: demoList[index].displayName!,
+                                    // imgChild: demoList[index].avatar!.isEmpty
+                                    //     ? const Icon(Icons.person)
+                                    //     : ClipOval(
+                                    //         child: Image.memory(
+                                    //           demoList[index].avatar!,
+                                    //           fit: BoxFit.fill,
+                                    //         ),
+                                    //       ),
+                              //     ));
+                              Provider.of<FriendNameProvider>(context,listen: false).addToFriendList(FriendList(friendName: demoList[index].displayName!,
+                               friendEmail: demoList[index].emails!.isNotEmpty
                                             ? demoList[index].emails![0].value!
-                                            : "N/A",
-                                    friendName: demoList[index].displayName!,
-                                    imgChild: demoList[index].avatar!.isEmpty
+                                            : "N/A", imgChild:demoList[index].avatar!.isEmpty
                                         ? const Icon(Icons.person)
                                         : ClipOval(
                                             child: Image.memory(
                                               demoList[index].avatar!,
                                               fit: BoxFit.fill,
                                             ),
-                                          ),
-                                  ));
+                                          ),));
 
                               Navigator.pop(context);
                             }),

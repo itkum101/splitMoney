@@ -4,11 +4,12 @@ import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/utils/data.dart';
 
 class AddContact extends StatefulWidget {
-  AddContact({super.key});
+  const AddContact({super.key});
 
   @override
   State<AddContact> createState() => _AddContactState();
 }
+
 class _AddContactState extends State<AddContact> {
   final phoneNoController = TextEditingController();
 
@@ -16,7 +17,7 @@ class _AddContactState extends State<AddContact> {
 
   @override
   Widget build(BuildContext context) {
-    var myList = context.watch<FriendNameProvider>().friendList;
+    // var myList = context.watch<FriendNameProvider>().friendList;
 
     return Scaffold(
         backgroundColor: Colors.grey[100],
@@ -40,10 +41,15 @@ class _AddContactState extends State<AddContact> {
               child: IconButton(
                   splashRadius: 20,
                   onPressed: () {
-                    context.read<FriendNameProvider>().addToGroupList(
-                        FriendList(
-                            friendEmail: "random@gmail.com",
+                    // context.read<FriendNameProvider>().addToGroupList(
+                    //     FriendList(
+                    //         friendEmail: "random@gmail.com",
+                    //         friendName: nameController.text,
+                    //         imgChild: const Icon(Icons.person)));
+                    Provider.of<FriendNameProvider>(context, listen: false)
+                        .addToFriendList(FriendList(
                             friendName: nameController.text,
+                            friendEmail: "random@gmail.com",
                             imgChild: const Icon(Icons.person)));
                     Navigator.pop(context);
                     Navigator.pop(context);

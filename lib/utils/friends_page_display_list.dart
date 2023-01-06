@@ -7,8 +7,8 @@ import '../Widgets/friend_tile.dart';
 
 class FriendsPageDisplayList extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
-  final myfriendList;
-  const FriendsPageDisplayList({super.key, required this.myfriendList});
+  // final myfriendList;
+  const FriendsPageDisplayList({super.key});
 
   @override
   State<FriendsPageDisplayList> createState() => _FriendsPageDisplayListState();
@@ -62,19 +62,19 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
         const SizedBox(
           height: 10,
         ),
-        Expanded(
-          child: ListView.builder(
-              itemCount: widget.myfriendList.length,
+        Expanded(child: Consumer<FriendNameProvider>(builder: ((context, value, child) {
+          return ListView.builder(
+              itemCount: value.friendList.length,
               itemBuilder: ((context, index) {
                 return FriendTile(
-                  friendName: widget.myfriendList[index].friendName,
-                  friendEmail: widget.myfriendList[index].friendEmail,
-                  netAmount: amounts / (widget.myfriendList.length),
-                  imgChild: widget.myfriendList[index].imgChild,
+                  friendName: value.friendList[index].friendName,
+                  friendEmail: value.friendList[index].friendEmail,
+                  netAmount: amounts / (value.friendList.length),
+                  imgChild: value.friendList[index].imgChild,
                   onTap: () {},
                 );
-              })),
-        )
+              }));
+        })))
       ],
     );
   }

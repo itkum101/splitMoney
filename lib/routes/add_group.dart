@@ -118,7 +118,7 @@ class _AddGroupState extends State<AddGroup> {
     var myList = context.watch<GroupNameProvider>().groupList;
 
     return Scaffold(
-       backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text(
           "Create a Group",
@@ -137,11 +137,14 @@ class _AddGroupState extends State<AddGroup> {
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () {
-                context.read<GroupNameProvider>().addToGroupList(
-                      GroupList(
-                          groupName: _controller.text,
-                          imgPath: "lib/assets/tea.png"),
-                    );
+                Provider.of<GroupNameProvider>(context, listen: false)
+                    .addToGroupList(GroupList(
+                        imgPath: "lib/assets/tea.png", groupName: groupName));
+                // context.read<GroupNameProvider>().addToGroupList(
+                //       GroupList(
+                //           groupName: _controller.text,
+                //           imgPath: "lib/assets/tea.png"),
+                //     );
                 Navigator.pop(context);
               },
               child: const Text(
@@ -160,7 +163,6 @@ class _AddGroupState extends State<AddGroup> {
       ),
       body: Column(
         children: [
-          
           Container(
             height: 1,
             color: Colors.grey[400],

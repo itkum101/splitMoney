@@ -138,13 +138,13 @@ class FriendNameProvider with ChangeNotifier {
   final List<FriendList> _friendList = friends;
   List<FriendList> get friendList => _friendList;
 
-  void addToGroupList(FriendList friend) {
+  void addToFriendList(FriendList friend) {
     friendList.add(friend);
     notifyListeners();
   }
 
-  void removeFromList(GroupList group) {
-    friendList.remove(group);
+  void removeFromList(FriendList friend) {
+    friendList.remove(friend);
     notifyListeners();
   }
 }

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
@@ -11,7 +9,7 @@ class AddExpense extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var activityList = context.watch<ActivityListProvider>().activities;
+    // var activityList = context.watch<ActivityListProvider>().activities;
     final description = TextEditingController();
     final amount = TextEditingController();
     return Scaffold(
@@ -38,12 +36,16 @@ class AddExpense extends StatelessWidget {
                   print(description.text);
                   print(int.parse(amount.text));
 
-                  context.read<ActivityListProvider>().addToActiviityList(
-                        ActivityList(
-                          description: description.text,
+                  // context.read<ActivityListProvider>().addToActiviityList(
+                  //       ActivityList(
+                  //         description: description.text,
+                  //         netAmount: int.parse(amount.text),
+                  //       ),
+                  //     );
+                  Provider.of<ActivityListProvider>(context, listen: false)
+                      .addToActiviityList(ActivityList(
                           netAmount: int.parse(amount.text),
-                        ),
-                      );
+                          description: description.text));
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.check)),
