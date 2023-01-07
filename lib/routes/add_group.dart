@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
+import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
@@ -26,6 +27,7 @@ class _AddGroupState extends State<AddGroup> {
   final _controller = TextEditingController();
   late String groupName = _controller.text;
   File? _image;
+  late String img;
   Future getImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
@@ -36,6 +38,7 @@ class _AddGroupState extends State<AddGroup> {
         final finalImage = await saveFilePermanently(image.path);
         setState(() {
           this._image = finalImage;
+          img = finalImage.path;
         });
       }
     } on PlatformException catch (e) {
@@ -48,6 +51,25 @@ class _AddGroupState extends State<AddGroup> {
     final name = Path.basename(imagePath);
     final image = File('${directory.path}/$name');
     return File(imagePath).copy(image.path);
+  }
+
+  void tapped() {
+    // if (_controller.text.isEmpty || img.isEmpty) {
+    //   showDialog(
+    //       context: context,
+    //       builder: (context) {
+    //         return AlertDialogBox(alertText: "Group name is required!");
+    //       });
+    // } else {}
+    Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(
+        GroupList(imgPath: "lib/assets/tea.png", groupName: _controller.text));
+
+    // context.read<GroupNameProvider>().addToGroupList(
+    //       GroupList(
+    //           groupName: _controller.text,
+    //           imgPath: "lib/assets/tea.png"),
+    //     );
+    Navigator.pop(context);
   }
 
   @override
@@ -73,6 +95,7 @@ class _AddGroupState extends State<AddGroup> {
                       GestureDetector(
                         onTap: () {
                           getImage(ImageSource.camera);
+                          Navigator.pop(context);
                         },
                         child: Container(
                             height: 50,
@@ -93,6 +116,7 @@ class _AddGroupState extends State<AddGroup> {
                       GestureDetector(
                         onTap: () {
                           getImage(ImageSource.gallery);
+                          Navigator.pop(context);
                         },
                         child: Container(
                             height: 50,
@@ -138,17 +162,7 @@ class _AddGroupState extends State<AddGroup> {
               child: Padding(
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
-              onTap: () {
-                Provider.of<GroupNameProvider>(context, listen: false)
-                    .addToGroupList(GroupList(
-                        imgPath: "lib/assets/tea.png", groupName: groupName));
-                // context.read<GroupNameProvider>().addToGroupList(
-                //       GroupList(
-                //           groupName: _controller.text,
-                //           imgPath: "lib/assets/tea.png"),
-                //     );
-                Navigator.pop(context);
-              },
+              onTap: tapped,
               child: const Text(
                 "Save",
                 style: TextStyle(
@@ -301,7 +315,7 @@ class _AddGroupState extends State<AddGroup> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

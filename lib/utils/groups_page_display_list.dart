@@ -53,13 +53,14 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
                     Icons.dashboard_customize_rounded,
                     size: 27,
                     color: Colors.grey[900],
-                  )), 
+                  )),
             ],
           ),
         ),
-        Expanded(
-          child: Consumer<GroupNameProvider>(builder: ((context, value, child) {
-            return ListView.builder(
+        // Text("Add groups first:"),
+        Expanded(child:
+            Consumer<GroupNameProvider>(builder: ((context, value, child) {
+          return ListView.builder(
               itemCount: value.groupList.length,
               itemBuilder: ((context, index) {
                 return GroupTile(
@@ -67,8 +68,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
                   imgname: value.groupList[index].imgPath,
                 );
               }));
-          }))
-        ),
+        }))),
       ],
     );
   }
