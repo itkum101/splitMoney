@@ -50,6 +50,7 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
                 ],
               ),
               IconButton(
+                  splashRadius: 20,
                   onPressed: () {},
                   icon: Icon(
                     Icons.dashboard_customize_rounded,

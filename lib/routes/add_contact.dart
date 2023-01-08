@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/provider/friend_name_provider.dart';
-import 'package:splitmoney/utils/data.dart';
+
 
 class AddContact extends StatefulWidget {
   const AddContact({super.key});
@@ -12,6 +13,25 @@ class AddContact extends StatefulWidget {
 }
 
 class _AddContactState extends State<AddContact> {
+  void tapped() {
+    if (nameController.text.isEmpty || phoneNoController.text.isEmpty) {
+      showDialog(
+          context: context,
+          builder: ((context) {
+            return const AlertDialogBox(
+                alertText: "Name or Phone.no cannot be empty!");
+          }));
+    } else {
+      Provider.of<FriendNameProvider>(context, listen: false).addToFriendList(
+          FriendList(
+              friendName: nameController.text,
+              friendEmail: "random@gmail.com",
+              imgChild: const Icon(Icons.person)));
+      Navigator.pop(context);
+      Navigator.pop(context);
+    }
+  }
+
   final phoneNoController = TextEditingController();
 
   final nameController = TextEditingController();
@@ -41,20 +61,13 @@ class _AddContactState extends State<AddContact> {
               padding: const EdgeInsets.only(right: 15),
               child: IconButton(
                   splashRadius: 20,
-                  onPressed: () {
-                    // context.read<FriendNameProvider>().addToGroupList(
-                    //     FriendList(
-                    //         friendEmail: "random@gmail.com",
-                    //         friendName: nameController.text,
-                    //         imgChild: const Icon(Icons.person)));
-                    Provider.of<FriendNameProvider>(context, listen: false)
-                        .addToFriendList(FriendList(
-                            friendName: nameController.text,
-                            friendEmail: "random@gmail.com",
-                            imgChild: const Icon(Icons.person)));
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  },
+                  onPressed: tapped,
+                  // context.read<FriendNameProvider>().addToGroupList(
+                  //     FriendList(
+                  //         friendEmail: "random@gmail.com",
+                  //         friendName: nameController.text,
+                  //         imgChild: const Icon(Icons.person)));
+
                   icon: const Icon(Icons.check)),
             )
           ],

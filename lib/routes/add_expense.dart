@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/provider/activity_list_provider.dart';
 import 'package:splitmoney/utils/data.dart';
 
-class AddExpense extends StatelessWidget {
+class AddExpense extends StatefulWidget {
   static const routeName = '/add_expense';
   const AddExpense({super.key});
 
   @override
+  State<AddExpense> createState() => _AddExpenseState();
+}
+
+class _AddExpenseState extends State<AddExpense> {
+  final description = TextEditingController();
+
+  final amount = TextEditingController();
+
+  void tapped() {
+    if (description.text.isEmpty || amount.text.isEmpty) {
+      showDialog(
+          context: context,
+          builder: ((context) {
+            return const AlertDialogBox(
+                alertText: "Descriptin or amount cannot be empty!");
+          }));
+    }
+    else{
+Provider.of<ActivityListProvider>(context, listen: false)
+          .addToActiviityList(ActivityList(
+              netAmount: int.parse(amount.text),
+              description: description.text));
+      Navigator.pop(context);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     // var activityList = context.watch<ActivityListProvider>().activities;
-    final description = TextEditingController();
-    final amount = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -32,23 +59,15 @@ class AddExpense extends StatelessWidget {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
                 splashRadius: 20,
-                onPressed: () {
-                  print("HELLO WORLD");
-                  print(description.text);
-                  print(int.parse(amount.text));
-
+                onPressed: tapped,
                   // context.read<ActivityListProvider>().addToActiviityList(
                   //       ActivityList(
                   //         description: description.text,
                   //         netAmount: int.parse(amount.text),
                   //       ),
                   //     );
-                  Provider.of<ActivityListProvider>(context, listen: false)
-                      .addToActiviityList(ActivityList(
-                          netAmount: int.parse(amount.text),
-                          description: description.text));
-                  Navigator.pop(context);
-                },
+                  
+                
                 icon: const Icon(Icons.check)),
           )
         ],

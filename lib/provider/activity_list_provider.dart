@@ -38,7 +38,6 @@ class ActivityListProvider with ChangeNotifier {
     for (int i = 0; i < activities.length; i++) {
       finalTotalAmount += activities[i].netAmount;
     }
-    notifyListeners();
-    return finalTotalAmount;
-  }
+     return finalTotalAmount;
+   }
 }

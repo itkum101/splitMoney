@@ -48,6 +48,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
                 ],
               ),
               IconButton(
+                splashRadius: 20,
                   onPressed: () {},
                   icon: Icon(
                     Icons.dashboard_customize_rounded,
@@ -65,7 +66,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
               itemBuilder: ((context, index) {
                 return GroupTile(
                   name: value.groupList[index].groupName,
-                  imgname: value.groupList[index].imgPath,
+                  imgChild: value.groupList[index].grpImgChild,
                 );
               }));
         }))),

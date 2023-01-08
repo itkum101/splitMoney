@@ -1,11 +1,9 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-
 class GroupTile extends StatelessWidget {
   final String name;
-  final String imgname;
-  const GroupTile({super.key, required this.name, required this.imgname});
+  final Widget? imgChild;
+  const GroupTile({super.key, required this.name, required this.imgChild});
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +15,7 @@ class GroupTile extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.grey[400]),
-            // child: Image.file(
-            //   File(imgname),
-            //   height: 70,
-            //   width: 85,
-            //   fit: BoxFit.scaleDown,
-            // ),
-            child: Image.asset(
-              imgname,
-              height: 70,
-              width: 85,
-            ),
+            child: imgChild,
           ),
           const SizedBox(
             width: 23,

@@ -1,14 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
-// ignore: depend_on_referenced_packages
+// ignore: depend_on_referenced_packages, library_prefixes
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
 import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
@@ -22,12 +20,10 @@ class AddGroup extends StatefulWidget {
 }
 
 class _AddGroupState extends State<AddGroup> {
-  //LISTEN TO GROPU LIST
-
   final _controller = TextEditingController();
   late String groupName = _controller.text;
   File? _image;
-  late String img;
+  String? img;
   Future getImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
@@ -54,22 +50,31 @@ class _AddGroupState extends State<AddGroup> {
   }
 
   void tapped() {
-    // if (_controller.text.isEmpty || img.isEmpty) {
-    //   showDialog(
-    //       context: context,
-    //       builder: (context) {
-    //         return AlertDialogBox(alertText: "Group name is required!");
-    //       });
-    // } else {}
-    Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(
-        GroupList(imgPath: "lib/assets/tea.png", groupName: _controller.text));
-
-    // context.read<GroupNameProvider>().addToGroupList(
-    //       GroupList(
-    //           groupName: _controller.text,
-    //           imgPath: "lib/assets/tea.png"),
-    //     );
-    Navigator.pop(context);
+    if (_controller.text.isEmpty) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialogBox(alertText: "Group name is required!");
+          });
+    } else {
+      Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(
+        GroupList(
+          groupName: groupName,
+          grpImgChild: img == null
+              ? Image.asset(
+                  "lib/assets/tea.png",
+                  height: 70,
+                  width: 85,
+                )
+              : Image.file(
+                  File(img!),
+                  height: 70,
+                  width: 85,
+                ),
+        ),
+      );
+      Navigator.pop(context);
+    }
   }
 
   @override
@@ -83,7 +88,7 @@ class _AddGroupState extends State<AddGroup> {
         context: context,
         builder: ((context) {
           return Container(
-            color: Colors.grey[400],
+            color: Colors.grey[300],
             height: 101,
             child: Padding(
               padding: const EdgeInsets.all(15),
