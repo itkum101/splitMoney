@@ -13,9 +13,9 @@ List<GroupList> groups = [
   GroupList(
       groupName: "Group 1",
       grpImgChild: Image.asset(
-        "lib/assets/tea.png",
+        "lib/assets/shareholders.png",
         height: 70,
-        width: 85,
+        width: 70,
       ))
 ];
 

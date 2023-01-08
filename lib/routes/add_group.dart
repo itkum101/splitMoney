@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 // ignore: depend_on_referenced_packages, library_prefixes
@@ -31,7 +32,9 @@ class _AddGroupState extends State<AddGroup> {
         return;
       } else {
         // final imageTemporary = File(image.path);
-        final finalImage = await saveFilePermanently(image.path);
+        final cropimage = await cropImage(image.path);
+        final finalImage = await saveFilePermanently(cropimage!);
+
         setState(() {
           this._image = finalImage;
           img = finalImage.path;
@@ -39,6 +42,17 @@ class _AddGroupState extends State<AddGroup> {
       }
     } on PlatformException catch (e) {
       print(e);
+    }
+  }
+
+  Future<String?> cropImage(imageFile) async {
+    CroppedFile? croppedImage = await ImageCropper().cropImage(
+        sourcePath: imageFile,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1));
+    if (croppedImage == null) {
+      return null;
+    } else {
+      return croppedImage.path;
     }
   }
 
@@ -62,15 +76,16 @@ class _AddGroupState extends State<AddGroup> {
           groupName: groupName,
           grpImgChild: img == null
               ? Image.asset(
-                  "lib/assets/tea.png",
+                  "lib/assets/shareholders.png",
                   height: 70,
-                  width: 85,
+                  width: 70,
                 )
               : Image.file(
-                  File(img!),
-                  height: 70,
-                  width: 85,
-                ),
+                
+                File(img!),
+                height: 70,
+                width: 70,
+              ),
         ),
       );
       Navigator.pop(context);
@@ -203,7 +218,7 @@ class _AddGroupState extends State<AddGroup> {
                       borderRadius: BorderRadius.circular(10)),
                   child: _image != null
                       ? Padding(
-                          padding: const EdgeInsets.all(1),
+                          padding: const EdgeInsets.all(5),
                           child: Image.file(
                             _image!,
                             width: 48,

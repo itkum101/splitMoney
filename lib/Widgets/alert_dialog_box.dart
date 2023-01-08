@@ -18,7 +18,7 @@ class AlertDialogBox extends StatelessWidget {
       content: Text(
         alertText,
         style: TextStyle(
-            color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
+            color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w400),
       ),
     );
   }

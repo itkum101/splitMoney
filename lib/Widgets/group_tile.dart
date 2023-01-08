@@ -15,7 +15,10 @@ class GroupTile extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.grey[400]),
-            child: imgChild,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: imgChild,
+            ),
           ),
           const SizedBox(
             width: 23,
