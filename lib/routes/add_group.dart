@@ -75,17 +75,22 @@ class _AddGroupState extends State<AddGroup> {
         GroupList(
           groupName: groupName,
           grpImgChild: img == null
-              ? Image.asset(
-                  "lib/assets/shareholders.png",
-                  height: 70,
-                  width: 70,
+              ? Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Image.asset(
+                    "lib/assets/shareholders.png",
+                    height: 65,
+                    width: 65,
+                  ),
                 )
-              : Image.file(
-                
-                File(img!),
-                height: 70,
-                width: 70,
-              ),
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.file(
+                    File(img!),
+                    height: 75,
+                    width: 75,
+                  ),
+                ),
         ),
       );
       Navigator.pop(context);
@@ -211,23 +216,23 @@ class _AddGroupState extends State<AddGroup> {
             child: Row(
               children: [
                 Container(
-                  height: 52,
-                  width: 52,
+                  height: 54,
+                  width: 54,
                   decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10)),
                   child: _image != null
-                      ? Padding(
-                          padding: const EdgeInsets.all(5),
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
                           child: Image.file(
                             _image!,
-                            width: 48,
+                            width: 52,
                           ),
                         )
                       : GestureDetector(
                           onTap: showSheet,
                           child: Padding(
-                            padding: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(9),
                             child: Image.asset(
                               "lib/assets/add_image.png",
                               width: 35,

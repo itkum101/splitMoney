@@ -12,10 +12,13 @@ class GroupList {
 List<GroupList> groups = [
   GroupList(
       groupName: "Group 1",
-      grpImgChild: Image.asset(
-        "lib/assets/shareholders.png",
-        height: 70,
-        width: 70,
+      grpImgChild: Padding(
+        padding: const EdgeInsets.all(5),
+        child: Image.asset(
+          "lib/assets/shareholders.png",
+          height: 65,
+          width: 65,
+        ),
       ))
 ];
 

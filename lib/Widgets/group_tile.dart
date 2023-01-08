@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 class GroupTile extends StatelessWidget {
   final String name;
   final Widget? imgChild;
@@ -15,10 +15,7 @@ class GroupTile extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.grey[400]),
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: imgChild,
-            ),
+            child: imgChild,
           ),
           const SizedBox(
             width: 23,
