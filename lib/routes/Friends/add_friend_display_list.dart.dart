@@ -1,11 +1,20 @@
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+//Import models
+import 'package:splitmoney/models/friend_model.dart';
+//Import Provider
 import 'package:splitmoney/provider/friend_name_provider.dart';
-import 'package:splitmoney/routes/add_contact.dart';
-import 'package:splitmoney/utils/data.dart';
+
+//Import routes
+import 'package:splitmoney/routes/Friends/add_contact.dart';
+//Import data
+import 'package:splitmoney/data/data.dart';
+
+//Import Widgets
+import 'package:splitmoney/Widgets/text_box.dart';
 
 class AddFriendDisplayList extends StatefulWidget {
   const AddFriendDisplayList({super.key});
@@ -28,8 +37,7 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
       //Either user already granted permissions earlier or the user just granted it now
       fetchContacts();
     } else {
-     await Permission.contacts.request();
-     
+      await Permission.contacts.request();
     }
   }
 

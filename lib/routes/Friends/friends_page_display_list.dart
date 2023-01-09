@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/provider/group_name_provider.dart';
-import 'package:splitmoney/utils/data.dart';
+//Import Provider
+import 'package:splitmoney/provider/activity_list_provider.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
 
-import '../Widgets/group_tile.dart';
+//Import Widgets
+import '../../Widgets/friend_tile.dart';
 
-class GroupsPageDisplayList extends StatefulWidget {
-  const GroupsPageDisplayList({super.key});
+class FriendsPageDisplayList extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
+  // final myfriendList;
+  const FriendsPageDisplayList({super.key});
 
   @override
-  State<GroupsPageDisplayList> createState() => _GroupsPageDisplayListState();
+  State<FriendsPageDisplayList> createState() => _FriendsPageDisplayListState();
 }
 
-class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
+class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
   @override
   Widget build(BuildContext context) {
-    // var mygroupList = context.watch<GroupNameProvider>().groupList;
+    // ignore: unused_local_variable
+    // var myActivityList = context.watch<ActivityListProvider>().activities;
+    var amounts = Provider.of<ActivityListProvider>(context, listen: false)
+        .returnTotalAmount();
     return Column(
       children: [
         Container(
@@ -48,7 +53,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
                 ],
               ),
               IconButton(
-                splashRadius: 20,
+                  splashRadius: 20,
                   onPressed: () {},
                   icon: Icon(
                     Icons.dashboard_customize_rounded,
@@ -58,18 +63,23 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
             ],
           ),
         ),
-        // Text("Add groups first:"),
+        const SizedBox(
+          height: 10,
+        ),
         Expanded(child:
-            Consumer<GroupNameProvider>(builder: ((context, value, child) {
+            Consumer<FriendNameProvider>(builder: ((context, value, child) {
           return ListView.builder(
-              itemCount: value.groupList.length,
+              itemCount: value.friendList.length,
               itemBuilder: ((context, index) {
-                return GroupTile(
-                  name: value.groupList[index].groupName,
-                  imgChild: value.groupList[index].grpImgChild,
+                return FriendTile(
+                  friendName: value.friendList[index].friendName,
+                  friendEmail: value.friendList[index].friendEmail,
+                  netAmount: amounts / (value.friendList.length),
+                  imgChild: value.friendList[index].imgChild,
+                  onTap: () {},
                 );
               }));
-        }))),
+        })))
       ],
     );
   }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-
+//Import Widgets
 import 'package:splitmoney/Widgets/settings_tile.dart';
-import 'package:splitmoney/utils/data.dart';
-import 'package:splitmoney/utils/settings_page_profile_display.dart';
+
+//Import data
+import 'package:splitmoney/data/data.dart';
+
+//Import Routes
+import 'package:splitmoney/routes/Settings/settings_page_profile_display.dart';
 
 class SettingsPageDisplayItem extends StatelessWidget {
   const SettingsPageDisplayItem({super.key});
@@ -11,7 +15,7 @@ class SettingsPageDisplayItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-         Container(
+        Container(
           height: 1,
           color: Colors.grey[400],
         ),

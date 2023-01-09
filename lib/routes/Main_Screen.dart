@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/routes/activity_page.dart';
-import 'package:splitmoney/routes/friends_page.dart';
-import 'package:splitmoney/routes/groups_page.dart';
-import 'package:splitmoney/routes/settings_page.dart';
+
+//Import Routes
+import 'package:splitmoney/routes/Activity/activity_page.dart';
+import 'package:splitmoney/routes/Friends/friends_page.dart';
+import 'package:splitmoney/routes/Groups/groups_page.dart';
+import 'package:splitmoney/routes/Settings/settings_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[100],
         body: page[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,

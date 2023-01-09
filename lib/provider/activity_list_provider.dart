@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ActivityList {
-  final String description;
-  final int netAmount;
-
-  ActivityList({this.description = "", required this.netAmount});
-}
-
-List<ActivityList> activitiesDone = [
-  ActivityList(
-    description: "FUCCHI KO MA CHIYA KHAYEKO ",
-    netAmount: 150,
-  ),
-  ActivityList(
-    netAmount: 410,
-    description: "TEHA PAXI KHANA KHAYEKO",
-  ),
-];
+import '../data/activity_data.dart';
+import '../models/activity_model.dart';
 
 class ActivityListProvider with ChangeNotifier {
   final List<ActivityList> _activities = activitiesDone;
@@ -38,6 +23,6 @@ class ActivityListProvider with ChangeNotifier {
     for (int i = 0; i < activities.length; i++) {
       finalTotalAmount += activities[i].netAmount;
     }
-     return finalTotalAmount;
-   }
+    return finalTotalAmount;
+  }
 }

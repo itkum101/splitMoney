@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:splitmoney/utils/add_friend_display_list.dart.dart';
+//Import Routes
+import 'package:splitmoney/routes/Friends/add_friend_display_list.dart.dart';
 
 class AddFriend extends StatefulWidget {
   const AddFriend({super.key});
@@ -13,9 +14,8 @@ class _AddFriendState extends State<AddFriend> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        body: const AddFriendDisplayList()
-      ),
+          backgroundColor: Colors.grey[100],
+          body: const AddFriendDisplayList()),
     );
   }
 }

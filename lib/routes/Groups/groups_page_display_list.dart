@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/provider/activity_list_provider.dart';
-import 'package:splitmoney/provider/friend_name_provider.dart';
-import '../Widgets/friend_tile.dart';
+//Import Provider
+import 'package:splitmoney/provider/group_name_provider.dart';
+//Import Widgets
+import '../../Widgets/group_tile.dart';
 
-class FriendsPageDisplayList extends StatefulWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  // final myfriendList;
-  const FriendsPageDisplayList({super.key});
+class GroupsPageDisplayList extends StatefulWidget {
+  const GroupsPageDisplayList({super.key});
 
   @override
-  State<FriendsPageDisplayList> createState() => _FriendsPageDisplayListState();
+  State<GroupsPageDisplayList> createState() => _GroupsPageDisplayListState();
 }
 
-class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
+class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    // var myActivityList = context.watch<ActivityListProvider>().activities;
-    var amounts = Provider.of<ActivityListProvider>(context, listen: false)
-        .returnTotalAmount();
+    // var mygroupList = context.watch<GroupNameProvider>().groupList;
     return Column(
       children: [
         Container(
@@ -60,23 +56,18 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
             ],
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        // Text("Add groups first:"),
         Expanded(child:
-            Consumer<FriendNameProvider>(builder: ((context, value, child) {
+            Consumer<GroupNameProvider>(builder: ((context, value, child) {
           return ListView.builder(
-              itemCount: value.friendList.length,
+              itemCount: value.groupList.length,
               itemBuilder: ((context, index) {
-                return FriendTile(
-                  friendName: value.friendList[index].friendName,
-                  friendEmail: value.friendList[index].friendEmail,
-                  netAmount: amounts / (value.friendList.length),
-                  imgChild: value.friendList[index].imgChild,
-                  onTap: () {},
+                return GroupTile(
+                  name: value.groupList[index].groupName,
+                  imgChild: value.groupList[index].grpImgChild,
                 );
               }));
-        })))
+        }))),
       ],
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:splitmoney/utils/settings_page_display_item.dart';
+//Import Routes
+import 'package:splitmoney/routes/Settings/settings_page_display_item.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -9,7 +9,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-         backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.grey[100],
           appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,

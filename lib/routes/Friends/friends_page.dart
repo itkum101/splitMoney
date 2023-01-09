@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:splitmoney/routes/add_friend.dart';
-import 'package:splitmoney/utils/friends_page_display_list.dart';
+//Import Routes
+import 'package:splitmoney/routes/Friends/add_friend.dart';
+import 'package:splitmoney/routes/Friends/friends_page_display_list.dart';
 
 class FriendsPage extends StatefulWidget {
   const FriendsPage({super.key});

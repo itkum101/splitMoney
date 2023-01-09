@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
+
+//Import model
+import 'package:splitmoney/models/friend_model.dart';
+
+//Import Provider
 import 'package:splitmoney/provider/friend_name_provider.dart';
 
+//Import Widgets
+import 'package:splitmoney/Widgets/alert_dialog_box.dart';
+import 'package:splitmoney/Widgets/text_box.dart';
 
 class AddContact extends StatefulWidget {
   const AddContact({super.key});

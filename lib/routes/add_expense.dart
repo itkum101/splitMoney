@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+//Import Widgets
 import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+
+//Import models
+import 'package:splitmoney/models/activity_model.dart';
+
+//Import Provider
 import 'package:splitmoney/provider/activity_list_provider.dart';
-import 'package:splitmoney/utils/data.dart';
 
 class AddExpense extends StatefulWidget {
   static const routeName = '/add_expense';
@@ -26,9 +32,8 @@ class _AddExpenseState extends State<AddExpense> {
             return const AlertDialogBox(
                 alertText: "Descriptin or amount cannot be empty!");
           }));
-    }
-    else{
-Provider.of<ActivityListProvider>(context, listen: false)
+    } else {
+      Provider.of<ActivityListProvider>(context, listen: false)
           .addToActiviityList(ActivityList(
               netAmount: int.parse(amount.text),
               description: description.text));
@@ -60,14 +65,13 @@ Provider.of<ActivityListProvider>(context, listen: false)
             child: IconButton(
                 splashRadius: 20,
                 onPressed: tapped,
-                  // context.read<ActivityListProvider>().addToActiviityList(
-                  //       ActivityList(
-                  //         description: description.text,
-                  //         netAmount: int.parse(amount.text),
-                  //       ),
-                  //     );
-                  
-                
+                // context.read<ActivityListProvider>().addToActiviityList(
+                //       ActivityList(
+                //         description: description.text,
+                //         netAmount: int.parse(amount.text),
+                //       ),
+                //     );
+
                 icon: const Icon(Icons.check)),
           )
         ],
