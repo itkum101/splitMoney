@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:splitmoney/provider/activity_list_provider.dart';
 import 'package:splitmoney/provider/friend_name_provider.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
+import 'package:splitmoney/routes/Groups/group_detail.dart';
 
 //Import Routes
 import 'package:splitmoney/routes/Main_Screen.dart';
@@ -28,7 +29,7 @@ void main() {
       routes: {
         '/': (ctx) => const MyApp(),
         AddExpense.routeName: (ctx) => const AddExpense(),
-
+        GroupDetail.routeName: (ctx) => const GroupDetail(),
         // EXAMPLE
         // CartScreen.routeName: (ctx) => CartScreen(),
         // In cartscreen simply do static const routeName= '/product-detail';
