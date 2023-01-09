@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 //Import Widgets
 import 'package:splitmoney/Widgets/settings_tile.dart';
+import 'package:splitmoney/data/setting_data.dart';
 
 //Import data
-import 'package:splitmoney/data/data.dart';
 
 //Import Routes
 import 'package:splitmoney/routes/Settings/settings_page_profile_display.dart';

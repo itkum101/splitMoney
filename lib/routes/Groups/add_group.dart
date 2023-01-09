@@ -13,12 +13,14 @@ import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
 
+//Import data
+import 'package:splitmoney/data/grouptype_data.dart';
+
 //Import models
 import 'package:splitmoney/models/group_model.dart';
 
 //Import Provider
 import 'package:splitmoney/provider/group_name_provider.dart';
-import 'package:splitmoney/data/data.dart';
 
 class AddGroup extends StatefulWidget {
   const AddGroup({super.key});
