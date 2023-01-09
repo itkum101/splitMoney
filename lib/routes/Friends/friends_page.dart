@@ -5,9 +5,10 @@ import 'package:splitmoney/routes/Friends/add_friend.dart';
 import 'package:splitmoney/routes/Friends/friends_page_display_list.dart';
 
 //Import Widgets
-import 'package:splitmoney/Widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
 //Import Utils
 import 'package:splitmoney/utils/icon_button_sample.dart';
+import 'package:splitmoney/utils/sample_floating_action_button.dart';
 
 class FriendsPage extends StatefulWidget {
   const FriendsPage({super.key});
@@ -25,12 +26,7 @@ class _FriendsPageState extends State<FriendsPage> {
 
     return Scaffold(
         backgroundColor: Colors.grey[100],
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
-          backgroundColor: Colors.green,
-          icon: const Icon(Icons.add_rounded),
-          label: const Text("Add Expense"),
-        ),
+        floatingActionButton: const SampleFloatingActionButton(),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: AppBarSample(

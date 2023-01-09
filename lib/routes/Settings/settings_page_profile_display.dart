@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 class SettingsPageProfileDisplay extends StatelessWidget {
   const SettingsPageProfileDisplay({super.key});
@@ -21,14 +22,10 @@ class SettingsPageProfileDisplay extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: -7,
-                  right: -7,
-                  child: IconButton(
-                      focusColor: Colors.white24,
-                      splashRadius: 20,
-                      onPressed: () {},
-                      icon: const Icon(Icons.add_a_photo_rounded)),
-                )
+                    bottom: -7,
+                    right: -7,
+                    child: IconButtonSample(
+                        onPressed: () {}, icon: Icons.add_a_photo_rounded))
               ],
             ),
             const SizedBox(
@@ -58,13 +55,7 @@ class SettingsPageProfileDisplay extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-            splashRadius: 20,
-            onPressed: () {},
-            icon: Icon(
-              Icons.edit_outlined,
-              color: Colors.grey[800],
-            ))
+        IconButtonSample(onPressed: () {}, icon: Icons.edit_outlined)
       ]),
     );
   }

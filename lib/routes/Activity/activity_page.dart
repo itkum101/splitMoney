@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 //Import Routes
 import 'package:splitmoney/routes/Activity/activity_page_display_list.dart';
 //Import Widgets
-import 'package:splitmoney/Widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
 
 class ActivityPage extends StatelessWidget {
   const ActivityPage({super.key});

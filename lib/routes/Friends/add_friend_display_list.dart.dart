@@ -12,9 +12,11 @@ import 'package:splitmoney/provider/friend_name_provider.dart';
 import 'package:splitmoney/routes/Friends/add_contact.dart';
 //Import data
 import 'package:splitmoney/data/data.dart';
+import 'package:splitmoney/utils/mini_heading_text.dart';
 
 //Import Widgets
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/text_box.dart';
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 class AddFriendDisplayList extends StatefulWidget {
   const AddFriendDisplayList({super.key});
@@ -70,13 +72,11 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             children: [
-              IconButton(
-                  color: Colors.grey[600],
-                  splashRadius: 20,
+              IconButtonSample(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: const Icon(Icons.arrow_back_rounded)),
+                  icon: Icons.arrow_back_rounded),
               const SizedBox(
                 width: 15,
               ),
@@ -102,6 +102,8 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
         const SizedBox(
           height: 13,
         ),
+
+        //Manually add a new contact
         GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -136,23 +138,12 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
         const SizedBox(
           height: 20,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            children: [
-              Text(
-                "From your contacts",
-                style: TextStyle(
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.w700,
-                    fontSize: 11),
-              ),
-            ],
-          ),
-        ),
+        const MiniHeadingText(text: "From your contacts"),
         const SizedBox(
           height: 15,
         ),
+
+        //Listview of contacts
         Expanded(
           child: isLoading
               ? const Center(child: CircularProgressIndicator())

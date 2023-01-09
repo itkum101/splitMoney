@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 //Import Routes
 import 'package:splitmoney/routes/Groups/add_group.dart';
-import 'package:splitmoney/routes/add_expense.dart';
 import 'package:splitmoney/routes/Groups/groups_page_display_list.dart';
 
 //Import Widgets
-import 'package:splitmoney/Widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
 
 //Import Utils
 import 'package:splitmoney/utils/icon_button_sample.dart';
+import 'package:splitmoney/utils/sample_floating_action_button.dart';
 
 class GroupsPage extends StatefulWidget {
   const GroupsPage({super.key});
@@ -23,14 +23,7 @@ class _GroupsPageState extends State<GroupsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.pushNamed(context, AddExpense.routeName);
-        },
-        backgroundColor: Colors.green,
-        icon: const Icon(Icons.add_rounded),
-        label: const Text("Add Expense"),
-      ),
+      floatingActionButton: const SampleFloatingActionButton(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
         child: AppBarSample(

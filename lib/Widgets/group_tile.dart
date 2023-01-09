@@ -36,8 +36,8 @@ class GroupTile extends StatelessWidget {
                   "You are owned Rs 66.25",
                   style: TextStyle(
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green[300]),
+                      fontWeight: FontWeight.w500,
+                      color: Colors.green[500]),
                 ),
               ],
             ),

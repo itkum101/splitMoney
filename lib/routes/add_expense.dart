@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//Import utils
+import 'package:splitmoney/utils/sample_elevated_button.dart';
+import 'package:splitmoney/utils/icon_button_sample.dart';
+
 //Import Widgets
-import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/alert_dialog_box.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/mini_container.dart';
+import 'package:splitmoney/widgets/text_box.dart';
 
 //Import models
 import 'package:splitmoney/models/activity_model.dart';
@@ -47,37 +53,19 @@ class _AddExpenseState extends State<AddExpense> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          "Add an expense",
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          title: "Add an expense",
+          leading: IconButtonSample(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icons.close),
+          actions: [
+            IconButtonSample(onPressed: tapped, icon: Icons.check),
+          ],
         ),
-        leading: IconButton(
-            splashRadius: 20,
-            onPressed: (() {
-              Navigator.pop(context);
-            }),
-            icon: const Icon(
-              Icons.close,
-            )),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-                splashRadius: 20,
-                onPressed: tapped,
-                // context.read<ActivityListProvider>().addToActiviityList(
-                //       ActivityList(
-                //         description: description.text,
-                //         netAmount: int.parse(amount.text),
-                //       ),
-                //     );
-
-                icon: const Icon(Icons.check)),
-          )
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey[700],
       ),
       body: Column(
         children: [
@@ -92,13 +80,9 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Icons.list)),
+                MiniContainer(
+                  child: const Icon(Icons.list),
+                ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -106,7 +90,6 @@ class _AddExpenseState extends State<AddExpense> {
                   child: TextBox(
                     controller: description,
                     isautoFocus: false,
-                    isFilled: true,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
                     focusedBorder: OutlineInputBorder(
@@ -127,13 +110,9 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Icons.currency_rupee_rounded)),
+                MiniContainer(
+                  child: const Icon(Icons.currency_rupee_rounded),
+                ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -141,7 +120,6 @@ class _AddExpenseState extends State<AddExpense> {
                   child: TextBox(
                     controller: amount,
                     isautoFocus: false,
-                    isFilled: true,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
                     focusedBorder: OutlineInputBorder(
@@ -162,57 +140,27 @@ class _AddExpenseState extends State<AddExpense> {
             children: [
               const Spacer(),
               Row(
-                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // const Spacer(),
                   Text(
                     "Paid by  ",
                     style: TextStyle(
                         color: Colors.grey[700], fontWeight: FontWeight.w500),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(10),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white)),
-                    onPressed: () {},
-                    child: Text(
-                      "you",
-                      style: TextStyle(
-                          color: Colors.grey[700], fontWeight: FontWeight.w500),
-                    ),
-                  ),
+                  const SampleElevatedButton(buttonText: "you")
                 ],
               ),
-              // const SizedBox(
-              //   width: 20,
-              // ),
               const SizedBox(
                 width: 20,
               ),
               Row(
-                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // const Spacer(),
                   Text(
                     "split ",
                     style: TextStyle(
                         color: Colors.grey[700], fontWeight: FontWeight.w500),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(10),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white)),
-                    onPressed: () {},
-                    child: Text(
-                      "equally",
-                      style: TextStyle(
-                          color: Colors.grey[700], fontWeight: FontWeight.w500),
-                    ),
-                  ),
+                  const SampleElevatedButton(buttonText: "equally"),
                   const Text(' .'),
-                  // const Spacer()
                 ],
               ),
               const Spacer(),
