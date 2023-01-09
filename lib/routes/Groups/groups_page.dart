@@ -5,6 +5,12 @@ import 'package:splitmoney/routes/Groups/add_group.dart';
 import 'package:splitmoney/routes/add_expense.dart';
 import 'package:splitmoney/routes/Groups/groups_page_display_list.dart';
 
+//Import Widgets
+import 'package:splitmoney/Widgets/app_bar_sample.dart';
+
+//Import Utils
+import 'package:splitmoney/utils/icon_button_sample.dart';
+
 class GroupsPage extends StatefulWidget {
   const GroupsPage({super.key});
 
@@ -25,37 +31,24 @@ class _GroupsPageState extends State<GroupsPage> {
         icon: const Icon(Icons.add_rounded),
         label: const Text("Add Expense"),
       ),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-              splashRadius: 20,
-              onPressed: () {},
-              icon: Icon(
-                Icons.search_rounded,
-                size: 23,
-                color: Colors.grey[800],
-              )),
-          const SizedBox(
-            width: 7,
-          ),
-          IconButton(
-              splashRadius: 20,
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                  return AddGroup();
-                })));
-              },
-              icon: Icon(
-                Icons.group_add_sharp,
-                size: 23,
-                color: Colors.grey[800],
-              )),
-          const SizedBox(
-            width: 17,
-          ),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          actions: [
+            IconButtonSample(onPressed: () {}, icon: Icons.search),
+            const SizedBox(
+              width: 7,
+            ),
+            IconButtonSample(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return const AddGroup();
+                  })));
+                },
+                icon: Icons.group_add)
+          ],
+        ),
       ),
       body: const GroupsPageDisplayList(),
     );

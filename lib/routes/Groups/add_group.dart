@@ -10,8 +10,12 @@ import 'package:provider/provider.dart';
 
 //Import Widgets
 import 'package:splitmoney/Widgets/alert_dialog_box.dart';
+import 'package:splitmoney/Widgets/app_bar_sample.dart';
 import 'package:splitmoney/Widgets/group_type_item.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+
+//Import utils
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 //Import data
 import 'package:splitmoney/data/grouptype_data.dart';
@@ -21,6 +25,7 @@ import 'package:splitmoney/models/group_model.dart';
 
 //Import Provider
 import 'package:splitmoney/provider/group_name_provider.dart';
+
 
 class AddGroup extends StatefulWidget {
   const AddGroup({super.key});
@@ -179,37 +184,19 @@ class _AddGroupState extends State<AddGroup> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          "Create a Group",
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          title: "Add Group",
+          leading: IconButtonSample(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icons.close),
+          actions: [
+            IconButtonSample(onPressed: tapped, icon: Icons.check),
+          ],
         ),
-        leading: IconButton(
-            splashRadius: 20,
-            onPressed: (() {
-              Navigator.pop(context);
-            }),
-            icon: const Icon(
-              Icons.close,
-            )),
-        actions: [
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: GestureDetector(
-              onTap: tapped,
-              child: const Text(
-                "Save",
-                style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ))
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey[700],
       ),
       body: Column(
         children: [

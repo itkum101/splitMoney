@@ -7,7 +7,7 @@ import 'package:splitmoney/provider/friend_name_provider.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
 
 //Import Routes
-import 'package:splitmoney/routes/Main_Screen.dart';
+import 'package:splitmoney/routes/main_sreen.dart';
 import 'package:splitmoney/routes/add_expense.dart';
 
 void main() {

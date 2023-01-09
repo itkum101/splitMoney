@@ -7,6 +7,9 @@ import 'package:splitmoney/provider/friend_name_provider.dart';
 //Import Widgets
 import '../../Widgets/friend_tile.dart';
 
+
+
+
 class FriendsPageDisplayList extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
   // final myfriendList;

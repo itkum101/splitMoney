@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:splitmoney/routes/Friends/add_friend.dart';
 import 'package:splitmoney/routes/Friends/friends_page_display_list.dart';
 
+//Import Widgets
+import 'package:splitmoney/Widgets/app_bar_sample.dart';
+//Import Utils
+import 'package:splitmoney/utils/icon_button_sample.dart';
+
 class FriendsPage extends StatefulWidget {
   const FriendsPage({super.key});
 
@@ -26,38 +31,24 @@ class _FriendsPageState extends State<FriendsPage> {
           icon: const Icon(Icons.add_rounded),
           label: const Text("Add Expense"),
         ),
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          actions: [
-            IconButton(
-                splashRadius: 20,
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search_rounded,
-                  size: 23,
-                  color: Colors.grey[800],
-                )),
-            const SizedBox(
-              width: 7,
-            ),
-            IconButton(
-                splashRadius: 20,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) {
-                    return const AddFriend();
-                  })));
-                },
-                icon: Icon(
-                  Icons.person_add_sharp,
-                  size: 23,
-                  color: Colors.grey[800],
-                )),
-            const SizedBox(
-              width: 17,
-            ),
-          ],
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: AppBarSample(
+            actions: [
+              IconButtonSample(onPressed: () {}, icon: Icons.search),
+              const SizedBox(
+                width: 7,
+              ),
+              IconButtonSample(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: ((context) {
+                      return const AddFriend();
+                    })));
+                  },
+                  icon: Icons.person_add_sharp)
+            ],
+          ),
         ),
         body: const FriendsPageDisplayList(
             // myfriendList: myfriendList,
