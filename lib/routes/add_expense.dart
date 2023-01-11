@@ -1,15 +1,22 @@
+import 'dart:ffi';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //Import Widgets
 import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/data/friend_data.dart';
 
 //Import models
 import 'package:splitmoney/models/activity_model.dart';
+import 'package:splitmoney/models/friend_model.dart';
 
 //Import Provider
 import 'package:splitmoney/provider/activity_list_provider.dart';
+import 'package:splitmoney/routes/Groups/friend_list_group_selector.dart';
+import 'package:splitmoney/routes/friend_list_selector.dart';
 
 class AddExpense extends StatefulWidget {
   static const routeName = '/add_expense';
@@ -23,6 +30,18 @@ class _AddExpenseState extends State<AddExpense> {
   final description = TextEditingController();
 
   final amount = TextEditingController();
+  String information = "you";
+  FriendList? frienditem;
+
+  void DatafromFriendListSelector() async {
+    final data =
+        await Navigator.pushNamed(context, FriendListSelector.routeName);
+    setState(() {
+      information = data.toString();
+
+      frienditem = friends.firstWhere((element) => element.id == information);
+    });
+  }
 
   void tapped() {
     if (description.text.isEmpty || amount.text.isEmpty) {
@@ -175,9 +194,11 @@ class _AddExpenseState extends State<AddExpense> {
                         elevation: MaterialStateProperty.all(10),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.white)),
-                    onPressed: () {},
+                    onPressed: () {
+                      DatafromFriendListSelector();
+                    },
                     child: Text(
-                      "you",
+                      frienditem != null ? frienditem!.friendName : "you",
                       style: TextStyle(
                           color: Colors.grey[700], fontWeight: FontWeight.w500),
                     ),
@@ -204,7 +225,12 @@ class _AddExpenseState extends State<AddExpense> {
                         elevation: MaterialStateProperty.all(10),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.white)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        FriendListGroupSelector.routeName,
+                      );
+                    },
                     child: Text(
                       "equally",
                       style: TextStyle(

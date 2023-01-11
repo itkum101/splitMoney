@@ -16,6 +16,8 @@ import 'package:splitmoney/data/data.dart';
 //Import Widgets
 import 'package:splitmoney/Widgets/text_box.dart';
 
+import 'package:uuid/uuid.dart';
+
 class AddFriendDisplayList extends StatefulWidget {
   const AddFriendDisplayList({super.key});
 
@@ -62,6 +64,7 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
     });
   }
 
+  var uuid = Uuid();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -184,6 +187,7 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
                           Provider.of<FriendNameProvider>(context,
                                   listen: false)
                               .addToFriendList(FriendList(
+                                  id: uuid.v1(),
                                   friendName: demoList[index].displayName!,
                                   friendEmail:
                                       demoList[index].emails!.isNotEmpty

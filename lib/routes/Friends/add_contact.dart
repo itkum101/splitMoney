@@ -10,6 +10,7 @@ import 'package:splitmoney/provider/friend_name_provider.dart';
 //Import Widgets
 import 'package:splitmoney/Widgets/alert_dialog_box.dart';
 import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:uuid/uuid.dart';
 
 class AddContact extends StatefulWidget {
   const AddContact({super.key});
@@ -19,6 +20,7 @@ class AddContact extends StatefulWidget {
 }
 
 class _AddContactState extends State<AddContact> {
+  var uuid = Uuid();
   void tapped() {
     if (nameController.text.isEmpty || phoneNoController.text.isEmpty) {
       showDialog(
@@ -30,6 +32,7 @@ class _AddContactState extends State<AddContact> {
     } else {
       Provider.of<FriendNameProvider>(context, listen: false).addToFriendList(
           FriendList(
+              id: uuid.v1(),
               friendName: nameController.text,
               friendEmail: "random@gmail.com",
               imgChild: const Icon(Icons.person)));

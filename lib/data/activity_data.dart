@@ -2,11 +2,12 @@ import '../models/activity_model.dart';
 
 List<ActivityList> activitiesDone = [
   ActivityList(
-    description: "FUCCHI KO MA CHIYA KHAYEKO ",
-    netAmount: 150,
-  ),
+      description: "FUCCHI KO MA CHIYA KHAYEKO ",
+      netAmount: 150,
+      date: "MAY 2"),
   ActivityList(
     netAmount: 410,
     description: "TEHA PAXI KHANA KHAYEKO",
+    date: "JAN 1",
   ),
 ];

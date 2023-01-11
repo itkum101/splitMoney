@@ -16,7 +16,6 @@ class _GroupDetailState extends State<GroupDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black45,
         appBar: BaseAppBar(
           appBar: AppBar(),
           title: Text("Group Detail"),
@@ -49,10 +48,6 @@ class _GroupDetailState extends State<GroupDetail> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 1,
-                  color: Colors.grey,
-                ),
                 Text(
                   "Activities",
                   style: TextStyle(
@@ -60,10 +55,6 @@ class _GroupDetailState extends State<GroupDetail> {
                       fontSize: 14,
                       letterSpacing: 0.8,
                       fontWeight: FontWeight.w600),
-                ),
-                Container(
-                  height: 33,
-                  color: Colors.red,
                 ),
                 GroupActivities(),
               ],
