@@ -35,11 +35,13 @@ class ActivityListItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
             ),
             const SizedBox(width: 10),
-            Text(
-              activity,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 18,
+            Expanded(
+              child: Text(
+                activity,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
               ),
             ),
             const Spacer(),
