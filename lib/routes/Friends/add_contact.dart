@@ -6,10 +6,14 @@ import 'package:splitmoney/models/friend_model.dart';
 
 //Import Provider
 import 'package:splitmoney/provider/friend_name_provider.dart';
+//import utils
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 //Import Widgets
-import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/alert_dialog_box.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/info_text_row.dart';
+import 'package:splitmoney/widgets/text_box.dart';
 import 'package:uuid/uuid.dart';
 
 class AddContact extends StatefulWidget {
@@ -20,7 +24,7 @@ class AddContact extends StatefulWidget {
 }
 
 class _AddContactState extends State<AddContact> {
-  var uuid = Uuid();
+  var uuid = const Uuid();
   void tapped() {
     if (nameController.text.isEmpty || phoneNoController.text.isEmpty) {
       showDialog(
@@ -42,47 +46,27 @@ class _AddContactState extends State<AddContact> {
   }
 
   final phoneNoController = TextEditingController();
-
   final nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     // var myList = context.watch<FriendNameProvider>().friendList;
-
     return Scaffold(
         backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          title: const Center(
-            child: Text(
-              "Add a new contact",
-            ),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: AppBarSample(
+            title: "Add a new contact",
+            leading: IconButtonSample(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icons.arrow_back_rounded),
+            actions: [
+              IconButtonSample(onPressed: tapped, icon: Icons.check),
+              const SizedBox(width: 7)
+            ],
           ),
-          leading: IconButton(
-              splashRadius: 20,
-              onPressed: (() {
-                Navigator.pop(context);
-              }),
-              icon: const Icon(
-                Icons.arrow_back_rounded,
-              )),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 15),
-              child: IconButton(
-                  splashRadius: 20,
-                  onPressed: tapped,
-                  // context.read<FriendNameProvider>().addToGroupList(
-                  //     FriendList(
-                  //         friendEmail: "random@gmail.com",
-                  //         friendName: nameController.text,
-                  //         imgChild: const Icon(Icons.person)));
-
-                  icon: const Icon(Icons.check)),
-            )
-          ],
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.grey[700],
         ),
         body: Column(children: [
           Container(
@@ -107,9 +91,7 @@ class _AddContactState extends State<AddContact> {
               cursorHeight: 20,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: TextBox(
@@ -125,21 +107,11 @@ class _AddContactState extends State<AddContact> {
               cursorHeight: 20,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text(
-              "Fill up the information and click on the okay button at the top right corner",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ))
+          const SizedBox(height: 20),
+          InfoTextRow(
+              icon: Icons.info_rounded,
+              infoText:
+                  "Fill up the information and click on the okay button at the top right corner")
         ]));
   }
 }

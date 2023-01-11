@@ -8,29 +8,29 @@ class OverallExpenseInfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  const Text(
-                    "Overall, You are owned",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                  ),
-                  Text(
-                    " Rs.316.24",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                        color: Colors.green[300]),
-                  ),
-                ],
+              const Text(
+                "Overall, You are owned",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
               ),
-              IconButtonSample(
-                  onPressed: () {}, icon: Icons.dashboard_customize_rounded)
+              Text(
+                " Rs.316.24",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                    color: Colors.green[300]),
+              ),
             ],
           ),
-        );
+          IconButtonSample(
+              onPressed: () {}, icon: Icons.dashboard_customize_rounded)
+        ],
+      ),
+    );
   }
 }

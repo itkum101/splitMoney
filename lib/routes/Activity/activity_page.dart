@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 //Import Routes
 import 'package:splitmoney/routes/Activity/activity_page_display_list.dart';
+//Import Widgets
+import 'package:splitmoney/widgets/app_bar_sample.dart';
 
 class ActivityPage extends StatelessWidget {
   const ActivityPage({super.key});
@@ -11,15 +13,10 @@ class ActivityPage extends StatelessWidget {
     // var myActivityList = context.watch<ActivityListProvider>().activities;
     return Scaffold(
         backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            "Activity",
-            style: TextStyle(
-                color: Colors.grey[800],
-                fontSize: 23,
-                fontWeight: FontWeight.w500),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: AppBarSample(
+            title: "Activities",
           ),
         ),
         body: const ActivityPageDisplayList());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //Import Widgets
-import 'package:splitmoney/Widgets/settings_tile.dart';
+import 'package:splitmoney/widgets/settings_tile.dart';
 import 'package:splitmoney/data/setting_data.dart';
 
 //Import data
@@ -19,20 +19,14 @@ class SettingsPageDisplayItem extends StatelessWidget {
           height: 1,
           color: Colors.grey[400],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         const SettingsPageProfileDisplay(),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Container(
           height: 1,
           color: Colors.grey[400],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Expanded(
           child: ListView.builder(
               itemCount: settingslist.length,

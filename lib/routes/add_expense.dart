@@ -1,12 +1,13 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 //Import Widgets
-import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/alert_dialog_box.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/mini_container.dart';
+import 'package:splitmoney/widgets/text_box.dart';
 import 'package:splitmoney/data/friend_data.dart';
 
 //Import models
@@ -66,37 +67,19 @@ class _AddExpenseState extends State<AddExpense> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          "Add an expense",
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          title: "Add an expense",
+          leading: IconButtonSample(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icons.close),
+          actions: [
+            IconButtonSample(onPressed: tapped, icon: Icons.check),
+          ],
         ),
-        leading: IconButton(
-            splashRadius: 20,
-            onPressed: (() {
-              Navigator.pop(context);
-            }),
-            icon: const Icon(
-              Icons.close,
-            )),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-                splashRadius: 20,
-                onPressed: tapped,
-                // context.read<ActivityListProvider>().addToActiviityList(
-                //       ActivityList(
-                //         description: description.text,
-                //         netAmount: int.parse(amount.text),
-                //       ),
-                //     );
-
-                icon: const Icon(Icons.check)),
-          )
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey[700],
       ),
       body: Column(
         children: [
@@ -111,16 +94,8 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Icons.list)),
-                const SizedBox(
-                  width: 10,
-                ),
+                MiniContainer(child: const Icon(Icons.list)),
+                const SizedBox(width: 10),
                 Expanded(
                   child: TextBox(
                     controller: description,
@@ -139,23 +114,15 @@ class _AddExpenseState extends State<AddExpense> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Icons.currency_rupee_rounded)),
-                const SizedBox(
-                  width: 10,
+                MiniContainer(
+                  child: const Icon(Icons.currency_pound_rounded),
                 ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: TextBox(
                     controller: amount,
@@ -208,9 +175,7 @@ class _AddExpenseState extends State<AddExpense> {
               // const SizedBox(
               //   width: 20,
               // ),
-              const SizedBox(
-                width: 20,
-              ),
+              const SizedBox(width: 20),
               Row(
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

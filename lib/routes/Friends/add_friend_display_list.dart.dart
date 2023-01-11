@@ -13,8 +13,13 @@ import 'package:splitmoney/routes/Friends/add_contact.dart';
 //Import data
 import 'package:splitmoney/data/data.dart';
 
+//Import Utils
+import 'package:splitmoney/utils/mini_heading_text.dart';
+import 'package:splitmoney/utils/icon_button_sample.dart';
+
 //Import Widgets
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/text_box.dart';
+
 
 import 'package:uuid/uuid.dart';
 
@@ -73,16 +78,12 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             children: [
-              IconButton(
-                  color: Colors.grey[600],
-                  splashRadius: 20,
+              IconButtonSample(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: const Icon(Icons.arrow_back_rounded)),
-              const SizedBox(
-                width: 15,
-              ),
+                  icon: Icons.arrow_back_rounded),
+              const SizedBox(width: 15),
               Expanded(
                 child: TextBox(
                   onchangedFunc: (value) {
@@ -136,26 +137,9 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
             ]),
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            children: [
-              Text(
-                "From your contacts",
-                style: TextStyle(
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.w700,
-                    fontSize: 11),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
+        const SizedBox(height: 20),
+        const MiniHeadingText(text: "From your contacts"),
+        const SizedBox(height: 15),
         Expanded(
           child: isLoading
               ? const Center(child: CircularProgressIndicator())

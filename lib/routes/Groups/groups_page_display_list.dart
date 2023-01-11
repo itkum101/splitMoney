@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 //Import Provider
 import 'package:splitmoney/provider/group_name_provider.dart';
 //Import Widgets
-import '../../Widgets/group_tile.dart';
+import '../../widgets/group_tile.dart';
+import 'package:splitmoney/widgets/overall_expense_info_row.dart';
 
 class GroupsPageDisplayList extends StatefulWidget {
   const GroupsPageDisplayList({super.key});
@@ -22,40 +24,8 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
           height: 1,
           color: Colors.grey[400],
         ),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  const Text(
-                    "Overall, You are owned",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                  ),
-                  Text(
-                    " Rs.316.24",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                        color: Colors.green[300]),
-                  ),
-                ],
-              ),
-              IconButton(
-                  splashRadius: 20,
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.dashboard_customize_rounded,
-                    size: 27,
-                    color: Colors.grey[900],
-                  )),
-            ],
-          ),
-        ),
+        const SizedBox(height: 10),
+        const OverallExpenseInfoRow(),
         // Text("Add groups first:"),
         Expanded(child:
             Consumer<GroupNameProvider>(builder: ((context, value, child) {
