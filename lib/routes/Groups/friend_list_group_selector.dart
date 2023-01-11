@@ -1,40 +1,117 @@
 import 'package:flutter/material.dart';
 import 'package:splitmoney/data/friend_data.dart';
+import 'package:splitmoney/models/friend_model.dart';
 
-class FriendListGroupSelector extends StatelessWidget {
-  static const routeName = '/friend_list_group_selector';
-  const FriendListGroupSelector({super.key});
+class FriendListGroupSelector extends StatefulWidget {
+  static const routeName = '/group_list_selector';
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<FriendListGroupSelector> {
+  List<FriendList> contacts = friends;
+  List<FriendList> selectedContacts = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text(
-            "Select who pays ",
-            style: TextStyle(fontSize: 15),
+      appBar: AppBar(
+        title: Text("Choose People"),
+        centerTitle: true,
+        backgroundColor: Colors.green[700],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () => {
+          // print(selectedContacts),
+          Navigator.pop(context, selectedContacts),
+        },
+        child: Icon(Icons.verified),
+      ),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 200,
+                  child: ListView.builder(
+                      itemCount: contacts.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        // return item
+                        return ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.green[700],
+                            child: Icon(
+                              Icons.person_outline_outlined,
+                              color: Colors.white,
+                            ),
+                          ),
+                          title: Text(
+                            contacts[index].friendName,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          subtitle: Text(contacts[index].friendName),
+                          trailing: contacts[index].isSelected!
+                              ? Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green[700],
+                                )
+                              : Icon(
+                                  Icons.check_circle_outline,
+                                  color: Colors.grey,
+                                ),
+                          onTap: () {
+                            setState(() {
+                              contacts[index].isSelected =
+                                  !contacts[index].isSelected;
+                              if (contacts[index].isSelected == true) {
+                                selectedContacts.add(contacts[index]);
+                              } else if (contacts[index].isSelected == false) {
+                                selectedContacts.removeWhere((element) =>
+                                    element.friendName ==
+                                    contacts[index].friendName);
+                              }
+                            });
+                          },
+                        );
+                      }),
+                ),
+              ),
+              selectedContacts.length > 0
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 10,
+                      ),
+                      child: SizedBox(
+                        width: double.infinity,
+
+                        // child: RaisedButton(
+                        //   color: Colors.green[700],
+                        //   child: Text(
+                        //     "Delete (${selectedContacts.length})",
+                        //     style: TextStyle(
+                        //       color: Colors.white,
+                        //       fontSize: 18,
+                        //     ),
+                        //   ),
+                        //   onPressed: () {
+                        //     print(
+                        //         "Delete List Lenght: ${selectedContacts.length}");
+                        //   },
+                        // ),
+                      ),
+                    )
+                  : Container(),
+            ],
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: friends.length,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    selectedTileColor: Colors.green,
-                    onTap: () {
-                      // Navigator.pop(context, friends[index].id);
-                    },
-                    leading: CircleAvatar(
-                      radius: 22,
-                      child: const Icon(Icons.person),
-                    ),
-                    title: Text(friends[index].friendName),
-                    subtitle: Text(friends[index].friendEmail),
-                  );
-                }),
-          ),
-        ],
+        ),
       ),
     );
   }
+
+  // Widget ContactItem(String name, String phoneNumber, int index) {}
 }

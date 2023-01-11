@@ -7,6 +7,7 @@ class FriendList {
   final Widget? imgChild;
   final String? phoneNumber;
   final String id;
+  bool isSelected;
 
   FriendList({
     required this.friendName,
@@ -15,5 +16,6 @@ class FriendList {
     required this.id,
     this.netAmount = 0,
     this.phoneNumber,
+    this.isSelected = false,
   });
 }

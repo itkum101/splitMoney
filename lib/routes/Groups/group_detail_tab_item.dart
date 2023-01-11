@@ -9,23 +9,19 @@ class GroupDetailTabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      child: ListView.builder(
-          itemCount: groupDetailTabtems.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: ((context, index) {
-            return Row(
-              children: [
-                GroupDetailTabSingleItem(
-                  name: groupDetailTabtems[index].tabTitle,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
-            );
-          })),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Container(
+        height: 40,
+        child: ListView.builder(
+            itemCount: groupDetailTabtems.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: ((context, index) {
+              return GroupDetailTabSingleItem(
+                name: groupDetailTabtems[index].tabTitle,
+              );
+            })),
+      ),
     );
   }
 }

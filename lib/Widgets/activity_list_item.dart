@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ActivityListItem extends StatelessWidget {
   final int time;
@@ -13,32 +11,48 @@ class ActivityListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          time.toString(),
-          style: TextStyle(
-            color: Colors.green,
-            fontSize: 15,
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
+        padding: EdgeInsets.all(12),
+        child: Row(
+          children: [
+            Text(
+              time.toString(),
+              style: const TextStyle(
+                  color: Colors.green,
+                  fontSize: 19,
+                  fontWeight: FontWeight.w500),
+            ),
+            const SizedBox(width: 10),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            const SizedBox(width: 10),
+            Text(
+              activity,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+            const Spacer(),
+            Text(
+              amount.toString(),
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500),
+            ),
+          ],
         ),
-        Spacer(),
-        Text(
-          activity,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-        ),
-        Spacer(),
-        Text(
-          amount.toString(),
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 12,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

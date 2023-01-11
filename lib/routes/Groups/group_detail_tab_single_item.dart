@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class GroupDetailTabSingleItem extends StatelessWidget {
   final String name;
@@ -8,32 +6,37 @@ class GroupDetailTabSingleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color tempColour = Colors.grey;
+    Color tempColour = Colors.white;
+    Color textColour = Colors.grey.shade800;
     if (name == "SETTLE UP") {
-      tempColour = Colors.deepOrangeAccent;
+      tempColour = Colors.green.shade300;
+      textColour = Colors.white;
     }
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        shape: BoxShape.rectangle,
-        // boxShadow: [
-        //   BoxShadow(
-        //       color: Colors.grey.shade600,
-        //       spreadRadius: 1,
-        //       blurRadius: 15,
-        //       offset: const Offset(0, 5))
-        // ],
-
-        color: tempColour,
-      ),
-      child: Text(
-        name,
-        style: TextStyle(
-          letterSpacing: 0.8,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
+    return Padding(
+      padding: const EdgeInsets.only(right: 15),
+      child: ElevatedButton(
+          style: ButtonStyle(
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(width: 1, color: Colors.grey.shade400),
+                ),
+              ),
+              shadowColor: MaterialStateProperty.all<Color>(Colors.black),
+              elevation: MaterialStateProperty.all(3),
+              backgroundColor: MaterialStateProperty.all<Color>(tempColour)),
+          onPressed: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              name,
+              style: TextStyle(
+                color: textColour,
+                letterSpacing: 0.8,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )),
     );
   }
 }

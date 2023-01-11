@@ -1,13 +1,12 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/utils/icon_button_sample.dart';
 
 //Import Widgets
-import 'package:splitmoney/widgets/alert_dialog_box.dart';
-import 'package:splitmoney/widgets/app_bar_sample.dart';
-import 'package:splitmoney/widgets/mini_container.dart';
-import 'package:splitmoney/widgets/text_box.dart';
+import 'package:splitmoney/Widgets/alert_dialog_box.dart';
+import 'package:splitmoney/Widgets/text_box.dart';
 import 'package:splitmoney/data/friend_data.dart';
 
 //Import models
@@ -33,6 +32,7 @@ class _AddExpenseState extends State<AddExpense> {
   final amount = TextEditingController();
   String information = "you";
   FriendList? frienditem;
+  List<FriendList> informationList = [];
 
   void DatafromFriendListSelector() async {
     final data =
@@ -41,6 +41,15 @@ class _AddExpenseState extends State<AddExpense> {
       information = data.toString();
 
       frienditem = friends.firstWhere((element) => element.id == information);
+    });
+  }
+
+  void DatafromGroupFriendListSelector() async {
+    final data1 =
+        await Navigator.pushNamed(context, FriendListGroupSelector.routeName);
+    setState(() {
+      informationList = data1 as List<FriendList>;
+      print(informationList);
     });
   }
 
@@ -67,19 +76,37 @@ class _AddExpenseState extends State<AddExpense> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56),
-        child: AppBarSample(
-          title: "Add an expense",
-          leading: IconButtonSample(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icons.close),
-          actions: [
-            IconButtonSample(onPressed: tapped, icon: Icons.check),
-          ],
+      appBar: AppBar(
+        title: const Text(
+          "Add an expense",
         ),
+        leading: IconButton(
+            splashRadius: 20,
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            icon: const Icon(
+              Icons.close,
+            )),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+                splashRadius: 20,
+                onPressed: tapped,
+                // context.read<ActivityListProvider>().addToActiviityList(
+                //       ActivityList(
+                //         description: description.text,
+                //         netAmount: int.parse(amount.text),
+                //       ),
+                //     );
+
+                icon: const Icon(Icons.check)),
+          )
+        ],
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey[700],
       ),
       body: Column(
         children: [
@@ -94,8 +121,16 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                MiniContainer(child: const Icon(Icons.list)),
-                const SizedBox(width: 10),
+                Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(10)),
+                    child: const Icon(Icons.list)),
+                const SizedBox(
+                  width: 10,
+                ),
                 Expanded(
                   child: TextBox(
                     controller: description,
@@ -114,15 +149,23 @@ class _AddExpenseState extends State<AddExpense> {
               ],
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(
+            height: 25,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                MiniContainer(
-                  child: const Icon(Icons.currency_pound_rounded),
+                Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(10)),
+                    child: const Icon(Icons.currency_rupee_rounded)),
+                const SizedBox(
+                  width: 10,
                 ),
-                const SizedBox(width: 10),
                 Expanded(
                   child: TextBox(
                     controller: amount,
@@ -158,7 +201,16 @@ class _AddExpenseState extends State<AddExpense> {
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(10),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            side: BorderSide(
+                                width: 1, color: Colors.grey.shade400),
+                          ),
+                        ),
+                        shadowColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
+                        elevation: MaterialStateProperty.all(3),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.white)),
                     onPressed: () {
@@ -175,7 +227,9 @@ class _AddExpenseState extends State<AddExpense> {
               // const SizedBox(
               //   width: 20,
               // ),
-              const SizedBox(width: 20),
+              const SizedBox(
+                width: 20,
+              ),
               Row(
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -187,14 +241,20 @@ class _AddExpenseState extends State<AddExpense> {
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(10),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            side: BorderSide(
+                                width: 1, color: Colors.grey.shade400),
+                          ),
+                        ),
+                        shadowColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
+                        elevation: MaterialStateProperty.all(3),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.white)),
                     onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        FriendListGroupSelector.routeName,
-                      );
+                      DatafromGroupFriendListSelector();
                     },
                     child: Text(
                       "equally",
@@ -208,7 +268,22 @@ class _AddExpenseState extends State<AddExpense> {
               ),
               const Spacer(),
             ],
-          )
+          ),
+          informationList.length > 0
+              ? Container(
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: informationList.length,
+                    itemBuilder: ((context, index) {
+                      return ListTile(
+                        title: Text(informationList[index].friendName),
+                        subtitle: Text(informationList[index].friendEmail),
+                      );
+                    }),
+                  ),
+                )
+              : Text("NONE SELECTED"),
         ],
       ),
     );

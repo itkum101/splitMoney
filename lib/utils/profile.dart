@@ -1,51 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
       children: [
-        Stack(
-          children: [
-            Container(
-              height: 150,
-              color: Colors.blueAccent,
-            ),
-            Positioned(
-              left: 10,
-              bottom: 0,
-              child: Container(
-                  decoration: BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-              )),
-              height: 100,
-              width: 100,
-            ),
-          ],
+        Container(
+          height: 150,
+          color: Colors.blue[300],
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            left: 10,
-            top: 20,
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                  splashRadius: 20,
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back_rounded)),
+              IconButton(
+                  splashRadius: 20,
+                  color: Colors.white,
+                  onPressed: () {},
+                  icon: const Icon(Icons.settings_outlined))
+            ],
           ),
-          child: Text(
-            "GOOGLE FRIENDS",
-            style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                letterSpacing: 1.0,
-                wordSpacing: 2.0,
-                fontFamily: 'Roboto'),
-          ),
+        ),
+        Positioned(
+          left: 10,
+          bottom: 10,
+          height: 60,
+          width: 60,
+          child: Container(
+              decoration: BoxDecoration(
+            color: Colors.amber[300],
+            borderRadius: BorderRadius.circular(10),
+          )),
         ),
       ],
     );

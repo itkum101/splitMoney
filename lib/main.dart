@@ -9,7 +9,7 @@ import 'package:splitmoney/routes/Groups/friend_list_group_selector.dart';
 import 'package:splitmoney/routes/Groups/group_detail.dart';
 
 //Import Routes
-import 'package:splitmoney/routes/Main_Screen.dart';
+import 'package:splitmoney/routes/main_screen.dart';
 import 'package:splitmoney/routes/add_expense.dart';
 import 'package:splitmoney/routes/friend_list_selector.dart';
 
@@ -33,8 +33,7 @@ void main() {
         AddExpense.routeName: (ctx) => const AddExpense(),
         GroupDetail.routeName: (ctx) => const GroupDetail(),
         FriendListSelector.routeName: (ctx) => const FriendListSelector(),
-        FriendListGroupSelector.routeName: (ctx) =>
-            const FriendListGroupSelector(),
+        FriendListGroupSelector.routeName: (ctx) => FriendListGroupSelector(),
         // EXAMPLE
         // CartScreen.routeName: (ctx) => CartScreen(),
         // In cartscreen simply do static const routeName= '/product-detail';
