@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //Import Widgets
-import 'package:splitmoney/Widgets/settings_tile.dart';
+import 'package:splitmoney/widgets/settings_tile.dart';
 import 'package:splitmoney/data/setting_data.dart';
 
 //Import data

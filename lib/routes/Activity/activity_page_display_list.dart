@@ -7,7 +7,7 @@ import 'package:splitmoney/provider/activity_list_provider.dart';
 //Import Routes
 
 // Import Widgets
-import 'package:splitmoney/Widgets/activity_tile.dart';
+import 'package:splitmoney/widgets/activity_tile.dart';
 
 class ActivityPageDisplayList extends StatelessWidget {
   const ActivityPageDisplayList({super.key});

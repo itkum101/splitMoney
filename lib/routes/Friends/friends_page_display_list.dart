@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:splitmoney/provider/activity_list_provider.dart';
 import 'package:splitmoney/provider/friend_name_provider.dart';
 
+
 //Import Widgets
-import '../../Widgets/friend_tile.dart';
+import '../../widgets/friend_tile.dart';
+import 'package:splitmoney/widgets/overall_expense_info_row.dart';
 
 class FriendsPageDisplayList extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -32,40 +34,13 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
         const SizedBox(
           height: 10,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  const Text(
-                    "Overall, You are owned",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                  ),
-                  Text(
-                    " Rs.316.24",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                        color: Colors.green[300]),
-                  ),
-                ],
-              ),
-              IconButton(
-                  splashRadius: 20,
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.dashboard_customize_rounded,
-                    size: 27,
-                    color: Colors.grey[900],
-                  )),
-            ],
-          ),
-        ),
+        //row showing overall expense information
+        const OverallExpenseInfoRow(),
         const SizedBox(
           height: 10,
         ),
+
+        //Listview of all added friends 
         Expanded(child:
             Consumer<FriendNameProvider>(builder: ((context, value, child) {
           return ListView.builder(

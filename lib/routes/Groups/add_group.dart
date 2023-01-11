@@ -7,11 +7,18 @@ import 'package:path_provider/path_provider.dart';
 // ignore: depend_on_referenced_packages, library_prefixes
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
-
+import 'package:splitmoney/utils/mini_heading_text.dart';
 //Import Widgets
-import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-import 'package:splitmoney/Widgets/group_type_item.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/info_text_row.dart';
+import 'package:splitmoney/widgets/alert_dialog_box.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/group_type_item.dart';
+import 'package:splitmoney/widgets/mini_container.dart';
+import 'package:splitmoney/widgets/sample_bottomsheet.dart';
+import 'package:splitmoney/widgets/text_box.dart';
+
+//Import utils
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 //Import data
 import 'package:splitmoney/data/grouptype_data.dart';
@@ -34,13 +41,14 @@ class _AddGroupState extends State<AddGroup> {
   late String groupName = _controller.text;
   File? _image;
   String? img;
+
+  //function to receive image
   Future getImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
       if (image == null) {
         return;
       } else {
-        // final imageTemporary = File(image.path);
         final cropimage = await cropImage(image.path);
         final finalImage = await saveFilePermanently(cropimage!);
 
@@ -54,6 +62,7 @@ class _AddGroupState extends State<AddGroup> {
     }
   }
 
+//function to crop image to square shape
   Future<String?> cropImage(imageFile) async {
     CroppedFile? croppedImage = await ImageCropper().cropImage(
         sourcePath: imageFile,
@@ -65,6 +74,7 @@ class _AddGroupState extends State<AddGroup> {
     }
   }
 
+//function to save image permanently
   Future<File> saveFilePermanently(String imagePath) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = Path.basename(imagePath);
@@ -116,60 +126,19 @@ class _AddGroupState extends State<AddGroup> {
     showModalBottomSheet(
         context: context,
         builder: ((context) {
-          return Container(
-            color: Colors.grey[300],
-            height: 101,
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          getImage(ImageSource.camera);
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: Colors.grey[500],
-                                borderRadius: BorderRadius.circular(10)),
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset("lib/assets/camera.png")),
-                      ),
-                      Text(
-                        "Camera",
-                        style: TextStyle(color: Colors.grey[700], fontSize: 18),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          getImage(ImageSource.gallery);
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: Colors.grey[500],
-                                borderRadius: BorderRadius.circular(10)),
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset("lib/assets/picture.png")),
-                      ),
-                      Text(
-                        "Gallery",
-                        style: TextStyle(color: Colors.grey[700], fontSize: 18),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
+          return SampleBottomSheet(
+              onFirstImageTapped: () {
+                getImage(ImageSource.camera);
+                Navigator.pop(context);
+              },
+              onSecondImageTapped: () {
+                getImage(ImageSource.gallery);
+                Navigator.pop(context);
+              },
+              firstImagePath: "lib/assets/camera.png",
+              firstImageText: "Camera",
+              secondImagePath: "lib/assets/picture.png",
+              secondImageText: "Gallery");
         }));
   }
 
@@ -179,37 +148,19 @@ class _AddGroupState extends State<AddGroup> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          "Create a Group",
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          title: "Add Group",
+          leading: IconButtonSample(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icons.close),
+          actions: [
+            IconButtonSample(onPressed: tapped, icon: Icons.check),
+          ],
         ),
-        leading: IconButton(
-            splashRadius: 20,
-            onPressed: (() {
-              Navigator.pop(context);
-            }),
-            icon: const Icon(
-              Icons.close,
-            )),
-        actions: [
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: GestureDetector(
-              onTap: tapped,
-              child: const Text(
-                "Save",
-                style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ))
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey[700],
       ),
       body: Column(
         children: [
@@ -224,12 +175,7 @@ class _AddGroupState extends State<AddGroup> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                Container(
-                  height: 54,
-                  width: 54,
-                  decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(10)),
+                MiniContainer(
                   child: _image != null
                       ? ClipRRect(
                           borderRadius: BorderRadius.circular(10),
@@ -271,20 +217,7 @@ class _AddGroupState extends State<AddGroup> {
           const SizedBox(
             height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Row(
-              children: [
-                Text(
-                  "Type",
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const MiniHeadingText(text: "Type"),
           const SizedBox(
             height: 10,
           ),
@@ -299,9 +232,7 @@ class _AddGroupState extends State<AddGroup> {
                     return GroupTypeItem(
                       icon: grouptype[index].icon,
                       type: grouptype[index].type,
-                      onTap: () {
-                        print("Type Selected");
-                      },
+                      onTap: () {},
                     );
                   })),
             ),
@@ -309,47 +240,14 @@ class _AddGroupState extends State<AddGroup> {
           const SizedBox(
             height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Row(
-              children: [
-                Text(
-                  "Group Members",
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const MiniHeadingText(text: "Group Members"),
           const SizedBox(
             height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.person_add,
-                  color: Colors.grey[700],
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Text(
-                    "You will be able to add your friends after you save this new group.",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          InfoTextRow(
+              icon: Icons.person_add,
+              infoText:
+                  "You will be able to add your friends after you save this new group.")
         ],
       ),
     );
