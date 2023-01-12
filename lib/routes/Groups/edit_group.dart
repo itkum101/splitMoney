@@ -29,14 +29,21 @@ import 'package:splitmoney/models/group_model.dart';
 //Import Provider
 import 'package:splitmoney/provider/group_name_provider.dart';
 
-class AddGroup extends StatefulWidget {
-  const AddGroup({super.key});
+class EditGroup extends StatefulWidget {
+  final int id;
+  final String defaultgroupName;
+  Widget? imgChild;
+  EditGroup(
+      {super.key,
+      this.imgChild,
+      required this.defaultgroupName,
+      required this.id});
 
   @override
-  State<AddGroup> createState() => _AddGroupState();
+  State<EditGroup> createState() => _EditGroupState();
 }
 
-class _AddGroupState extends State<AddGroup> {
+class _EditGroupState extends State<EditGroup> {
   final _controller = TextEditingController();
   late String groupName = _controller.text;
   File? _image;
@@ -79,7 +86,7 @@ class _AddGroupState extends State<AddGroup> {
     return File(imagePath).copy(image.path);
   }
 
-  void tapped() {
+  void tapped(int id) {
     if (_controller.text.isEmpty) {
       showDialog(
           context: context,
@@ -87,21 +94,23 @@ class _AddGroupState extends State<AddGroup> {
             return AlertDialogBox(alertText: "Group name is required!");
           });
     } else {
-      Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(
-        Group(
-          groupName: groupName,
-          grpImgChild: img == null
-              ? Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Image.asset("lib/assets/shareholders.png",
-                      height: 65, width: 65),
-                )
-              : ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.file(File(img!), height: 75, width: 75),
-                ),
-        ),
-      );
+      Provider.of<GroupNameProvider>(context, listen: false).editGroup(
+          id,
+          _controller.text,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+
+            //first checking if final image path is null, if so returning imgChild which is passed on form prev pages
+            child: img == null
+                ? widget.imgChild
+                //else replacing it with image which is received after cropping and saving file permanently
+                : ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(File(img!), height: 75, width: 75),
+                  ),
+          ));
+      Navigator.pop(context);
+      Navigator.pop(context);
       Navigator.pop(context);
     }
   }
@@ -141,14 +150,15 @@ class _AddGroupState extends State<AddGroup> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
         child: AppBarSample(
-          title: "Add Group",
+          title: "Edit Group",
           leading: IconButtonSample(
               onPressed: () {
                 Navigator.pop(context);
               },
               icon: Icons.close),
           actions: [
-            IconButtonSample(onPressed: tapped, icon: Icons.check),
+            IconButtonSample(
+                onPressed: () => tapped(widget.id), icon: Icons.check),
             const SizedBox(width: 7)
           ],
         ),
@@ -164,25 +174,21 @@ class _AddGroupState extends State<AddGroup> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                MiniContainer(
-                  child: _image != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.file(
-                            _image!,
-                            width: 52,
-                          ),
-                        )
-                      : GestureDetector(
-                          onTap: showSheet,
-                          child: Padding(
-                            padding: const EdgeInsets.all(9),
-                            child: Image.asset(
-                              "lib/assets/add_image.png",
-                              width: 35,
+                GestureDetector(
+                  onTap: showSheet,
+                  child: MiniContainer(
+                    // child: widget.imgChild,
+                    child: _image != null
+                        //if selected image is not null then displaying selected image after cropping
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.file(
+                              _image!,
+                              width: 52,
                             ),
-                          ),
-                        ),
+                          )
+                        : widget.imgChild,
+                  ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
@@ -193,10 +199,10 @@ class _AddGroupState extends State<AddGroup> {
                       borderRadius: BorderRadius.circular(15)),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15)),
-                  labelText: "Group Name",
+                  labelText: "New Group Name",
                   cursorColor: Colors.grey[400],
                   cursorHeight: 20,
-                  controller: _controller,
+                  controller: _controller..text = widget.defaultgroupName,
                 ))
               ],
             ),
@@ -224,6 +230,7 @@ class _AddGroupState extends State<AddGroup> {
           const MiniHeadingText(text: "Group Members"),
           const SizedBox(height: 15),
           InfoTextRow(
+              icon: Icons.info,
               infoText:
                   "You will be able to add your friends after you save this new group.")
         ],

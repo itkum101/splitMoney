@@ -20,7 +20,6 @@ import 'package:splitmoney/utils/icon_button_sample.dart';
 //Import Widgets
 import 'package:splitmoney/widgets/text_box.dart';
 
-
 import 'package:uuid/uuid.dart';
 
 class AddFriendDisplayList extends StatefulWidget {
@@ -153,7 +152,7 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
                         onTap: (() {
                           // context
                           //     .read<FriendNameProvider>()
-                          //     .addToFriendList(FriendList(
+                          //     .addToFriendList(Friend(
                           //       friendEmail:
                           // demoList[index].emails!.isNotEmpty
                           //     ? demoList[index].emails![0].value!
@@ -170,7 +169,7 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
                           //     ));
                           Provider.of<FriendNameProvider>(context,
                                   listen: false)
-                              .addToFriendList(FriendList(
+                              .addToFriendList(Friend(
                                   id: uuid.v1(),
                                   friendName: demoList[index].displayName!,
                                   friendEmail:

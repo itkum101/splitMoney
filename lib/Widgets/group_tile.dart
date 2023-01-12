@@ -1,20 +1,19 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/routes/Groups/group_detail.dart';
 
 class GroupTile extends StatelessWidget {
-  int index;
-  final String name;
-  final Widget? imgChild;
- GroupTile({super.key, required this.name, required this.imgChild, required this.index});
+  Group group;
+  GroupTile({super.key, required this.group});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: ((context) {
-          return GroupDetail(groupName: name, groupImage: imgChild, index: index,);
+          return GroupDetail(group: group);
         })));
       },
       child: Padding(
@@ -29,7 +28,7 @@ class GroupTile extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.grey[400]),
-                child: imgChild,
+                child: group.grpImgChild,
               ),
               const SizedBox(
                 width: 23,
@@ -39,7 +38,7 @@ class GroupTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name,
+                      group.groupName,
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     ),

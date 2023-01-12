@@ -4,15 +4,15 @@ import '../data/friend_data.dart';
 import '../models/friend_model.dart';
 
 class FriendNameProvider with ChangeNotifier {
-  final List<FriendList> _friendList = friends;
-  List<FriendList> get friendList => _friendList;
+  final List<Friend> _friendList = friends;
+  List<Friend> get friendList => _friendList;
 
-  void addToFriendList(FriendList friend) {
+  void addToFriendList(Friend friend) {
     friendList.add(friend);
     notifyListeners();
   }
 
-  void removeFromList(FriendList friend) {
+  void removeFromList(Friend friend) {
     friendList.remove(friend);
     notifyListeners();
   }

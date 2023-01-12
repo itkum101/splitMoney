@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/data/group_data.dart';
-import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
+import 'package:splitmoney/routes/Groups/edit_group.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
 import 'package:splitmoney/utils/sample_elevated_button.dart';
 import 'package:splitmoney/widgets/alert_dialog_box.dart';
@@ -10,11 +9,11 @@ import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/mini_container.dart';
 
 class GroupSettingsPage extends StatefulWidget {
-  int index;
+  int id;
   final String groupName;
   Widget? imgChild;
   GroupSettingsPage(
-      {super.key, required this.groupName, this.imgChild, required this.index});
+      {super.key, required this.groupName, this.imgChild, required this.id});
 
   @override
   State<GroupSettingsPage> createState() => _GroupSettingsPageState();
@@ -47,7 +46,18 @@ class _GroupSettingsPageState extends State<GroupSettingsPage> {
               ),
               title: Text(widget.groupName),
               subtitle: const Text("Type"),
-              trailing: IconButtonSample(onPressed: () {}, icon: Icons.edit),
+              trailing: IconButtonSample(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: ((context) {
+                      return EditGroup(
+                        id: widget.id,
+                        imgChild: widget.imgChild,
+                        defaultgroupName: widget.groupName,
+                      );
+                    })));
+                  },
+                  icon: Icons.edit),
             ),
             const SizedBox(height: 7),
             Container(height: 1, color: Colors.grey[400]),
@@ -74,7 +84,7 @@ class _GroupSettingsPageState extends State<GroupSettingsPage> {
                                   onPressed: () {
                                     Provider.of<GroupNameProvider>(context,
                                             listen: false)
-                                        .removeFromList(widget.index);
+                                        .removeGroup(widget.id);
 
                                     Navigator.pop(context);
                                     Navigator.pop(context);

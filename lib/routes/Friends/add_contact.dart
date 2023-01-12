@@ -35,7 +35,7 @@ class _AddContactState extends State<AddContact> {
           }));
     } else {
       Provider.of<FriendNameProvider>(context, listen: false).addToFriendList(
-          FriendList(
+          Friend(
               id: uuid.v1(),
               friendName: nameController.text,
               friendEmail: "random@gmail.com",

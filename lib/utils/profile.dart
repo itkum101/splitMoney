@@ -42,9 +42,9 @@ class Profile extends StatelessWidget {
           width: 60,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.green[300],
-              borderRadius: BorderRadius.circular(10),
-            ),
+                color: Colors.green[300],
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.white70, width: 2)),
             child: boxImageChild,
           ),
         ),

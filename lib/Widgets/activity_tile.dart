@@ -43,7 +43,7 @@ class ActivityTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${"Mukti S."} added ${amount} for  ${description}",
+                    "${"Mukti S."} added $amount for  $description",
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: color,
@@ -54,6 +54,7 @@ class ActivityTile extends StatelessWidget {
                   ),
                   Text(
                     "You owe back Rs ${amount / person}",
+                    // ignore: prefer_const_constructors
                     style: TextStyle(color: Colors.red, fontSize: 15),
                   ),
                   const SizedBox(

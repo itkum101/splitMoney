@@ -36,10 +36,8 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
               itemCount: value.friendList.length,
               itemBuilder: ((context, index) {
                 return FriendTile(
-                  friendName: value.friendList[index].friendName,
-                  friendEmail: value.friendList[index].friendEmail,
-                  netAmount: amounts / (value.friendList.length),
-                  imgChild: value.friendList[index].imgChild,
+                 friend: value.friendList[index],
+                 netmount: amounts/ value.friendList.length,
                   onTap: () {},
                 );
               }));

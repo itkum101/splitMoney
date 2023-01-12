@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FriendList {
+class Friend {
   final String friendName;
   final String friendEmail;
   final int netAmount;
@@ -9,7 +9,7 @@ class FriendList {
   final String id;
   bool isSelected;
 
-  FriendList({
+  Friend({
     required this.friendName,
     required this.friendEmail,
     required this.imgChild,

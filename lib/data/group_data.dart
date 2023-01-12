@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../models/group_model.dart';
 
-List<GroupList> groups = [
-  GroupList(
-      groupName: "Group 1",
+List<Group> groups = [
+  Group(
+      id: 1,
+      groupName: "Group A",
       grpImgChild: Padding(
         padding: const EdgeInsets.all(5),
         child: Image.asset(

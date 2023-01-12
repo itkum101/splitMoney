@@ -44,7 +44,6 @@ class ActivityListItem extends StatelessWidget {
                 ),
               ),
             ),
-            const Spacer(),
             Text(
               amount.toString(),
               style: const TextStyle(

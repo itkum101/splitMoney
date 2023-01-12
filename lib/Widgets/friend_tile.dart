@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:splitmoney/models/friend_model.dart';
 
 class FriendTile extends StatelessWidget {
-  final String friendName;
-  final String friendEmail;
-  final double netAmount;
-  final Widget? imgChild;
+  Friend friend;
+  final double netmount;
   void Function()? onTap;
 
   FriendTile({
     super.key,
-    required this.friendName,
-    required this.friendEmail,
+    required this.friend,
+     this.netmount=0,
     required this.onTap,
-    required this.imgChild,
-    this.netAmount = 0,
   });
 
   @override
@@ -22,16 +19,16 @@ class FriendTile extends StatelessWidget {
       onTap: onTap,
       leading: CircleAvatar(
         radius: 22,
-        child: imgChild,
+        child: friend.imgChild,
       ),
       title: Text(
-        friendName,
+        friend.friendName,
         style: TextStyle(
             fontWeight: FontWeight.w600, fontSize: 15, color: Colors.grey[800]),
       ),
-      subtitle: Text(friendEmail),
+      subtitle: Text(friend.friendEmail),
       trailing: Text(
-        netAmount.toString(),
+       netmount.toString(),
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15,

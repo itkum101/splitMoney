@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-class GroupList {
+class Group {
   String groupName;
   Widget grpImgChild;
-  GroupList({
-    required this.groupName,
-    required this.grpImgChild,
-  });
+  int? id;
+  Group({required this.groupName, required this.grpImgChild, this.id});
 }

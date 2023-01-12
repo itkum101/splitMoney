@@ -9,8 +9,8 @@ class FriendListGroupSelector extends StatefulWidget {
 }
 
 class _HomePageState extends State<FriendListGroupSelector> {
-  List<FriendList> contacts = friends;
-  List<FriendList> selectedContacts = [];
+  List<Friend> contacts = friends;
+  List<Friend> selectedContacts = [];
 
   @override
   Widget build(BuildContext context) {

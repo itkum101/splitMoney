@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/routes/Groups/group_activities.dart';
 import 'package:splitmoney/routes/Groups/group_detail_tab_item.dart';
 import 'package:splitmoney/routes/Groups/group_settings_page.dart';
 import 'package:splitmoney/utils/mini_heading_text.dart';
 import 'package:splitmoney/utils/profile.dart';
 
-
 // ignore: must_be_immutable
 class GroupDetail extends StatefulWidget {
-  int index;
-  final String groupName;
-  Widget? groupImage;
-  GroupDetail(
-      {super.key,
-      required this.groupName,
-      required this.groupImage,
-      required this.index});
+  Group group;
+  GroupDetail({super.key, required this.group});
 
   @override
   State<GroupDetail> createState() => _GroupDetailState();
@@ -35,19 +29,19 @@ class _GroupDetailState extends State<GroupDetail> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: ((context) {
                     return GroupSettingsPage(
-                      index: widget.index,
-                      groupName: widget.groupName,
-                      imgChild: widget.groupImage,
+                      id: widget.group.id!,
+                      groupName: widget.group.groupName,
+                      imgChild: widget.group.grpImgChild,
                     );
                   })));
                 },
-                boxImageChild: widget.groupImage,
+                boxImageChild: widget.group.grpImgChild,
               ),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
-                  widget.groupName,
+                  widget.group.groupName,
                   style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18,

@@ -29,8 +29,8 @@ class _AddExpenseState extends State<AddExpense> {
 
   final amount = TextEditingController();
   String information = "you";
-  FriendList? frienditem;
-  List<FriendList> informationList = [];
+  Friend? frienditem;
+  List<Friend> informationList = [];
 
   void DatafromFriendListSelector() async {
     final data =
@@ -46,7 +46,7 @@ class _AddExpenseState extends State<AddExpense> {
     final data1 =
         await Navigator.pushNamed(context, FriendListGroupSelector.routeName);
     setState(() {
-      informationList = data1 as List<FriendList>;
+      informationList = data1 as List<Friend>;
       print(informationList);
     });
   }
@@ -61,7 +61,7 @@ class _AddExpenseState extends State<AddExpense> {
           }));
     } else {
       Provider.of<ActivityListProvider>(context, listen: false)
-          .addToActiviityList(ActivityList(
+          .addToActiviityList(Activity(
               netAmount: int.parse(amount.text),
               description: description.text));
       Navigator.pop(context);
@@ -93,7 +93,7 @@ class _AddExpenseState extends State<AddExpense> {
                 splashRadius: 20,
                 onPressed: tapped,
                 // context.read<ActivityListProvider>().addToActiviityList(
-                //       ActivityList(
+                //       Activity(
                 //         description: description.text,
                 //         netAmount: int.parse(amount.text),
                 //       ),

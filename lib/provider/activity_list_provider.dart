@@ -4,16 +4,16 @@ import '../data/activity_data.dart';
 import '../models/activity_model.dart';
 
 class ActivityListProvider with ChangeNotifier {
-  final List<ActivityList> _activities = activitiesDone;
+  final List<Activity> _activities = activitiesDone;
 
-  List<ActivityList> get activities => _activities;
+  List<Activity> get activities => _activities;
 
-  void addToActiviityList(ActivityList activity) {
+  void addToActiviityList(Activity activity) {
     activities.add(activity);
     notifyListeners();
   }
 
-  void removeToActivityList(ActivityList activity) {
+  void removeToActivityList(Activity activity) {
     activities.remove(activity);
     notifyListeners();
   }
