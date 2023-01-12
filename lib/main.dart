@@ -31,7 +31,7 @@ void main() {
       routes: {
         '/': (ctx) => const MyApp(),
         AddExpense.routeName: (ctx) => const AddExpense(),
-        GroupDetail.routeName: (ctx) => const GroupDetail(),
+        
         FriendListSelector.routeName: (ctx) => const FriendListSelector(),
         FriendListGroupSelector.routeName: (ctx) => FriendListGroupSelector(),
         // EXAMPLE

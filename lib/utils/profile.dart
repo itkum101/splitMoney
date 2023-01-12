@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Profile extends StatelessWidget {
   void Function()? onPressed;
-  Profile({super.key, this.onPressed});
+
+  Widget? boxImageChild;
+  Profile({super.key, this.onPressed, this.boxImageChild});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
+          color: Colors.green[200],
           height: 150,
-          color: Colors.blue[300],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -38,10 +41,12 @@ class Profile extends StatelessWidget {
           height: 60,
           width: 60,
           child: Container(
-              decoration: BoxDecoration(
-            color: Colors.amber[300],
-            borderRadius: BorderRadius.circular(10),
-          )),
+            decoration: BoxDecoration(
+              color: Colors.green[300],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: boxImageChild,
+          ),
         ),
       ],
     );

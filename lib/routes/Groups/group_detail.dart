@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:splitmoney/routes/Groups/group_activities.dart';
 import 'package:splitmoney/routes/Groups/group_detail_tab_item.dart';
 import 'package:splitmoney/routes/Groups/group_settings_page.dart';
-import 'package:splitmoney/utils/icon_button_sample.dart';
 import 'package:splitmoney/utils/mini_heading_text.dart';
 import 'package:splitmoney/utils/profile.dart';
-import 'package:splitmoney/widgets/app_bar_sample.dart';
 
+
+// ignore: must_be_immutable
 class GroupDetail extends StatefulWidget {
-  static const routeName = '/group-detail';
-  const GroupDetail({super.key});
+  int index;
+  final String groupName;
+  Widget? groupImage;
+  GroupDetail(
+      {super.key,
+      required this.groupName,
+      required this.groupImage,
+      required this.index});
 
   @override
   State<GroupDetail> createState() => _GroupDetailState();
@@ -24,12 +30,33 @@ class _GroupDetailState extends State<GroupDetail> {
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Profile(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                  return const GroupSettingsPage();
-                })));
-              }),
+              Profile(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return GroupSettingsPage(
+                      index: widget.index,
+                      groupName: widget.groupName,
+                      imgChild: widget.groupImage,
+                    );
+                  })));
+                },
+                boxImageChild: widget.groupImage,
+              ),
               const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  widget.groupName,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
               const Padding(
                 padding: EdgeInsets.only(left: 10),
                 child: Text(

@@ -12,8 +12,8 @@ class GroupNameProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeFromList(GroupList group) {
-    _groupList.remove(group);
+  void removeFromList(int index) {
+    _groupList.remove(_groupList[index]);
     notifyListeners();
   }
 }

@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:splitmoney/data/group_data.dart';
+import 'package:splitmoney/models/group_model.dart';
+import 'package:splitmoney/provider/group_name_provider.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
 import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/mini_container.dart';
 
-class GroupSettingsPage extends StatelessWidget {
-  const GroupSettingsPage({super.key});
+class GroupSettingsPage extends StatefulWidget {
+  int index;
+  final String groupName;
+  Widget? imgChild;
+  GroupSettingsPage(
+      {super.key, required this.groupName, this.imgChild, required this.index});
 
+  @override
+  State<GroupSettingsPage> createState() => _GroupSettingsPageState();
+}
+
+class _GroupSettingsPageState extends State<GroupSettingsPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,12 +41,9 @@ class GroupSettingsPage extends StatelessWidget {
             const SizedBox(height: 7),
             ListTile(
               leading: MiniContainer(
-                child: IconButtonSample(
-                  icon: Icons.group,
-                  onPressed: () {},
-                ),
+                child: widget.imgChild,
               ),
-              title: const Text("Group Name"),
+              title: Text(widget.groupName),
               subtitle: const Text("Type"),
               trailing: IconButtonSample(onPressed: () {}, icon: Icons.edit),
             ),
@@ -53,7 +61,13 @@ class GroupSettingsPage extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Provider.of<GroupNameProvider>(context, listen: false)
+                    .removeFromList(widget.index);
+
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
               iconColor: Colors.red[300],
               textColor: Colors.red[300],
               leading: const Icon(Icons.delete_outlined),

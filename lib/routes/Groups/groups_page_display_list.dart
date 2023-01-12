@@ -26,6 +26,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
         ),
         const SizedBox(height: 10),
         const OverallExpenseInfoRow(),
+        const SizedBox(height: 10),
         // Text("Add groups first:"),
         Expanded(child:
             Consumer<GroupNameProvider>(builder: ((context, value, child) {
@@ -33,6 +34,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
               itemCount: value.groupList.length,
               itemBuilder: ((context, index) {
                 return GroupTile(
+                  index: index,
                   name: value.groupList[index].groupName,
                   imgChild: value.groupList[index].grpImgChild,
                 );

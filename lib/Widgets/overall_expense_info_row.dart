@@ -27,8 +27,6 @@ class OverallExpenseInfoRow extends StatelessWidget {
               ),
             ],
           ),
-          IconButtonSample(
-              onPressed: () {}, icon: Icons.dashboard_customize_rounded)
         ],
       ),
     );
