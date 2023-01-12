@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class SampleElevatedButton extends StatelessWidget {
   final String buttonText;
-  const SampleElevatedButton({super.key, required this.buttonText});
+  void Function()? onPressed;
+   SampleElevatedButton({super.key, required this.buttonText, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class SampleElevatedButton extends StatelessWidget {
             shadowColor: MaterialStateProperty.all<Color>(Colors.black),
             elevation: MaterialStateProperty.all(3),
             backgroundColor: MaterialStateProperty.all<Color>(Colors.white)),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Text(

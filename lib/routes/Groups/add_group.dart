@@ -84,7 +84,7 @@ class _AddGroupState extends State<AddGroup> {
       showDialog(
           context: context,
           builder: (context) {
-            return const AlertDialogBox(alertText: "Group name is required!");
+            return  AlertDialogBox(alertText: "Group name is required!");
           });
     } else {
       Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(

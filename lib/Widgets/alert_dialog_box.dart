@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AlertDialogBox extends StatelessWidget {
+  List<Widget>? actions;
   final String alertText;
-  const AlertDialogBox({super.key, required this.alertText});
+   AlertDialogBox({super.key, required this.alertText, this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class AlertDialogBox extends StatelessWidget {
         style: TextStyle(
             color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w400),
       ),
+      actions: actions,
     );
   }
 }

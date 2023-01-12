@@ -30,7 +30,7 @@ class _AddContactState extends State<AddContact> {
       showDialog(
           context: context,
           builder: ((context) {
-            return const AlertDialogBox(
+            return AlertDialogBox(
                 alertText: "Name or Phone.no cannot be empty!");
           }));
     } else {

@@ -4,6 +4,8 @@ import 'package:splitmoney/data/group_data.dart';
 import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
+import 'package:splitmoney/utils/sample_elevated_button.dart';
+import 'package:splitmoney/widgets/alert_dialog_box.dart';
 import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/mini_container.dart';
 
@@ -62,11 +64,28 @@ class _GroupSettingsPageState extends State<GroupSettingsPage> {
             const SizedBox(height: 5),
             ListTile(
               onTap: () {
-                Provider.of<GroupNameProvider>(context, listen: false)
-                    .removeFromList(widget.index);
+                showDialog(
+                    context: context,
+                    builder: ((context) {
+                      return AlertDialogBox(
+                          actions: [
+                            Center(
+                              child: SampleElevatedButton(
+                                  onPressed: () {
+                                    Provider.of<GroupNameProvider>(context,
+                                            listen: false)
+                                        .removeFromList(widget.index);
 
-                Navigator.pop(context);
-                Navigator.pop(context);
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  buttonText: "yes"),
+                            ),
+                          ],
+                          alertText:
+                              "Do you want really want to delete group : ${widget.groupName}");
+                    }));
               },
               iconColor: Colors.red[300],
               textColor: Colors.red[300],

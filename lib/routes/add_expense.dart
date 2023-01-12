@@ -56,7 +56,7 @@ class _AddExpenseState extends State<AddExpense> {
       showDialog(
           context: context,
           builder: ((context) {
-            return const AlertDialogBox(
+            return AlertDialogBox(
                 alertText: "Descriptin or amount cannot be empty!");
           }));
     } else {
