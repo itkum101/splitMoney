@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  void Function()? onPressed;
+  Profile({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class Profile extends StatelessWidget {
               IconButton(
                   splashRadius: 20,
                   color: Colors.white,
-                  onPressed: () {},
+                  onPressed: onPressed,
                   icon: const Icon(Icons.settings_outlined))
             ],
           ),

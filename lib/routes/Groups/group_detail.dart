@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splitmoney/routes/Groups/group_activities.dart';
 import 'package:splitmoney/routes/Groups/group_detail_tab_item.dart';
+import 'package:splitmoney/routes/Groups/group_settings_page.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
 import 'package:splitmoney/utils/mini_heading_text.dart';
 import 'package:splitmoney/utils/profile.dart';
@@ -23,7 +24,11 @@ class _GroupDetailState extends State<GroupDetail> {
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Profile(),
+              Profile(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                  return const GroupSettingsPage();
+                })));
+              }),
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.only(left: 10),
@@ -62,7 +67,7 @@ class _GroupDetailState extends State<GroupDetail> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
               const GroupActivities()
             ],
