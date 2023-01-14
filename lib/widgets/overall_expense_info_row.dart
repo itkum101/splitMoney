@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
 //Import utils
 import 'package:splitmoney/utils/icon_button_sample.dart';
 
 class OverallExpenseInfoRow extends StatelessWidget {
-  const OverallExpenseInfoRow({super.key});
+  final double name;
+  const OverallExpenseInfoRow({super.key, this.name = 0.0});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +17,17 @@ class OverallExpenseInfoRow extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text(
-                "Overall, You are owned",
+              Text(
+                "Overall, You ${(name > 0) ? " are owed " : " owe "}",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
               ),
               Text(
-                " Rs.316.24",
+                name.toString(),
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                    color: Colors.green[300]),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                  color: (name > 0) ? Colors.green[300] : Colors.red[300],
+                ),
               ),
             ],
           ),

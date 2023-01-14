@@ -22,13 +22,21 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     // var myActivityList = context.watch<ActivityListProvider>().activities;
-    var amounts = Provider.of<ActivityListProvider>(context, listen: false)
-        .returnTotalAmount();
+    // var amounts = Provider.of<ActivityListProvider>(context, listen: false)
+    //     .returnTotalAmount();
+// var amountskk = context.watch<
+    context.read<FriendNameProvider>().amountToPayOrReceive();
+    var name = context.watch<FriendNameProvider>().amounts;
+
+    print("INSIDE");
+    print(name);
     return Column(
       children: [
         Container(height: 1, color: Colors.grey[400]),
         const SizedBox(height: 10),
-        const OverallExpenseInfoRow(),
+        OverallExpenseInfoRow(
+          name: name,
+        ),
         const SizedBox(height: 10),
         Expanded(child:
             Consumer<FriendNameProvider>(builder: ((context, value, child) {
@@ -36,8 +44,8 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
               itemCount: value.friendList.length,
               itemBuilder: ((context, index) {
                 return FriendTile(
-                 friend: value.friendList[index],
-                 netmount: amounts/ value.friendList.length,
+                  friend: value.friendList[index],
+                  netmount: 0,
                   onTap: () {},
                 );
               }));

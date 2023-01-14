@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:splitmoney/data/friend_data.dart';
 import 'package:splitmoney/models/friend_model.dart';
+import 'package:provider/provider.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
+import 'dart:convert';
 
 class FriendListGroupSelector extends StatefulWidget {
   static const routeName = '/group_list_selector';
@@ -9,11 +13,17 @@ class FriendListGroupSelector extends StatefulWidget {
 }
 
 class _HomePageState extends State<FriendListGroupSelector> {
+  // List<Friend> contacts = List.copyRange<Friend>(friends, 0, contacts ) as List<Friend>;
+
   List<Friend> contacts = friends;
-  List<Friend> selectedContacts = [];
+
+  List<Friend> selectedContacts =
+      friends.where((element) => element.isSelected == true).toList();
 
   @override
   Widget build(BuildContext context) {
+    print(contacts[0].isSelected);
+    print(friends[0].isSelected);
     return Scaffold(
       appBar: AppBar(
         title: Text("Choose People"),

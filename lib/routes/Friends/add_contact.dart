@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/data/friend_data.dart';
 
 //Import model
 import 'package:splitmoney/models/friend_model.dart';

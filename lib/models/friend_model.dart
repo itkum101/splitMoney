@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:splitmoney/data/friend_data.dart';
 
 class Friend {
   final String friendName;
   final String friendEmail;
-  final int netAmount;
+  double netAmount;
   final Widget? imgChild;
   final String? phoneNumber;
   final String id;
+
   bool isSelected;
 
   Friend({
@@ -18,4 +20,15 @@ class Friend {
     this.phoneNumber,
     this.isSelected = false,
   });
+  Friend copyWith() {
+    return Friend(
+      friendEmail: this.friendEmail,
+      friendName: this.friendName,
+      imgChild: this.imgChild,
+      id: this.id,
+      netAmount: this.netAmount,
+      phoneNumber: this.phoneNumber,
+      isSelected: this.isSelected,
+    );
+  }
 }

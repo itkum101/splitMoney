@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //Import Widgets
-import 'package:splitmoney/Widgets/alert_dialog_box.dart';
-import 'package:splitmoney/Widgets/text_box.dart';
+import 'package:splitmoney/widgets/alert_dialog_box.dart';
+import 'package:splitmoney/widgets/text_box.dart';
 import 'package:splitmoney/data/friend_data.dart';
 
 //Import models
@@ -28,7 +27,7 @@ class _AddExpenseState extends State<AddExpense> {
   final description = TextEditingController();
 
   final amount = TextEditingController();
-  String information = "you";
+  String? information;
   Friend? frienditem;
   List<Friend> informationList = [];
 
@@ -36,7 +35,7 @@ class _AddExpenseState extends State<AddExpense> {
     final data =
         await Navigator.pushNamed(context, FriendListSelector.routeName);
     setState(() {
-      information = data.toString();
+      information = data as String;
 
       frienditem = friends.firstWhere((element) => element.id == information);
     });
@@ -61,9 +60,17 @@ class _AddExpenseState extends State<AddExpense> {
           }));
     } else {
       Provider.of<ActivityListProvider>(context, listen: false)
-          .addToActiviityList(Activity(
-              netAmount: int.parse(amount.text),
-              description: description.text));
+          .addToActiviityList(
+        Activity(
+          paidBy: frienditem != null ? frienditem! : friends[0],
+          netAmount: int.parse(amount.text),
+          description: description.text,
+          involvedFriend: informationList,
+        ),
+      );
+      friends.forEach((element) {
+        element.isSelected = false;
+      });
       Navigator.pop(context);
     }
   }
@@ -71,7 +78,8 @@ class _AddExpenseState extends State<AddExpense> {
   @override
   Widget build(BuildContext context) {
     // var activityList = context.watch<ActivityListProvider>().activities;
-
+    print("THIS IS INFORMATION LIST");
+    print(informationList);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -268,15 +276,15 @@ class _AddExpenseState extends State<AddExpense> {
             ],
           ),
           informationList.length > 0
-              ? Container(
-                  height: 200,
+              ? Expanded(
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: informationList.length,
                     itemBuilder: ((context, index) {
                       return ListTile(
+                        leading: Icon(Icons.person),
+                        selectedTileColor: Colors.red,
                         title: Text(informationList[index].friendName),
-                        subtitle: Text(informationList[index].friendEmail),
                       );
                     }),
                   ),
