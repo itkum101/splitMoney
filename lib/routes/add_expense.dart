@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:splitmoney/data/group_data.dart';
 import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/provider/friend_name_provider.dart';
 
@@ -89,7 +88,7 @@ class _AddExpenseState extends State<AddExpense> {
       Provider.of<ActivityListProvider>(context, listen: false)
           .addToActiviityList(
         Activity(
-            id: Uuid().v1(),
+            id: const Uuid().v1(),
             paidBy: frienditem != null ? frienditem! : friends[0],
             netAmount: int.parse(amount.text),
             description: description.text,
@@ -310,18 +309,19 @@ class _AddExpenseState extends State<AddExpense> {
               const Spacer(),
             ],
           ),
-          informationList.length > 0
+          const SizedBox(height: 10),
+          informationList.isNotEmpty
               ? Expanded(
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: informationList.length,
                     itemBuilder: ((context, index) {
                       return ListTile(
-                        leading: Icon(Icons.person),
+                        leading: const Icon(Icons.person),
                         selectedTileColor: Colors.red,
                         title: Text(informationList[index].friendName),
                         trailing: SizedBox(
-                          width: 55,
+                          width: 45,
                           child: TextField(
                             controller: textController[index],
                           ),
@@ -330,7 +330,7 @@ class _AddExpenseState extends State<AddExpense> {
                     }),
                   ),
                 )
-              : Text("NONE SELECTED"),
+              : const Text("NONE SELECTED"),
         ],
       ),
     );

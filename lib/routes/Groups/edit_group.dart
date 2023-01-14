@@ -221,6 +221,7 @@ class _EditGroupState extends State<EditGroup> {
                     return GroupTypeItem(
                       icon: grouptype[index].icon,
                       type: grouptype[index].type,
+                      selected: false,
                       onTap: () {},
                     );
                   })),

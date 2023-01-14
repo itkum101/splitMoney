@@ -4,9 +4,14 @@ class GroupTypeItem extends StatelessWidget {
   final icon;
   final String type;
   void Function()? onTap;
+  bool selected;
 
   GroupTypeItem(
-      {super.key, required this.icon, required this.type, required this.onTap});
+      {super.key,
+      required this.icon,
+      required this.type,
+      required this.onTap,
+      required this.selected});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +21,10 @@ class GroupTypeItem extends StatelessWidget {
         padding: const EdgeInsets.only(right: 13),
         child: Container(
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade700),
-              color: Colors.white60,
+              border: Border.all(
+                  color:
+                      selected ? Colors.grey.shade900 : Colors.grey.shade700),
+              color: selected ? Colors.grey.shade300 : Colors.white60,
               borderRadius: BorderRadius.circular(20)),
           width: 110,
           child: Padding(

@@ -36,7 +36,7 @@ class _GroupDetailState extends State<GroupDetail> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: ((context) {
                     return GroupSettingsPage(
-                      id: widget.group.id!,
+                      id: widget.group.id,
                       groupName: widget.group.groupName,
                       imgChild: widget.group.grpImgChild,
                     );

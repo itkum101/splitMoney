@@ -217,7 +217,15 @@ class _AddGroupState extends State<AddGroup> {
                     return GroupTypeItem(
                       icon: grouptype[index].icon,
                       type: grouptype[index].type,
-                      onTap: () {},
+                      selected: grouptype[index].isSelected,
+                      onTap: () {
+                        setState(() {
+                          for (int i = 0; i < grouptype.length; i++) {
+                            grouptype[i].isSelected = false;
+                          }
+                          grouptype[index].isSelected = true;
+                        });
+                      },
                     );
                   })),
             ),

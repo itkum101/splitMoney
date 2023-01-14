@@ -26,7 +26,7 @@ class _HomePageState extends State<FriendListGroupSelector> {
     print(friends[0].isSelected);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Choose People"),
+        title: const Text("Choose People"),
         centerTitle: true,
         backgroundColor: Colors.green[700],
       ),
@@ -36,7 +36,7 @@ class _HomePageState extends State<FriendListGroupSelector> {
           // print(selectedContacts),
           Navigator.pop(context, selectedContacts),
         },
-        child: Icon(Icons.verified),
+        child: const Icon(Icons.verified),
       ),
       body: SafeArea(
         child: Container(
@@ -52,24 +52,24 @@ class _HomePageState extends State<FriendListGroupSelector> {
                         return ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Colors.green[700],
-                            child: Icon(
+                            child: const Icon(
                               Icons.person_outline_outlined,
                               color: Colors.white,
                             ),
                           ),
                           title: Text(
                             contacts[index].friendName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                           subtitle: Text(contacts[index].friendName),
-                          trailing: contacts[index].isSelected!
+                          trailing: contacts[index].isSelected
                               ? Icon(
                                   Icons.check_circle,
                                   color: Colors.green[700],
                                 )
-                              : Icon(
+                              : const Icon(
                                   Icons.check_circle_outline,
                                   color: Colors.grey,
                                 ),
@@ -90,9 +90,10 @@ class _HomePageState extends State<FriendListGroupSelector> {
                       }),
                 ),
               ),
+              // ignore: prefer_is_empty
               selectedContacts.length > 0
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(
+                  ? const Padding(
+                      padding: EdgeInsets.symmetric(
                         horizontal: 25,
                         vertical: 10,
                       ),

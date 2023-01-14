@@ -8,6 +8,7 @@ import 'package:splitmoney/widgets/alert_dialog_box.dart';
 import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/mini_container.dart';
 
+// ignore: must_be_immutable
 class GroupSettingsPage extends StatefulWidget {
   String id;
   final String groupName;
