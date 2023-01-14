@@ -11,7 +11,8 @@ import 'package:splitmoney/widgets/overall_expense_info_row.dart';
 class FriendsPageDisplayList extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
   // final myfriendList;
-  const FriendsPageDisplayList({super.key});
+  // final friendItem;
+  FriendsPageDisplayList({super.key});
 
   @override
   State<FriendsPageDisplayList> createState() => _FriendsPageDisplayListState();
@@ -25,11 +26,9 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
     // var amounts = Provider.of<ActivityListProvider>(context, listen: false)
     //     .returnTotalAmount();
 // var amountskk = context.watch<
-    context.read<FriendNameProvider>().amountToPayOrReceive();
-    var name = context.watch<FriendNameProvider>().amounts;
 
-    print("INSIDE");
-    print(name);
+    var name = context.watch<FriendNameProvider>().amounts2;
+
     return Column(
       children: [
         Container(height: 1, color: Colors.grey[400]),
@@ -40,15 +39,18 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
         const SizedBox(height: 10),
         Expanded(child:
             Consumer<FriendNameProvider>(builder: ((context, value, child) {
-          return ListView.builder(
-              itemCount: value.friendList.length,
-              itemBuilder: ((context, index) {
-                return FriendTile(
-                  friend: value.friendList[index],
-                  netmount: 0,
-                  onTap: () {},
-                );
-              }));
+          return Container(
+            height: 300,
+            child: ListView.builder(
+                itemCount: value.friendList.length,
+                itemBuilder: ((context, index) {
+                  return FriendTile(
+                    friend: value.friendList[index],
+                    netmount: 0,
+                    onTap: () {},
+                  );
+                })),
+          );
         })))
       ],
     );

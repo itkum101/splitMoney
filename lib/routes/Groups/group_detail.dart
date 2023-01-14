@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:splitmoney/models/group_model.dart';
+import 'package:splitmoney/provider/activity_list_provider.dart';
 import 'package:splitmoney/routes/Groups/group_activities.dart';
 import 'package:splitmoney/routes/Groups/group_detail_tab_item.dart';
 import 'package:splitmoney/routes/Groups/group_settings_page.dart';
 import 'package:splitmoney/utils/mini_heading_text.dart';
 import 'package:splitmoney/utils/profile.dart';
+import 'package:splitmoney/utils/sample_floating_action_button.dart';
 
 // ignore: must_be_immutable
 class GroupDetail extends StatefulWidget {
@@ -18,8 +21,12 @@ class GroupDetail extends StatefulWidget {
 class _GroupDetailState extends State<GroupDetail> {
   @override
   Widget build(BuildContext context) {
+    context.watch<ActivityListProvider>().activities;
     return SafeArea(
       child: Scaffold(
+          floatingActionButton: SampleFloatingActionButton(
+            group: widget.group,
+          ),
           backgroundColor: Colors.grey[100],
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +97,9 @@ class _GroupDetailState extends State<GroupDetail> {
               const SizedBox(
                 height: 5,
               ),
-              const GroupActivities()
+              GroupActivities(
+                group: widget.group,
+              )
             ],
           )),
     );

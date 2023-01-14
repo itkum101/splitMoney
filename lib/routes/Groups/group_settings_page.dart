@@ -9,7 +9,7 @@ import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/mini_container.dart';
 
 class GroupSettingsPage extends StatefulWidget {
-  int id;
+  String id;
   final String groupName;
   Widget? imgChild;
   GroupSettingsPage(

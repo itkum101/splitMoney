@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/data/friend_data.dart';
+import 'package:splitmoney/data/group_data.dart';
 
 //Import model
 import 'package:splitmoney/models/friend_model.dart';
@@ -37,6 +38,7 @@ class _AddContactState extends State<AddContact> {
     } else {
       Provider.of<FriendNameProvider>(context, listen: false).addToFriendList(
           Friend(
+              joinedGroup: [groups[0]],
               id: uuid.v1(),
               friendName: nameController.text,
               friendEmail: "random@gmail.com",

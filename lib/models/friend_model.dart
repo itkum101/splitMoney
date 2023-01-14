@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splitmoney/data/friend_data.dart';
+import 'package:splitmoney/data/group_data.dart';
+import 'package:splitmoney/models/group_model.dart';
 
 class Friend {
   final String friendName;
@@ -8,7 +10,7 @@ class Friend {
   final Widget? imgChild;
   final String? phoneNumber;
   final String id;
-
+  final List<Group> joinedGroup;
   bool isSelected;
 
   Friend({
@@ -19,6 +21,7 @@ class Friend {
     this.netAmount = 0,
     this.phoneNumber,
     this.isSelected = false,
+    required this.joinedGroup,
   });
   Friend copyWith() {
     return Friend(
@@ -29,6 +32,7 @@ class Friend {
       netAmount: this.netAmount,
       phoneNumber: this.phoneNumber,
       isSelected: this.isSelected,
+      joinedGroup: this.joinedGroup,
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:splitmoney/data/friend_data.dart';
+import 'package:splitmoney/data/group_data.dart';
 
 //Import models
 import 'package:splitmoney/models/friend_model.dart';
@@ -171,6 +172,7 @@ class _AddFriendDisplayListState extends State<AddFriendDisplayList> {
                           Provider.of<FriendNameProvider>(context,
                                   listen: false)
                               .addToFriendList(Friend(
+                                  joinedGroup: [groups[0]],
                                   id: uuid.v1(),
                                   friendName: demoList[index].displayName!,
                                   friendEmail:

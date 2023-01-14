@@ -30,7 +30,7 @@ import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
 
 class EditGroup extends StatefulWidget {
-  final int id;
+  final String id;
   final String defaultgroupName;
   Widget? imgChild;
   EditGroup(
@@ -86,7 +86,7 @@ class _EditGroupState extends State<EditGroup> {
     return File(imagePath).copy(image.path);
   }
 
-  void tapped(int id) {
+  void tapped(String id) {
     if (_controller.text.isEmpty) {
       showDialog(
           context: context,

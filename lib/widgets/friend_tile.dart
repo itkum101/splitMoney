@@ -20,10 +20,10 @@ class FriendTile extends StatelessWidget {
   Widget build(BuildContext context) {
     // context.watch<FriendNameProvider>().amountToPayOrReceive();
     // context.watch<FriendNameProvider>().calculate(friend);
-    if (friends[0] != friend) {
-      context.read<FriendNameProvider>().calculate(friend);
-    }
-    var tempdata = context.watch<FriendNameProvider>().amounts2;
+    // if (friends[0] != friend) {
+    //   context.read<FriendNameProvider>().calculate(friend);
+    // }
+    // var tempdata = context.watch<FriendNameProvider>().amounts2;
 
     return ListTile(
       onTap: onTap,
@@ -38,7 +38,7 @@ class FriendTile extends StatelessWidget {
       ),
       subtitle: Text(friend.friendEmail),
       trailing: Text(
-        friends[0] != friend ? tempdata.toString() : "0.000",
+        friends[0] != friend ? friend.netAmount.toString() : "0.000",
         // context.read<FriendNameProvider>().amounts.toString(),
         style: TextStyle(
             fontWeight: FontWeight.bold,

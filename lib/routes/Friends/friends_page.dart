@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:splitmoney/data/friend_data.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
 
 //Import Routes
 import 'package:splitmoney/routes/Friends/add_friend.dart';
@@ -25,28 +28,30 @@ class _FriendsPageState extends State<FriendsPage> {
     // var myActivityList = context.watch<ActivityListProvider>().activities;
 
     return Scaffold(
-        backgroundColor: Colors.grey[100],
-        floatingActionButton: const SampleFloatingActionButton(),
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56),
-          child: AppBarSample(
-            actions: [
-              IconButtonSample(onPressed: () {}, icon: Icons.search),
-              const SizedBox(width: 7),
-              IconButtonSample(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) {
-                      return const AddFriend();
-                    })));
-                  },
-                  icon: Icons.person_add_sharp),
-              const SizedBox(width: 7)
-            ],
-          ),
+      backgroundColor: Colors.grey[100],
+      // floatingActionButton: const SampleFloatingActionButton(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          actions: [
+            IconButtonSample(onPressed: () {}, icon: Icons.search),
+            const SizedBox(width: 7),
+            IconButtonSample(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return const AddFriend();
+                  })));
+                },
+                icon: Icons.person_add_sharp),
+            const SizedBox(width: 7)
+          ],
         ),
-        body: const FriendsPageDisplayList(
-            // myfriendList: myfriendList,
-            ));
+      ),
+      body: FriendsPageDisplayList(
+          // friendItem: friends[index],
+          // myfriendList: myfriendList,
+          ),
+    );
   }
 }

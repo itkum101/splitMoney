@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 //Import Routes
 import 'package:splitmoney/routes/Activity/activity_page.dart';
 import 'package:splitmoney/routes/Friends/friends_page.dart';
+import 'package:splitmoney/routes/Friends/friends_transaction_page.dart';
 import 'package:splitmoney/routes/Groups/groups_page.dart';
 import 'package:splitmoney/routes/Settings/settings_page.dart';
 
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     const GroupsPage(),
     const FriendsPage(),
     const ActivityPage(),
-    const SettingsPage()
+    const SettingsPage(),
   ];
 
   @override

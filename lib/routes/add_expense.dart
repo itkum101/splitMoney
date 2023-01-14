@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/data/group_data.dart';
+import 'package:splitmoney/models/group_model.dart';
+import 'package:splitmoney/provider/friend_name_provider.dart';
 
 //Import Widgets
 import 'package:splitmoney/widgets/alert_dialog_box.dart';
@@ -14,6 +17,12 @@ import 'package:splitmoney/models/friend_model.dart';
 import 'package:splitmoney/provider/activity_list_provider.dart';
 import 'package:splitmoney/routes/Groups/friend_list_group_selector.dart';
 import 'package:splitmoney/routes/friend_list_selector.dart';
+import 'package:uuid/uuid.dart';
+
+class Settingsargs {
+  final Group? group;
+  Settingsargs({this.group});
+}
 
 class AddExpense extends StatefulWidget {
   static const routeName = '/add_expense';
@@ -30,7 +39,8 @@ class _AddExpenseState extends State<AddExpense> {
   String? information;
   Friend? frienditem;
   List<Friend> informationList = [];
-
+  List<TextEditingController> textController = [];
+  List<double> amountInDouble = [];
   void DatafromFriendListSelector() async {
     final data =
         await Navigator.pushNamed(context, FriendListSelector.routeName);
@@ -46,11 +56,28 @@ class _AddExpenseState extends State<AddExpense> {
         await Navigator.pushNamed(context, FriendListGroupSelector.routeName);
     setState(() {
       informationList = data1 as List<Friend>;
+      textController = List.generate(
+        informationList.length,
+        (i) => TextEditingController(),
+      );
+
+      print(textController[0].text);
       print(informationList);
     });
   }
 
-  void tapped() {
+  Map<Friend, double> makeMap(List<Friend> x, List<double> y) {
+    Map<Friend, double> tempData = {};
+    for (int i = 0; i < x.length; i++) {
+      tempData.addAll({x[i]: y[i]});
+    }
+    return tempData;
+  }
+
+  void tapped(Group groupName) {
+    for (int i = 0; i < textController.length; i++) {
+      amountInDouble.add(double.parse(textController[i].text));
+    }
     if (description.text.isEmpty || amount.text.isEmpty) {
       showDialog(
           context: context,
@@ -62,24 +89,30 @@ class _AddExpenseState extends State<AddExpense> {
       Provider.of<ActivityListProvider>(context, listen: false)
           .addToActiviityList(
         Activity(
-          paidBy: frienditem != null ? frienditem! : friends[0],
-          netAmount: int.parse(amount.text),
-          description: description.text,
-          involvedFriend: informationList,
-        ),
+            id: Uuid().v1(),
+            paidBy: frienditem != null ? frienditem! : friends[0],
+            netAmount: int.parse(amount.text),
+            description: description.text,
+            involvedFriend: informationList,
+            involvedGroup: groupName,
+            amountEachFriendSpent: makeMap(informationList, amountInDouble)),
       );
       friends.forEach((element) {
         element.isSelected = false;
       });
+      print(makeMap(informationList, amountInDouble));
+      context.read<FriendNameProvider>().calculate();
       Navigator.pop(context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Settingsargs;
+
     // var activityList = context.watch<ActivityListProvider>().activities;
     print("THIS IS INFORMATION LIST");
-    print(informationList);
+    // print(textController[0].text);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -99,7 +132,9 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
                 splashRadius: 20,
-                onPressed: tapped,
+                onPressed: () {
+                  tapped(args.group!);
+                },
                 // context.read<ActivityListProvider>().addToActiviityList(
                 //       Activity(
                 //         description: description.text,
@@ -285,6 +320,12 @@ class _AddExpenseState extends State<AddExpense> {
                         leading: Icon(Icons.person),
                         selectedTileColor: Colors.red,
                         title: Text(informationList[index].friendName),
+                        trailing: SizedBox(
+                          width: 55,
+                          child: TextField(
+                            controller: textController[index],
+                          ),
+                        ),
                       );
                     }),
                   ),

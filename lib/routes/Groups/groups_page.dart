@@ -23,7 +23,7 @@ class _GroupsPageState extends State<GroupsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      floatingActionButton: const SampleFloatingActionButton(),
+      // floatingActionButton: SampleFloatingActionButton(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
         child: AppBarSample(

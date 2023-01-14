@@ -28,6 +28,7 @@ import 'package:splitmoney/models/group_model.dart';
 
 //Import Provider
 import 'package:splitmoney/provider/group_name_provider.dart';
+import 'package:uuid/uuid.dart';
 
 class AddGroup extends StatefulWidget {
   const AddGroup({super.key});
@@ -89,6 +90,7 @@ class _AddGroupState extends State<AddGroup> {
     } else {
       Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(
         Group(
+          id: Uuid().v1(),
           groupName: groupName,
           grpImgChild: img == null
               ? Padding(
