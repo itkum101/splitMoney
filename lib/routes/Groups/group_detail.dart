@@ -39,6 +39,7 @@ class _GroupDetailState extends State<GroupDetail> {
                       id: widget.group.id,
                       groupName: widget.group.groupName,
                       imgChild: widget.group.grpImgChild,
+                      groupType: widget.group.type,
                     );
                   })));
                 },

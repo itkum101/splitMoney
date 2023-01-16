@@ -210,30 +210,28 @@ class _EditGroupState extends State<EditGroup> {
           const SizedBox(height: 15),
           const MiniHeadingText(text: "Type"),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Container(
-              height: 40,
-              child: ListView.builder(
-                  itemCount: grouptype.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: ((context, index) {
-                    return GroupTypeItem(
-                      icon: grouptype[index].icon,
-                      type: grouptype[index].type,
-                      selected: false,
-                      onTap: () {},
-                    );
-                  })),
-            ),
-          ),
-          const SizedBox(height: 15),
-          const MiniHeadingText(text: "Group Members"),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 25),
+          //   child: Container(
+          //     height: 40,
+          //     child: ListView.builder(
+          //         itemCount: grouptype.length,
+          //         scrollDirection: Axis.horizontal,
+          //         itemBuilder: ((context, index) {
+          //           return GroupTypeItem(
+          //            groupType: grouptype[index],
+          //             onTap: () {},
+          //           );
+          //         })),
+          //   ),
+          // ),
+          // const SizedBox(height: 15),
+          const MiniHeadingText(text: "Info"),
           const SizedBox(height: 15),
           InfoTextRow(
               icon: Icons.info,
               infoText:
-                  "You will be able to add your friends after you save this new group.")
+                  "Change group name and image as per your choice and press the cekck button")
         ],
       ),
     );

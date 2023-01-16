@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:splitmoney/data/grouptype_data.dart';
 import 'package:splitmoney/provider/group_name_provider.dart';
 import 'package:splitmoney/routes/Groups/edit_group.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
@@ -12,9 +13,10 @@ import 'package:splitmoney/widgets/mini_container.dart';
 class GroupSettingsPage extends StatefulWidget {
   String id;
   final String groupName;
+  final String groupType;
   Widget? imgChild;
   GroupSettingsPage(
-      {super.key, required this.groupName, this.imgChild, required this.id});
+      {super.key, required this.groupName, this.imgChild, required this.id, required this.groupType});
 
   @override
   State<GroupSettingsPage> createState() => _GroupSettingsPageState();
@@ -46,7 +48,7 @@ class _GroupSettingsPageState extends State<GroupSettingsPage> {
                 child: widget.imgChild,
               ),
               title: Text(widget.groupName),
-              subtitle: const Text("Type"),
+              subtitle: Text(widget.groupType),
               trailing: IconButtonSample(
                   onPressed: () {
                     Navigator.push(context,

@@ -4,5 +4,6 @@ class Group {
   String groupName;
   Widget grpImgChild;
   String id;
-  Group({required this.groupName, required this.grpImgChild, required this.id});
+  String type;
+  Group({required this.groupName, required this.grpImgChild, required this.id, required this.type});
 }

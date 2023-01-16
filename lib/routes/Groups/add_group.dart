@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 // ignore: depend_on_referenced_packages, library_prefixes
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
+import 'package:splitmoney/data/group_data.dart';
 import 'package:splitmoney/utils/mini_heading_text.dart';
 //Import Widgets
 import 'package:splitmoney/widgets/info_text_row.dart';
@@ -40,6 +41,7 @@ class AddGroup extends StatefulWidget {
 class _AddGroupState extends State<AddGroup> {
   final _controller = TextEditingController();
   late String groupName = _controller.text;
+  String type = "";
   File? _image;
   String? img;
   Future getImage(ImageSource source) async {
@@ -87,23 +89,31 @@ class _AddGroupState extends State<AddGroup> {
           builder: (context) {
             return AlertDialogBox(alertText: "Group name is required!");
           });
+    } else if (type.isEmpty) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialogBox(alertText: "Select the type of group!");
+          });
     } else {
-      Provider.of<GroupNameProvider>(context, listen: false).addToGroupList(
-        Group(
-          id: Uuid().v1(),
-          groupName: groupName,
-          grpImgChild: img == null
-              ? Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Image.asset("lib/assets/shareholders.png",
-                      height: 65, width: 65),
-                )
-              : ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.file(File(img!), height: 75, width: 75),
-                ),
-        ),
-      );
+      Provider.of<GroupNameProvider>(context, listen: false)
+          .addToGroupList(Group(
+              id: Uuid().v1(),
+              groupName: groupName,
+              grpImgChild: img == null
+                  ? Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Image.asset("lib/assets/shareholders.png",
+                          height: 65, width: 65),
+                    )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.file(File(img!), height: 75, width: 75),
+                    ),
+              type: type));
+      for (int i = 0; i < grouptype.length; i++) {
+        grouptype[i].isSelected = false;
+      }
       Navigator.pop(context);
     }
   }
@@ -215,15 +225,14 @@ class _AddGroupState extends State<AddGroup> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
                     return GroupTypeItem(
-                      icon: grouptype[index].icon,
-                      type: grouptype[index].type,
-                      selected: grouptype[index].isSelected,
+                      groupType: grouptype[index],
                       onTap: () {
                         setState(() {
                           for (int i = 0; i < grouptype.length; i++) {
                             grouptype[i].isSelected = false;
                           }
                           grouptype[index].isSelected = true;
+                          type = grouptype[index].type;
                         });
                       },
                     );
@@ -234,6 +243,7 @@ class _AddGroupState extends State<AddGroup> {
           const MiniHeadingText(text: "Group Members"),
           const SizedBox(height: 15),
           InfoTextRow(
+              icon: Icons.info,
               infoText:
                   "You will be able to add your friends after you save this new group.")
         ],

@@ -15,7 +15,8 @@ List<Group> groups = [
           height: 65,
           width: 65,
         ),
-      )),
+      ),
+      type: "Home"),
   Group(
       id: uuid.v1(),
       groupName: "Group A",
@@ -26,5 +27,6 @@ List<Group> groups = [
           height: 65,
           width: 65,
         ),
-      ))
+      ),
+      type: "Home")
 ];
