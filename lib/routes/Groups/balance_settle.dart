@@ -25,69 +25,76 @@ class _BalanceSettleState extends State<BalanceSettle> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56),
-        child: AppBarSample(
-          title: "Settle Up",
-          leading: IconButtonSample(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icons.arrow_back),
-          actions: [
-            IconButtonSample(onPressed: () {}, icon: Icons.check),
-            const SizedBox(width: 7)
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: AppBarSample(
+            title: "Settle Up",
+            leading: IconButtonSample(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icons.arrow_back),
+            actions: [
+              IconButtonSample(onPressed: () {}, icon: Icons.check),
+              const SizedBox(width: 7)
+            ],
+          ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: Column(
           children: [
-            Text(
-              "You paid ${widget.friendName}",
-              style: TextStyle(
-                  color: Colors.grey[800],
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
+            Container(
+              height: 1,
+              color: Colors.grey[400],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  const Spacer(),
-                  MiniContainer(
-                    child: Icon(Icons.currency_rupee_rounded),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                      child: TextBox(
-                    isautoFocus: false,
-                    isFilled: true,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    labelText: "",
-                    cursorColor: Colors.grey[400],
-                    cursorHeight: 20,
-                    controller: _amount
-                      ..text = (widget.netAmount * -1).toString(),
-                  )),
-                  const Spacer(),
-                  // Expanded(
-                  //   child: TextBox(
+            Spacer(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "You paid ${widget.friendName}",
+                  style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    const Spacer(),
+                    MiniContainer(
+                      child: Icon(Icons.currency_rupee_rounded),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                        child: TextBox(
+                      isautoFocus: false,
+                      isFilled: true,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      labelText: "",
+                      cursorColor: Colors.grey[400],
+                      cursorHeight: 20,
+                      controller: _amount
+                        ..text = (widget.netAmount * -1).toString(),
+                    )),
+                    const Spacer(),
+                    // Expanded(
+                    //   child: TextBox(
 
-                  //       isautoFocus: true),
-                  // ),
-                ],
-              ),
-            )
+                    //       isautoFocus: true),
+                    // ),
+                  ],
+                )
+              ],
+            ),
+            Spacer()
           ],
         ),
       ),

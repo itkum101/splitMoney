@@ -18,7 +18,8 @@ class _SettleUpPageState extends State<SettleUpPage> {
       friends.where((element) => element.netAmount < 0).toList();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child:Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
@@ -53,6 +54,7 @@ class _SettleUpPageState extends State<SettleUpPage> {
                   })))
         ],
       ),
+    )
     );
-  }
+}
 }

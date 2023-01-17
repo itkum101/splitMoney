@@ -35,7 +35,7 @@ class SettingsPageProfileDisplay extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Amrit Sharma",
+                  "Mukti Subedi",
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 17,
@@ -45,7 +45,7 @@ class SettingsPageProfileDisplay extends StatelessWidget {
                   height: 1,
                 ),
                 Text(
-                  "amritsharma@gmail.com",
+                  "muktisubedi@gmail.com",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 14,
