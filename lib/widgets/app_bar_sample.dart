@@ -12,10 +12,12 @@ class AppBarSample extends StatelessWidget {
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
-      title: Text(
-        title,
-        style: TextStyle(
-            color: Colors.grey[800], fontSize: 23, fontWeight: FontWeight.w500),
+      title: Center(
+        child: Text(
+          title,
+          style: TextStyle(
+              color: Colors.grey[800], fontSize: 23, fontWeight: FontWeight.w500),
+        ),
       ),
       leading: leading,
       actions: actions,

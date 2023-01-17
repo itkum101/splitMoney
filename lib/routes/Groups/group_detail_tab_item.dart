@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:splitmoney/data/groupdetail_tab_data.dart';
 import 'package:splitmoney/routes/Groups/group_detail_tab_single_item.dart';
 
@@ -19,6 +17,7 @@ class GroupDetailTabItem extends StatelessWidget {
             itemBuilder: ((context, index) {
               return GroupDetailTabSingleItem(
                 name: groupDetailTabtems[index].tabTitle,
+                route: groupDetailTabtems[index].route,
               );
             })),
       ),

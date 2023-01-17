@@ -39,18 +39,15 @@ class _FriendsPageDisplayListState extends State<FriendsPageDisplayList> {
         const SizedBox(height: 10),
         Expanded(child:
             Consumer<FriendNameProvider>(builder: ((context, value, child) {
-          return Container(
-            height: 300,
-            child: ListView.builder(
-                itemCount: value.friendList.length,
-                itemBuilder: ((context, index) {
-                  return FriendTile(
-                    friend: value.friendList[index],
-                    netmount: 0,
-                    onTap: () {},
-                  );
-                })),
-          );
+          return ListView.builder(
+              itemCount: value.friendList.length,
+              itemBuilder: ((context, index) {
+                return FriendTile(
+                  friend: value.friendList[index],
+                  netAmount: 0,
+                  onTap: () {},
+                );
+              }));
         })))
       ],
     );

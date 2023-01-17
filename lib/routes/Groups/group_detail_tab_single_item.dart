@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class GroupDetailTabSingleItem extends StatelessWidget {
   final String name;
-  const GroupDetailTabSingleItem({super.key, this.name = "EX"});
+  Widget? route;
+  GroupDetailTabSingleItem({super.key, this.name = "EX", required this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,11 @@ class GroupDetailTabSingleItem extends StatelessWidget {
               shadowColor: MaterialStateProperty.all<Color>(Colors.black),
               elevation: MaterialStateProperty.all(3),
               backgroundColor: MaterialStateProperty.all<Color>(tempColour)),
-          onPressed: () {},
+          onPressed: (() {
+            Navigator.push(context, MaterialPageRoute(builder: ((context) {
+              return route!;
+            })));
+          }),
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: Text(

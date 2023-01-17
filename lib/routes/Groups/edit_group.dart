@@ -208,8 +208,8 @@ class _EditGroupState extends State<EditGroup> {
             ),
           ),
           const SizedBox(height: 15),
-          const MiniHeadingText(text: "Type"),
-          const SizedBox(height: 10),
+          // const MiniHeadingText(text: "Type"),
+          // const SizedBox(height: 10),
           // Padding(
           //   padding: const EdgeInsets.symmetric(horizontal: 25),
           //   child: Container(

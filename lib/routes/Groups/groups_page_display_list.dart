@@ -20,10 +20,7 @@ class _GroupsPageDisplayListState extends State<GroupsPageDisplayList> {
     // var mygroupList = context.watch<GroupNameProvider>().groupList;
     return Column(
       children: [
-        Container(
-          height: 1,
-          color: Colors.grey[400],
-        ),
+        Container(height: 1, color: Colors.grey[400]),
         const SizedBox(height: 10),
         const OverallExpenseInfoRow(),
         const SizedBox(height: 10),

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splitmoney/models/group_model.dart';
 import 'package:splitmoney/provider/friend_name_provider.dart';
+import 'package:splitmoney/utils/icon_button_sample.dart';
 
 //Import Widgets
 import 'package:splitmoney/widgets/alert_dialog_box.dart';
+import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/text_box.dart';
 import 'package:splitmoney/data/friend_data.dart';
 
@@ -82,7 +84,7 @@ class _AddExpenseState extends State<AddExpense> {
           context: context,
           builder: ((context) {
             return AlertDialogBox(
-                alertText: "Descriptin or amount cannot be empty!");
+                alertText: "Description or amount cannot be empty!");
           }));
     } else {
       Provider.of<ActivityListProvider>(context, listen: false)
@@ -114,39 +116,24 @@ class _AddExpenseState extends State<AddExpense> {
     // print(textController[0].text);
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          "Add an expense",
-        ),
-        leading: IconButton(
-            splashRadius: 20,
-            onPressed: (() {
-              Navigator.pop(context);
-            }),
-            icon: const Icon(
-              Icons.close,
-            )),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-                splashRadius: 20,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppBarSample(
+          title: "Add an expense",
+          leading: IconButtonSample(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icons.arrow_back),
+          actions: [
+            IconButtonSample(
                 onPressed: () {
                   tapped(args.group!);
                 },
-                // context.read<ActivityListProvider>().addToActiviityList(
-                //       Activity(
-                //         description: description.text,
-                //         netAmount: int.parse(amount.text),
-                //       ),
-                //     );
-
-                icon: const Icon(Icons.check)),
-          )
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey[700],
+                icon: Icons.check),
+            const SizedBox(width: 7)
+          ],
+        ),
       ),
       body: Column(
         children: [
