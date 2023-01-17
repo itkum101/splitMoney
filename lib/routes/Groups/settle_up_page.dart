@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:splitmoney/data/friend_data.dart';
 import 'package:splitmoney/models/friend_model.dart';
+import 'package:splitmoney/routes/Groups/balance_settle.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
 import 'package:splitmoney/widgets/app_bar_sample.dart';
 import 'package:splitmoney/widgets/friend_tile.dart';
 
 class SettleUpPage extends StatefulWidget {
-
   const SettleUpPage({super.key});
 
   @override
@@ -16,7 +16,6 @@ class SettleUpPage extends StatefulWidget {
 class _SettleUpPageState extends State<SettleUpPage> {
   List<Friend> dummyList =
       friends.where((element) => element.netAmount < 0).toList();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,23 +29,26 @@ class _SettleUpPageState extends State<SettleUpPage> {
                 Navigator.pop(context);
               },
               icon: Icons.arrow_back),
-          actions: [
-            IconButtonSample(onPressed: () {}, icon: Icons.check),
-            const SizedBox(width: 7)
-          ],
         ),
       ),
       body: Column(
         children: [
           Container(height: 1, color: Colors.grey[400]),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Expanded(
               child: ListView.builder(
                   itemCount: dummyList.length,
                   itemBuilder: ((context, index) {
                     return FriendTile(
                       friend: dummyList[index],
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return BalanceSettle(
+                              friendName: dummyList[index].friendName,
+                              netAmount: dummyList[index].netAmount);
+                        }));
+                      },
                     );
                   })))
         ],
