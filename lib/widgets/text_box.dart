@@ -30,8 +30,7 @@ class TextBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      
-      autofocus: isautoFocus,
+        autofocus: isautoFocus,
         cursorColor: cursorColor,
         cursorHeight: cursorHeight,
         onChanged: onchangedFunc,

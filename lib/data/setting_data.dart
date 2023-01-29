@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:launch_review/launch_review.dart';
 
 import '../models/setting_model.dart';
 
@@ -48,25 +49,30 @@ List<SettingsList> settingslist = [
     ),
   ),
   SettingsList(
-    icon: const Icon(
-      Icons.rate_review_rounded,
-    ),
-    settings: Text(
-      "Rate Us",
-      style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
-    ),
-  ),
+      icon: const Icon(
+        Icons.rate_review_rounded,
+      ),
+      settings: Text(
+        "Rate Us",
+        style: TextStyle(
+            fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
+      ),
+      onSettingsTap: () async {
+        await LaunchReview.launch(
+            androidAppId: "com.example.app", iOSAppId: "");
+      }),
   SettingsList(
-    icon: const Icon(
-      Icons.contact_support_rounded,
-    ),
-    settings: Text(
-      "Contact Us",
-      style: TextStyle(
-          fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
-    ),
-  ),
+      icon: const Icon(
+        Icons.contact_support_rounded,
+      ),
+      settings: Text(
+        "Contact Us",
+        style: TextStyle(
+            fontSize: 16, color: Colors.grey[800], fontWeight: FontWeight.w400),
+      ),
+      onSettingsTap: () {
+        print("Contact Us");
+      }),
   SettingsList(
     icon: const Icon(
       Icons.logout_outlined,

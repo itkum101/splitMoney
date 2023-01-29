@@ -7,6 +7,7 @@ import 'package:splitmoney/utils/icon_button_sample.dart';
 //Import Widgets
 import 'package:splitmoney/widgets/alert_dialog_box.dart';
 import 'package:splitmoney/widgets/app_bar_sample.dart';
+import 'package:splitmoney/widgets/mini_container.dart';
 import 'package:splitmoney/widgets/text_box.dart';
 import 'package:splitmoney/data/friend_data.dart';
 
@@ -148,13 +149,9 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Icons.list)),
+                MiniContainer(
+                  child: const Icon(Icons.info),
+                ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -183,13 +180,9 @@ class _AddExpenseState extends State<AddExpense> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               children: [
-                Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Icons.currency_rupee_rounded)),
+                MiniContainer(
+                  child: const Icon(Icons.currency_rupee_rounded),
+                ),
                 const SizedBox(
                   width: 10,
                 ),

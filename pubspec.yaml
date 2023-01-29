@@ -39,6 +39,7 @@ dependencies:
   contacts_service:
   permission_handler:
   image_cropper:
+  launch_review:
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to

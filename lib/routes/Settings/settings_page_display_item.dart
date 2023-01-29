@@ -34,7 +34,7 @@ class SettingsPageDisplayItem extends StatelessWidget {
                 return SettingsTile(
                   icon: settingslist[index].icon,
                   settings: settingslist[index].settings,
-                  onSettingsTap: () {},
+                  onSettingsTap: settingslist[index].onSettingsTap,
                 );
               })),
         )
