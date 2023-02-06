@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
 
@@ -83,5 +84,10 @@ List<SettingsList> settingslist = [
       style: TextStyle(
           fontSize: 16, color: Colors.green, fontWeight: FontWeight.w500),
     ),
+    onSettingsTap: (){
+     
+          FirebaseAuth.instance.signOut();
+        
+    }
   )
 ];

@@ -1,9 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:splitmoney/utils/icon_button_sample.dart';
 
-class SettingsPageProfileDisplay extends StatelessWidget {
+class SettingsPageProfileDisplay extends StatefulWidget {
   const SettingsPageProfileDisplay({super.key});
 
+  @override
+  State<SettingsPageProfileDisplay> createState() =>
+      _SettingsPageProfileDisplayState();
+}
+
+class _SettingsPageProfileDisplayState
+    extends State<SettingsPageProfileDisplay> {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,9 +25,10 @@ class SettingsPageProfileDisplay extends StatelessWidget {
                 Container(
                   height: 70,
                   width: 70,
-                  child: const CircleAvatar(
-                    backgroundColor: Colors.red,
+                  child: CircleAvatar(
                     radius: 30,
+                    backgroundColor: Colors.grey[200],
+                    // child: Image.asset("lib/assets/add_image.png"),
                   ),
                 ),
                 Positioned(
@@ -35,7 +45,7 @@ class SettingsPageProfileDisplay extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Mukti Subedi",
+                 user.displayName.toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 17,
@@ -45,7 +55,7 @@ class SettingsPageProfileDisplay extends StatelessWidget {
                   height: 1,
                 ),
                 Text(
-                  "muktisubedi@gmail.com",
+                 user.email.toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 14,

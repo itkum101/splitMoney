@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868919169855",
+    "project_id": "splitmoney-94bfe",
+    "storage_bucket": "splitmoney-94bfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868919169855:android:a91001d8f2f80578c8398a",
+        "android_client_info": {
+          "package_name": "com.example.splitmoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868919169855-17fh0jr8gvt81lplsr7c1vstlek498r9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDusIn-aoJVMrGOzDJ9cxLgqm7_6zp_tw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868919169855-17fh0jr8gvt81lplsr7c1vstlek498r9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
